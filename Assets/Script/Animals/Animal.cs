@@ -20,6 +20,7 @@ public class Animal : MonoBehaviour
     public float maxMoveInterval = 10000f; //Max interval interval in seconds between random movement
     protected bool inEnclosure;
     public Enclosure currentEnclosure;
+    public int enclosureSlotUsed = 1; // 2 for Pigs
 
     //Pahtfinding variables
     Path path;

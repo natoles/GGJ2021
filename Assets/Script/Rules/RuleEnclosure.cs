@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class RuleEnclosure : Rule
 {
-// Start is called before the first frame update
+
+    public Enclosure enclosure;
+
+
+    /* ===============================================
+    ====================   METHODS   =================
+    =============================================== */
+
+    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
+        enclosure = gameObject.GetComponent<Enclosure>();
     }
 
     // Update is called once per frame

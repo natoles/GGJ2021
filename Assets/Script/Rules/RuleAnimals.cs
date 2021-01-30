@@ -20,6 +20,7 @@ public class RuleAnimal : Rule
         return animal.currentEnclosure;
     }
 
+    // TODO: remove current animal from the list :)
     public List<Animal> GetNeighborAnimals()
     {
         return animal.currentEnclosure.GetAnimals();

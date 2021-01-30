@@ -58,6 +58,18 @@ public class Enclosure : MonoBehaviour
         return animals;
     }
 
+    // Count all the animals into the enclosure
+    public int CountAnimals()
+    {
+        return GetAnimals().Count;
+    }
+
+    // Count all the animals of this type into the enclosure
+    public int CountAnimals(System.Type type)
+    {
+        return GetAnimals().FindAll(x => x.GetType() == type).Count;
+    }
+
     // ==================== ANIMAL MANAGEMENT
 
     // Add an animal into the enclosure. Return 0 for success and -1 on fail.
@@ -67,7 +79,7 @@ public class Enclosure : MonoBehaviour
         if (animals.Contains(animal)) return -1;
         
         animals.Add(animal);
-        currentUsedSpace += 1;
+        currentUsedSpace += animal.enclosureSlotUsed;
         animal.EnterEnclosure(this);
 
         return 0;
@@ -80,7 +92,7 @@ public class Enclosure : MonoBehaviour
         if (!animals.Contains(animal)) return -1;
         
         animals.Remove(animal);
-        currentUsedSpace -= 1;
+        currentUsedSpace -= animal.enclosureSlotUsed;
         animal.LeaveEnclosure();
         return 0;
     }
