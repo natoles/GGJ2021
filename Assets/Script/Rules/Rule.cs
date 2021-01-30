@@ -90,20 +90,23 @@ public class Rule : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (!isDefinitelyFailed)
+        // Update UI etc..
+
+        // Stops here if definitely failed
+        if (isDefinitelyFailed) return;
+
+        // Timer before definitely failed
+        if (isFailed && !failedTimerStarted)
         {
-            if (isFailed && !failedTimerStarted)
-            {
-                startFailedTimer();
-            }
-            if (!isFailed && failedTimerStarted)
-            {
-                cancelFailedTimer();
-            }
-            if (failedTimerStarted)
-            {
-                updateFailedTimer();
-            }
+            startFailedTimer();
+        }
+        if (!isFailed && failedTimerStarted)
+        {
+            cancelFailedTimer();
+        }
+        if (failedTimerStarted)
+        {
+            updateFailedTimer();
         }
     }
 
