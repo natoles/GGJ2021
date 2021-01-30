@@ -121,7 +121,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e72acd710c0e211498ae79c3e617423c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 459bb58780b8b79408bd38a970a3a41b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -222,7 +222,9 @@ MonoBehaviour:
   animator: {fileID: 6512648318908670932}
   moveSpeed: 400
   topSpeed: 1
-  target: {fileID: 0}
+  minMoveInterval: 10000
+  maxMoveInterval: 10000
+  currentEnclosure: {fileID: 0}
   nexWaypointDistance: 1.5
 --- !u!1 &6512648318908670929
 GameObject:
