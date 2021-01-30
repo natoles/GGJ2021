@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3897744616608960134}
   - component: {fileID: 6747116314608105039}
   m_Layer: 0
-  m_Name: CowPrefab
+  m_Name: BullPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 6512648318908670933}
   - component: {fileID: 6512648318908670932}
   m_Layer: 0
-  m_Name: CowSprite
+  m_Name: BullSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,7 +296,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 5159674575400226990, guid: 520d4f38813850249a24f2434a604703, type: 3}
+  m_Sprite: {fileID: -377444340747798606, guid: 51dae95e8af6cb145a39741d7d21b05d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -317,7 +317,7 @@ Animator:
   m_GameObject: {fileID: 6512648318908670929}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0271dcf0b77271b47af61270250a42e8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3f6d58381d5f1e44bb82dc48838e391c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
