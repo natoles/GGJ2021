@@ -3984,26 +3984,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0259e2b016264143a770eca3dc1136d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullPrefab: {fileID: 0}
-  catPrefab: {fileID: 0}
-  cowPrefab: {fileID: 0}
-  mousePrefab: {fileID: 0}
+  bullPrefab: {fileID: 6512648318165197918, guid: fa8ae63ce5a0695459498165bcfe02bf, type: 3}
+  catPrefab: {fileID: 6512648318165197918, guid: c1cd45a2fd956eb498224d3a854136ed, type: 3}
+  cowPrefab: {fileID: 6512648318165197918, guid: 948ba028a20dd2e458ffb5bccf67eef3, type: 3}
+  dogPrefab: {fileID: 6512648318165197918, guid: d7e2183934a1664498fa8832ccb3fc35, type: 3}
+  mousePrefab: {fileID: 6512648318165197918, guid: 1c9f3f35ce238fe4da89114062e51cf0, type: 3}
+  camera: {fileID: 444145713}
   spawnList:
   - type: Cat
-    quantity: 1
-    time: 0
-  - type: 
-    quantity: 0
-    time: 0
-  - type: 
-    quantity: 0
-    time: 0
-  - type: 
-    quantity: 0
-    time: 0
-  - type: Cat
     quantity: 2
-    time: 20
+    time: 0
+  - type: Dog
+    quantity: 1
+    time: 5
+  - type: Bull
+    quantity: 1
+    time: 2.5
+  - type: Cow
+    quantity: 1
+    time: 1
+  - type: Cow
+    quantity: 3
+    time: 10
+  aliveAnimalList: []
 --- !u!4 &1448327447
 Transform:
   m_ObjectHideFlags: 0
