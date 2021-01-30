@@ -21,10 +21,10 @@ public static class StringToClass
             case "Dog":
                 return typeof(Dog);
             default:
-                Assert.IsTrue(false, "WRONG TYPE TO CONVERT: "+type);
+                Debug.LogError("WRONG TYPE TO CONVERT: "+type);
                 break;
-        }
-        
+        };
+
         return null;
     }
 }

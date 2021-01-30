@@ -3989,23 +3989,25 @@ MonoBehaviour:
   cowPrefab: {fileID: 6512648318165197918, guid: 948ba028a20dd2e458ffb5bccf67eef3, type: 3}
   dogPrefab: {fileID: 6512648318165197918, guid: d7e2183934a1664498fa8832ccb3fc35, type: 3}
   mousePrefab: {fileID: 6512648318165197918, guid: 1c9f3f35ce238fe4da89114062e51cf0, type: 3}
-  camera: {fileID: 444145713}
+  gameCamera: {fileID: 0}
+  objectiveAnimalInEnclosure: 0
+  currentAnimalInEnclosure: 0
   spawnList:
-  - type: Cat
-    quantity: 2
-    time: 0
-  - type: Dog
+  - type: Cow
     quantity: 1
-    time: 5
+    time: 0
   - type: Bull
     quantity: 1
-    time: 2.5
-  - type: Cow
-    quantity: 1
     time: 1
-  - type: Cow
+  - type: Dog
     quantity: 3
+    time: 5
+  - type: Cat
+    quantity: 2
     time: 10
+  - type: Mouse
+    quantity: 2
+    time: 2
   aliveAnimalList: []
 --- !u!4 &1448327447
 Transform:

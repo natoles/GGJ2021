@@ -10986,7 +10986,9 @@ MonoBehaviour:
   cowPrefab: {fileID: 6512648318165197918, guid: 948ba028a20dd2e458ffb5bccf67eef3, type: 3}
   dogPrefab: {fileID: 6512648318165197918, guid: d7e2183934a1664498fa8832ccb3fc35, type: 3}
   mousePrefab: {fileID: 6512648318165197918, guid: 1c9f3f35ce238fe4da89114062e51cf0, type: 3}
-  camera: {fileID: 0}
+  gameCamera: {fileID: 109440016}
+  objectiveAnimalInEnclosure: 0
+  currentAnimalInEnclosure: 0
   spawnList:
   - type: Cat
     quantity: 1
@@ -11076,6 +11078,14 @@ PrefabInstance:
     - target: {fileID: 5519931847484240874, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+      propertyPath: isExterior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+      propertyPath: totalSpace
+      value: 999999
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1784129617587551674, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
