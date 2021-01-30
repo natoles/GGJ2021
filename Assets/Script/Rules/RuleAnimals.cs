@@ -17,12 +17,22 @@ public class RuleAnimal : Rule
     // ==================== GETTTER AND STATE
     public Enclosure GetEnclosure()
     {
+        if (!animal.inEnclosure)
+        {
+            Debug.Log("Animal"+animal.GetType().ToString()+"is not in an enclosure.");
+            return null;
+        }
         return animal.currentEnclosure;
     }
 
     // TODO: remove current animal from the list :)
     public List<Animal> GetNeighborAnimals()
     {
+        if (!animal.inEnclosure)
+        {
+            Debug.Log("Animal"+animal.GetType().ToString()+"is not in an enclosure.");
+            return new List<Animal>();
+        }
         return animal.currentEnclosure.GetAnimals();
     }
 
