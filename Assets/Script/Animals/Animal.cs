@@ -13,7 +13,7 @@ public class Animal : MonoBehaviour
     AudioSource audioSource;
     protected IEnumerator movementsHandlingCoroutine;
     Vector2 movement;
-    public bool inEnclosure = false;
+    //public bool inEnclosure = false;
     public Enclosure currentEnclosure;
     public int enclosureSlotUsed = 1; // 2 for Pigs
     public MovementState currentMovementState = MovementState.Standard;
@@ -99,6 +99,15 @@ public class Animal : MonoBehaviour
         currentMovementProperties.linearDrag = standardMovement.linearDrag;
     }
 
+    public bool IsInEnclosure()
+    {
+        if (currentEnclosure == null)
+        {
+            return false;
+        }
+        return true;
+    }
+
     //Move an animal to the target position
     public void MoveTo(Vector3 target)
     {
@@ -108,7 +117,7 @@ public class Animal : MonoBehaviour
     public void EnterEnclosure(Enclosure enclosure)
     {
         currentEnclosure = enclosure;
-        inEnclosure = !currentEnclosure.isExterior;
+        //inEnclosure = !currentEnclosure.isExterior;
     }
 
     public void LeaveEnclosure()
