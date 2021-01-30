@@ -14,10 +14,12 @@ public class RuleBull : RuleAnimal
     protected override void Update()
     {
         base.Update();
-        if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Bull"))){
-            animal.Enrage();
-        } else {
-            animal.Calm();
+        if (animal.inEnclosure){
+            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Bull"))){
+                animal.Enrage();
+            } else {
+                animal.Calm();
+            }
         }
     }
 }

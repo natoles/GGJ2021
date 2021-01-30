@@ -19,7 +19,7 @@ public class RuleAnimal : Rule
     {
         if (!animal.inEnclosure)
         {
-            Debug.Log("Animal"+animal.GetType().ToString()+"is not in an enclosure.");
+            //Debug.Log("Animal"+animal.GetType().ToString()+"is not in an enclosure.");
             return null;
         }
         return animal.currentEnclosure;
@@ -30,7 +30,7 @@ public class RuleAnimal : Rule
     {
         if (!animal.inEnclosure)
         {
-            Debug.Log("Animal"+animal.GetType().ToString()+"is not in an enclosure.");
+            //Debug.Log("Animal"+animal.GetType().ToString()+"is not in an enclosure.");
             return new List<Animal>();
         }
         return animal.currentEnclosure.GetAnimals();

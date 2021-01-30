@@ -14,17 +14,19 @@ public class RuleCow : RuleAnimal
     protected override void Update()
     {
         base.Update();
-        if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Bull")))
-        {
-            animal.Calm();
-        }
-        else if(IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse")))
-        {
-            animal.Run();
-        }
-        else
-        {
-            animal.Enrage();
+        if (animal.inEnclosure){
+            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Bull")))
+            {
+                animal.Calm();
+            }
+            else if(IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse")))
+            {
+                animal.Run();
+            }
+            else
+            {
+                animal.Enrage();
+            }
         }
     }
 }
