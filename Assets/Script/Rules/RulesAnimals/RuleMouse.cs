@@ -14,5 +14,13 @@ public class RuleMouse : RuleAnimal
     protected override void Update()
     {
         base.Update();
+        if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Cat")))
+        {
+            animal.Run();
+        }
+        else
+        {
+            animal.Calm();
+        }
     }
 }

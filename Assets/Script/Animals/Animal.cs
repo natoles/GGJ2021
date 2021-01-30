@@ -51,7 +51,6 @@ public class Animal : MonoBehaviour
         Run,
     }
 
-
     protected virtual void Start()
     {
         seeker = GetComponent<Seeker>();

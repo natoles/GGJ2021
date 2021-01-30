@@ -15,7 +15,9 @@ public class RuleCat : RuleAnimal
     {
         base.Update();
         if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse"))){
-            animal.Enrage();
+            animal.Run();
+        } else if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse"))) {
+            animal.Chase(FindNeighborTypeOf(StringToClass.TypeFromString("Mouse")));
         } else {
             animal.Calm();
         }
