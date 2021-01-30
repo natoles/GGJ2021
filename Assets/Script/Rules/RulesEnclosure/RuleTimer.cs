@@ -6,10 +6,15 @@ public class RuleTimer : RuleEnclosure
 {
     public float totalDuration = 10; //seconds
     public bool isFinished = false;
-
-    private float startTime = 0f;
     private float timeLeft = 0f;
 
+
+    // Restet timer
+    public void Reset()
+    {
+        timeLeft = totalDuration;
+        isFinished = false;
+    }
 
     // Return 
     public float TimeLeft()
@@ -20,8 +25,7 @@ public class RuleTimer : RuleEnclosure
     // Start is called before the first frame update
     protected override void Start()
     {
-        startTime = Time.time;
-        isFinished = false;
+        Reset();
     }
 
     // FixedUpdate is called at a fixed time interval
@@ -29,7 +33,7 @@ public class RuleTimer : RuleEnclosure
     {
         if (!isFinished)
         {
-            timeLeft = startTime + totalDuration - Time.time;
+            timeLeft -= Time.fixedDeltaTime;
             if (timeLeft < 0f){
                 isFinished = true;
                 timeLeft = 0f;
