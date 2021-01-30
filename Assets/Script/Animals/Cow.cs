@@ -9,7 +9,8 @@ public class Cow : Animal
     {
         base.Start();
 
-        moveInterval = 2f;
+        minMoveInterval = 1f;
+        maxMoveInterval = 2f;
     }
 
     // Update is called once per frame
@@ -20,25 +21,10 @@ public class Cow : Animal
 
     protected override IEnumerator RageState()
     {
-        while(true)
+        while (true)
         {
-            Debug.Log("end of path :" + reachedEndOfPath);
-            if (reachedEndOfPath)
-            {
-                Debug.Log(inEnclosure);
-                if (inEnclosure)
-                {
-                    MoveTo(currentEnclosure.RandomPoint());
-                    Debug.Log(currentEnclosure.RandomPoint());
-                }
-                else
-                {
-                    //Outside
-                }
-            }
-              
-
-            yield return new WaitForSeconds(moveInterval);
+            //Put rage behavior here
+            yield return new WaitForSeconds(Random.Range(minMoveInterval, maxMoveInterval));
         }
         
     }

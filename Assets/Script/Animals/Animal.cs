@@ -14,8 +14,10 @@ public class Animal : MonoBehaviour
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
     protected IEnumerator rageCoroutine;
+    protected IEnumerator idleCoroutine;
     Vector2 movement;
-    public float moveInterval; //Interval between random movement
+    public float minMoveInterval = 1f; //Min time interval in seconds between random movement
+    public float maxMoveInterval = 1f; //Max interval interval in seconds between random movement
     protected bool inEnclosure;
     public Enclosure currentEnclosure;
 
@@ -35,11 +37,9 @@ public class Animal : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
+        idleCoroutine = IdleState();
+        StartCoroutine(idleCoroutine);
         baseScale = transform.localScale;
-
-        moveInterval = 5f;
-
-        Enrage();
     }
 
     //Move an animal to the target position
@@ -48,7 +48,21 @@ public class Animal : MonoBehaviour
         seeker.StartPath(rb.position, target, OnPathComplete);
     }
 
-    
+    public void ComputeAnimalMovement()
+    {
+        if (reachedEndOfPath)
+        {
+            if (inEnclosure)
+            {
+                MoveTo(currentEnclosure.RandomPoint());
+            }
+            else
+            {
+                //Outside
+            }
+        }
+    }
+
     public void EnterEnclosure(Enclosure enclosure)
     {
         inEnclosure = true;
@@ -64,8 +78,8 @@ public class Animal : MonoBehaviour
     //Start the RageState coroutine
     public void Enrage()
     {
-        rageCoroutine = RageState();
         reachedEndOfPath = true;
+        rageCoroutine = RageState();
         StartCoroutine(rageCoroutine);
     }
 
@@ -78,6 +92,16 @@ public class Animal : MonoBehaviour
     protected virtual IEnumerator RageState()
     {
         yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator IdleState()
+    {
+        while (true)
+        {
+            ComputeAnimalMovement();
+            yield return new WaitForSeconds(Random.Range(minMoveInterval, maxMoveInterval));
+        }
+
     }
 
 
