@@ -12,6 +12,7 @@ public class Animal : MonoBehaviour
     bool isDragging;
     Vector3 baseScale;
     SpriteRenderer spriteRenderer;
+    AudioSource audioSource;
 
 
     //Pahtfinding variables
@@ -28,6 +29,7 @@ public class Animal : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         baseScale = transform.localScale;
@@ -49,13 +51,16 @@ public class Animal : MonoBehaviour
         }
     }
 
+    //Start drag
     public void OnMouseDown()
     {
         isDragging = true;
         animator.SetBool("isRage", true);
         transform.localScale = baseScale * 1.3f;
+        audioSource.Play();
     }
 
+    //Stop drag
     public void OnMouseUp()
     {
         isDragging = false;
@@ -63,6 +68,7 @@ public class Animal : MonoBehaviour
         animator.SetBool("isRage", false);
         transform.localScale = baseScale;
         spriteRenderer.flipX = false;
+        audioSource.Stop();
     }
 
     void Update()
@@ -73,7 +79,8 @@ public class Animal : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.magnitude);
-
+        
+        //Drag and drop
         if (isDragging)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -81,10 +88,11 @@ public class Animal : MonoBehaviour
 
             path = null; //Cancel movement
             rb.velocity = new Vector2(0, 0);
-        }
 
-        if (isDragging && Input.GetAxis("Mouse X") != 0)
-            spriteRenderer.flipX = (Input.GetAxis("Mouse X") > 0);
+            if (Input.GetAxis("Mouse X") != 0)
+                spriteRenderer.flipX = (Input.GetAxis("Mouse X") > 0);
+        }
+            
     }
 
     private void FixedUpdate()
