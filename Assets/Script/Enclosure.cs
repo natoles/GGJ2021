@@ -104,9 +104,9 @@ public class Enclosure : MonoBehaviour
             || !animals.Contains(animal)
             || enclosureTo.animals.Contains(animal)) return -1;
 
-        if (RemoveAnimal(animal) != 0) return -1;
         if (enclosureTo.AddAnimal(animal) != 0) return -1;
-        
+        if (RemoveAnimal(animal) != 0) return -1;
+
         return 0;
     }
 
