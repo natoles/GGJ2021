@@ -13,6 +13,10 @@ public class Animal : MonoBehaviour
     Vector3 baseScale;
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
+    protected IEnumerator rageCoroutine;
+    Vector2 movement;
+    public float moveInterval; //Interval between random movement
+
 
 
     //Pahtfinding variables
@@ -20,10 +24,9 @@ public class Animal : MonoBehaviour
     public Transform target;
     public float nexWaypointDistance = 3f;
     int currentWaypoint = 0;
-    bool reachedEndOfPath = false;
+    protected bool reachedEndOfPath = true;
     Seeker seeker;
 
-    Vector2 movement;
 
     protected virtual void Start()
     {
@@ -34,14 +37,37 @@ public class Animal : MonoBehaviour
 
         baseScale = transform.localScale;
 
-        MoveTo(target.position);
+        moveInterval = 5f;
+
+        Enrage();
     }
 
+    //Move an animal to the target position
     public void MoveTo(Vector3 target)
     {
         seeker.StartPath(rb.position, target, OnPathComplete);
     }
 
+    public void Enrage()
+    {
+        rageCoroutine = RageState();
+        reachedEndOfPath = true;
+        StartCoroutine(rageCoroutine);
+    }
+
+    public void Calm()
+    {
+        StopCoroutine(rageCoroutine);
+    }
+
+    protected virtual IEnumerator RageState()
+    {
+        Debug.Log("animal cor");
+        yield return new WaitForSeconds(0.5f);
+    }
+
+
+    //Callback
     void OnPathComplete(Path p)
     {
         if (!p.error)
@@ -55,7 +81,7 @@ public class Animal : MonoBehaviour
     public void OnMouseDown()
     {
         isDragging = true;
-        animator.SetBool("isRage", true);
+        animator.SetBool("IsRage", true);
         transform.localScale = baseScale * 1.3f;
         audioSource.Play();
     }
@@ -64,11 +90,12 @@ public class Animal : MonoBehaviour
     public void OnMouseUp()
     {
         isDragging = false;
-        MoveTo(target.position);
-        animator.SetBool("isRage", false);
+        //MoveTo(target.position);
+        animator.SetBool("IsRage", false);
         transform.localScale = baseScale;
         spriteRenderer.flipX = false;
         audioSource.Stop();
+        reachedEndOfPath = true;
     }
 
     protected virtual void Update()
