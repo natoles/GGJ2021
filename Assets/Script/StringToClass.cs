@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StringToClass : MonoBehaviour
+public static class StringToClass
 {
     /*
     private List<string> availableClasses = new List<string> {
@@ -13,7 +13,7 @@ public class StringToClass : MonoBehaviour
     */
 
     // Returns the type of an animal given its name as a string
-    public System.Type TypeFromString(string type)
+    public static System.Type TypeFromString(string type)
     {
         switch(type)
         {
