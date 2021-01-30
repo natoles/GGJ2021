@@ -106,8 +106,8 @@ public class Animal : MonoBehaviour
 
     public void EnterEnclosure(Enclosure enclosure)
     {
-        inEnclosure = true;
         currentEnclosure = enclosure;
+        inEnclosure = currentEnclosure.isExterior;
     }
 
     public void LeaveEnclosure()
