@@ -14,7 +14,7 @@ public class RuleCat : RuleAnimal
     protected override void Update()
     {
         base.Update();
-        if (animal.inEnclosure){
+        if (animal.IsInEnclosure()){
             if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Dog"))){
                 Debug.Log("run");
                 animal.Run();

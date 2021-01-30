@@ -13,7 +13,6 @@ public class Animal : MonoBehaviour
     AudioSource audioSource;
     protected IEnumerator movementsHandlingCoroutine;
     Vector2 movement;
-    public bool inEnclosure = false;
     public Enclosure currentEnclosure;
     public int enclosureSlotUsed = 1; // 2 for Pigs
     public MovementState currentMovementState = MovementState.Standard;
@@ -104,15 +103,20 @@ public class Animal : MonoBehaviour
         seeker.StartPath(rb.position, target, OnPathComplete);
     }
 
+    public bool IsInEnclosure()
+    {
+        if (currentEnclosure == null){
+            return false;
+        }
+        return !currentEnclosure.isExterior;
+    }
     public void EnterEnclosure(Enclosure enclosure)
     {
         currentEnclosure = enclosure;
-        inEnclosure = !currentEnclosure.isExterior;
     }
 
     public void LeaveEnclosure()
     {
-        inEnclosure = !currentEnclosure.isExterior;
     }
 
     #region Behavior functions
