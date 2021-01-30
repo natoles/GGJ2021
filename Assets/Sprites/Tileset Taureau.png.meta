@@ -47,6 +47,15 @@ TextureImporter:
   - first:
       213: 9147016558964648093
     second: Tileset Taureau_14
+  - first:
+      213: -6380795263024482001
+    second: Tileset Taureau_15
+  - first:
+      213: 8759858498678280676
+    second: Tileset Taureau_16
+  - first:
+      213: 5022445247885585821
+    second: Tileset Taureau_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -140,7 +149,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 480
         width: 96
         height: 96
       alignment: 0
@@ -161,7 +170,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 384
+        y: 480
         width: 96
         height: 96
       alignment: 0
@@ -182,7 +191,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 384
+        y: 480
         width: 96
         height: 96
       alignment: 0
@@ -203,7 +212,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 288
+        y: 384
         width: 96
         height: 96
       alignment: 0
@@ -224,7 +233,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 288
+        y: 384
         width: 96
         height: 96
       alignment: 0
@@ -245,7 +254,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 288
+        y: 384
         width: 96
         height: 96
       alignment: 0
@@ -266,7 +275,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
+        y: 288
         width: 96
         height: 96
       alignment: 0
@@ -287,7 +296,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 192
+        y: 288
         width: 96
         height: 96
       alignment: 0
@@ -308,7 +317,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 192
+        y: 288
         width: 96
         height: 96
       alignment: 0
@@ -329,7 +338,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
+        y: 192
         width: 96
         height: 96
       alignment: 0
@@ -350,7 +359,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 96
+        y: 192
         width: 96
         height: 96
       alignment: 0
@@ -371,7 +380,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 96
+        y: 192
         width: 96
         height: 96
       alignment: 0
@@ -392,7 +401,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 96
         width: 96
         height: 96
       alignment: 0
@@ -413,7 +422,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 96
         width: 96
         height: 96
       alignment: 0
@@ -434,7 +443,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 0
+        y: 96
         width: 96
         height: 96
       alignment: 0
@@ -446,6 +455,69 @@ TextureImporter:
       bones: []
       spriteID: d9824bfe81bb0fe70800000000000000
       internalID: 9147016558964648093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Taureau_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f293ee2e38cd277a0800000000000000
+      internalID: -6380795263024482001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Taureau_16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e1d76094e4419970800000000000000
+      internalID: 8759858498678280676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Taureau_17
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9da118c75f43b540800000000000000
+      internalID: 5022445247885585821
       vertices: []
       indices: 
       edges: []
