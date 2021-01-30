@@ -14,11 +14,11 @@ public class MyGameManager : MonoBehaviour
 {
     // TODO:
     /*
-    - Gestion du spawn des animaux
     - Level manager -> prends un tableau en entrée
     - Référence à chacun des animaux/enclos/règles
     - Boucle de jeu
     - Barre de stress
+    - Condition de 
     */
     
     // PUBLIC
@@ -81,9 +81,9 @@ public class MyGameManager : MonoBehaviour
             if (onXAxis)
             {
                 x = Random.Range(xmin, xmax);
-                y = Random.value > 0.5 ?  ymin - 50: ymax + 50;
+                y = Random.value > 0.5 ?  ymin - 5: ymax + 5;
             } else {
-                x = Random.value > 0.5 ?  xmin - 50: xmax + 50;
+                x = Random.value > 0.5 ?  xmin - 5: xmax + 5;
                 y = Random.Range(ymin, ymax);
             }
 
