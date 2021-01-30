@@ -404,11 +404,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6512648318165197918, guid: 948ba028a20dd2e458ffb5bccf67eef3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 119
+      value: 159
       objectReference: {fileID: 0}
     - target: {fileID: 6512648318165197918, guid: 948ba028a20dd2e458ffb5bccf67eef3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 163
+      value: -141
       objectReference: {fileID: 0}
     - target: {fileID: 6512648318165197918, guid: 948ba028a20dd2e458ffb5bccf67eef3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10986,7 +10986,9 @@ MonoBehaviour:
   cowPrefab: {fileID: 6512648318165197918, guid: 948ba028a20dd2e458ffb5bccf67eef3, type: 3}
   dogPrefab: {fileID: 6512648318165197918, guid: d7e2183934a1664498fa8832ccb3fc35, type: 3}
   mousePrefab: {fileID: 6512648318165197918, guid: 1c9f3f35ce238fe4da89114062e51cf0, type: 3}
-  camera: {fileID: 0}
+  gameCamera: {fileID: 0}
+  objectiveAnimalInEnclosure: 0
+  currentAnimalInEnclosure: 0
   spawnList:
   - type: Cat
     quantity: 1
