@@ -7,7 +7,8 @@ public class Animal : MonoBehaviour
 {
     Rigidbody2D rb;
     public Animator animator;
-    public float moveSpeed = 2000f;
+    public float moveSpeed;
+    public float topSpeed;
     bool isDragging;
     
 
@@ -25,7 +26,7 @@ public class Animal : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
+       
         MoveTo(target.position);
     }
 
@@ -51,6 +52,7 @@ public class Animal : MonoBehaviour
     public void OnMouseUp()
     {
         isDragging = false;
+        MoveTo(target.position);
     }
 
     void Update()
@@ -74,7 +76,6 @@ public class Animal : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Needs to be at the end
         #region PahtFinding
 
         if (path != null)
@@ -83,31 +84,34 @@ public class Animal : MonoBehaviour
             if (currentWaypoint >= path.vectorPath.Count)
             {
                 reachedEndOfPath = true;
-                return;
             }
             else
             {
                 reachedEndOfPath = false;
-            }
 
-            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * moveSpeed * Time.deltaTime;
+                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                Vector2 force = direction * moveSpeed * Time.deltaTime;
 
-            rb.AddForce(force);
+                rb.AddForce(force);
 
-            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
-            if (distance < nexWaypointDistance)
-            {
-                currentWaypoint++;
+                if (currentWaypoint == path.vectorPath.Count - 1)
+                {
+                    if (distance < 0.7f) currentWaypoint++;
+                }
+                else
+                {
+                    if (distance < nexWaypointDistance) currentWaypoint++;
+                }
+
             }
         }
-
-        
-
-        
-
         #endregion
+
+        if (rb.velocity.magnitude > topSpeed)
+            rb.velocity = rb.velocity.normalized * topSpeed;
+            
     }
 
 
