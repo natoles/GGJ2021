@@ -5,7 +5,6 @@ using UnityEngine;
 public class RuleTimer : RuleEnclosure
 {
     public float totalDuration = 10; //seconds
-    public bool isFailed = false;
     private float timeLeft = 0f;
 
 

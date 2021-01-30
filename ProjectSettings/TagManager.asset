@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enclosure
   - Drag
+  - Animal
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,10 @@ TagManager:
     locked: 0
   - name: ground
     uniqueID: 355287893
+    locked: 0
+  - name: Sol
+    uniqueID: 4177357245
+    locked: 0
+  - name: Obstacle
+    uniqueID: 514786961
     locked: 0
