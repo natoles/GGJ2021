@@ -16,8 +16,7 @@ public class Animal : MonoBehaviour
     protected IEnumerator rageCoroutine;
     Vector2 movement;
     public float moveInterval; //Interval between random movement
-
-
+    bool inEnclosure;
 
     //Pahtfinding variables
     Path path;
@@ -46,6 +45,16 @@ public class Animal : MonoBehaviour
     public void MoveTo(Vector3 target)
     {
         seeker.StartPath(rb.position, target, OnPathComplete);
+    }
+
+    public void EnterEnclosure()
+    {
+        inEnclosure = true;
+    }
+
+    public void LeaveEnclosure()
+    {
+        inEnclosure = false;
     }
 
     public void Enrage()
