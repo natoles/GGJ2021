@@ -8,6 +8,7 @@ public class Enclosure : MonoBehaviour
     public List<Animal> animals;
     public int totalSpace = 15;
     public int currentUsedSpace = 0;
+    public bool isExterior = false; // true if this "enclosure" is actually the exterior
 
     public List<Rule> rules;
 
@@ -50,6 +51,11 @@ public class Enclosure : MonoBehaviour
        currentUsedSpace = 0;
        animals.Clear();
        rules.Clear();
+    }
+
+    public List<Animal> GetAnimals()
+    {
+        return animals;
     }
 
     // ==================== ANIMAL MANAGEMENT
