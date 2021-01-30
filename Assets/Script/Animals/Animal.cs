@@ -263,7 +263,6 @@ public class Animal : MonoBehaviour
              || currentMovementState == MovementState.Run
                 || currentMovementState == MovementState.Chase)
         {
-            Debug.Log("Rage");
             if (!audioSource.isPlaying) audioSource.Play();
         }
         else if (isDragging)

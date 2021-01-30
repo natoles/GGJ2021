@@ -16,13 +16,10 @@ public class RuleCat : RuleAnimal
         base.Update();
         if (animal.inEnclosure){
             if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Dog"))){
-                Debug.Log("run");
                 animal.Run();
             } else if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse"))) {
-                Debug.Log("chase");
                 animal.Chase(FindNeighborTypeOf(StringToClass.TypeFromString("Mouse")));
             } else {
-                Debug.Log("calme");
                 animal.Calm();
             }
         }
