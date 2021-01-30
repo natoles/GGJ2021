@@ -23,6 +23,8 @@ public static class StringToClass
                 return typeof(Cat);
             case "Cow":
                 return typeof(Cat);
+            case "Mouse":
+                return typeof(Mouse);
         }
 
         return null;
