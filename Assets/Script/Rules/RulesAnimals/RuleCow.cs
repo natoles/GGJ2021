@@ -14,7 +14,7 @@ public class RuleCow : RuleAnimal
     protected override void Update()
     {
         base.Update();
-        if (animal.inEnclosure){
+        if (animal.IsInEnclosure()){
             if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Bull")))
             {
                 animal.Calm();
