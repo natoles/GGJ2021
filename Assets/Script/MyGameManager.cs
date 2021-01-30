@@ -28,6 +28,8 @@ public class MyGameManager : MonoBehaviour
     public Transform dogPrefab;
     public Transform mousePrefab;
 
+    public Camera camera;
+
     // PRIVATE
     private float levelTimeStart;
 
@@ -64,9 +66,29 @@ public class MyGameManager : MonoBehaviour
             prefab = selectAnimalPrefab(spawnInfo.type);
             Assert.IsNotNull(prefab, spawnInfo.type + " is not a valid animal! Use Bull, Cat, Cow, Mouse");
 
-            // Spawning Animal
-            
+            // Getting Camera dimension
+            //Screen.width, Screen.height;
+            //Camera
+            //TODO: automate this
+            int xmin = -300;
+            int xmax = 300;
+            int ymin = -300;
+            int ymax = 300;
 
+            // Selecting random point for spawn
+            bool onXAxis = Random.value > 0.5;
+            int x,y;
+            if (onXAxis)
+            {
+                x = Random.Range(xmin, xmax);
+                y = Random.value > 0.5 ?  ymin - 50: ymax + 50;
+            } else {
+                x = Random.value > 0.5 ?  xmin - 50: xmax + 50;
+                y = Random.Range(ymin, ymax);
+            }
+
+            // Spawning Animal
+            Instantiate(prefab, new Vector2(x, y), Quaternion.identity);
         }
     }
 
@@ -78,6 +100,8 @@ public class MyGameManager : MonoBehaviour
         for (int i = 0; i < toSpawn.Count; i++)
         {
             SpawnInfo spawnInfo = toSpawn[i];
+            spawnAnimal(spawnInfo);
+            spawnList.Remove(spawnInfo);
         }
     }
 
