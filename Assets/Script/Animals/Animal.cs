@@ -23,7 +23,6 @@ public class Animal : MonoBehaviour
 
     //Pahtfinding variables
     Path path;
-    public Transform target;
     public float nexWaypointDistance = 3f;
     int currentWaypoint = 0;
     protected bool reachedEndOfPath = true;
@@ -72,7 +71,6 @@ public class Animal : MonoBehaviour
     public void LeaveEnclosure()
     {
         inEnclosure = false;
-        currentEnclosure = null;
     }
 
     //Start the RageState coroutine
@@ -129,13 +127,13 @@ public class Animal : MonoBehaviour
     public void OnMouseUp()
     {
         isDragging = false;
-        //MoveTo(target.position);
         animator.SetBool("IsRage", false);
         transform.localScale = baseScale;
         spriteRenderer.flipX = false;
         audioSource.Stop();
         reachedEndOfPath = true;
         transform.gameObject.tag = "Animal";
+        ComputeAnimalMovement();
     }
 
     protected virtual void Update()
