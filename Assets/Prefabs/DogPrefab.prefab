@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6512648318165197915}
   - component: {fileID: 6512648318165197919}
   - component: {fileID: 3897744616608960134}
-  - component: {fileID: 2424002546775237235}
+  - component: {fileID: 8386891794443924585}
   m_Layer: 0
-  m_Name: BullPrefab
+  m_Name: DogPrefab
   m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 459bb58780b8b79408bd38a970a3a41b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cf857918979e5284dafb9142098b564e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -207,7 +207,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2424002546775237235
+--- !u!114 &8386891794443924585
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6512648318165197914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2307e0951bf8f3546b957899128b4584, type: 3}
+  m_Script: {fileID: 11500000, guid: a7429def24cc20343bb489d2c3964956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6512648318908670932}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 6512648318908670933}
   - component: {fileID: 6512648318908670932}
   m_Layer: 0
-  m_Name: BullSprite
+  m_Name: DogSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,12 +299,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -377444340747798606, guid: 51dae95e8af6cb145a39741d7d21b05d, type: 3}
+  m_Sprite: {fileID: -1884628901548127987, guid: 501d7f8f29970194bbb3a9699ea63cfe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 96, y: 64}
+  m_Size: {x: 96, y: 96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -320,7 +320,7 @@ Animator:
   m_GameObject: {fileID: 6512648318908670929}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3f6d58381d5f1e44bb82dc48838e391c, type: 2}
+  m_Controller: {fileID: 9100000, guid: f5484da6a6de2fa45aa57bec885d1240, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
