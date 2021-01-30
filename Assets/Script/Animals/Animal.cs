@@ -8,7 +8,8 @@ public class Animal : MonoBehaviour
     Rigidbody2D rb;
     public Animator animator;
     public float moveSpeed = 2000f;
-
+    bool isDragging;
+    
 
     //Pahtfinding variables
     Path path;
@@ -42,46 +43,69 @@ public class Animal : MonoBehaviour
         }
     }
 
+    public void OnMouseDown()
+    {
+        isDragging = true;
+    }
+
+    public void OnMouseUp()
+    {
+        isDragging = false;
+    }
+
     void Update()
     {
-        
         movement.x = Mathf.Clamp(rb.velocity.x, -1f, 1f);
         movement.y = Mathf.Clamp(rb.velocity.y, -1f, 1f);
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.magnitude);
+
+        if (isDragging)
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            transform.Translate(mousePosition);
+
+            path = null; //Cancel movement
+            rb.velocity = new Vector2(0, 0);
+        }
     }
 
     private void FixedUpdate()
     {
-        
-
+        //Needs to be at the end
         #region PahtFinding
 
-        if (path == null) return;
-
-        if (currentWaypoint >= path.vectorPath.Count)
+        if (path != null)
         {
-            reachedEndOfPath = true;
-            return;
+
+            if (currentWaypoint >= path.vectorPath.Count)
+            {
+                reachedEndOfPath = true;
+                return;
+            }
+            else
+            {
+                reachedEndOfPath = false;
+            }
+
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 force = direction * moveSpeed * Time.deltaTime;
+
+            rb.AddForce(force);
+
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+            if (distance < nexWaypointDistance)
+            {
+                currentWaypoint++;
+            }
         }
-        else
-        {
-            reachedEndOfPath = false;
-        }
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * moveSpeed * Time.deltaTime;
+        
 
-        rb.AddForce(force);
-
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        if (distance < nexWaypointDistance)
-        {
-            currentWaypoint++;
-        }
+        
 
         #endregion
     }
