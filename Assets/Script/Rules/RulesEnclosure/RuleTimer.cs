@@ -5,7 +5,7 @@ using UnityEngine;
 public class RuleTimer : RuleEnclosure
 {
     public float totalDuration = 10; //seconds
-    public bool isFinished = false;
+    public bool isFailed = false;
     private float timeLeft = 0f;
 
 
@@ -13,7 +13,7 @@ public class RuleTimer : RuleEnclosure
     public void Reset()
     {
         timeLeft = totalDuration;
-        isFinished = false;
+        isFailed = false;
     }
 
     // Return 
@@ -31,11 +31,11 @@ public class RuleTimer : RuleEnclosure
     // FixedUpdate is called at a fixed time interval
     protected override void FixedUpdate()
     {
-        if (!isFinished)
+        if (!isFailed)
         {
             timeLeft -= Time.fixedDeltaTime;
             if (timeLeft < 0f){
-                isFinished = true;
+                isFailed = true;
                 timeLeft = 0f;
             }
         }
