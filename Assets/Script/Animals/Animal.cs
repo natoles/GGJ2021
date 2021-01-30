@@ -13,6 +13,7 @@ public class Animal : MonoBehaviour
     Vector3 baseScale;
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
+    protected IEnumerator rageCoroutine;
 
 
     //Pahtfinding variables
@@ -35,13 +36,30 @@ public class Animal : MonoBehaviour
         baseScale = transform.localScale;
 
         MoveTo(target.position);
+
+        Enrage();
     }
 
+    //Move an animal to the target position
     public void MoveTo(Vector3 target)
     {
         seeker.StartPath(rb.position, target, OnPathComplete);
     }
 
+    protected virtual void Enrage()
+    {
+        rageCoroutine = RageState();
+        StartCoroutine(rageCoroutine);
+    }
+
+    protected virtual IEnumerator RageState()
+    {
+        Debug.Log("animal cor");
+        yield return new WaitForSeconds(0.5f);
+    }
+
+
+    //Callback
     void OnPathComplete(Path p)
     {
         if (!p.error)
@@ -55,7 +73,7 @@ public class Animal : MonoBehaviour
     public void OnMouseDown()
     {
         isDragging = true;
-        animator.SetBool("isRage", true);
+        animator.SetBool("IsRage", true);
         transform.localScale = baseScale * 1.3f;
         audioSource.Play();
     }
@@ -65,7 +83,7 @@ public class Animal : MonoBehaviour
     {
         isDragging = false;
         MoveTo(target.position);
-        animator.SetBool("isRage", false);
+        animator.SetBool("IsRage", false);
         transform.localScale = baseScale;
         spriteRenderer.flipX = false;
         audioSource.Stop();

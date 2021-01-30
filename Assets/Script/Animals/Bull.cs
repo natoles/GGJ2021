@@ -15,4 +15,9 @@ public class Bull : Animal
     {
         base.Update();
     }
+    protected override IEnumerator RageState()
+    {
+        Debug.Log("bull cor");
+        yield return new WaitForSeconds(0.5f);
+    }
 }

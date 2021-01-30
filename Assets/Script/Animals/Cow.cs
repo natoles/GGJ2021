@@ -15,4 +15,10 @@ public class Cow : Animal
     {
         base.Update();
     }
+
+    protected override IEnumerator RageState()
+    {
+        Debug.Log("cow cor");
+        yield return new WaitForSeconds(0.5f);
+    }
 }
