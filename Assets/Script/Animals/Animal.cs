@@ -79,8 +79,8 @@ public class Animal : MonoBehaviour
     {
         reachedEndOfPath = true;
         animator.SetBool("IsRage", true);
-        //rageCoroutine = RageState();
-        //StartCoroutine(rageCoroutine);
+        rageCoroutine = RageState();
+        StartCoroutine(rageCoroutine);
     }
 
     //End the RageState coroutine
@@ -124,6 +124,8 @@ public class Animal : MonoBehaviour
         transform.localScale = baseScale * 1.3f;
         audioSource.Play();
         transform.gameObject.tag = "Drag";
+        path = null;
+        Cursor.visible = false;
     }
 
     //Stop drag
@@ -137,6 +139,7 @@ public class Animal : MonoBehaviour
         reachedEndOfPath = true;
         transform.gameObject.tag = "Animal";
         ComputeAnimalMovement();
+        Cursor.visible = true;
     }
 
     protected virtual void Update()
