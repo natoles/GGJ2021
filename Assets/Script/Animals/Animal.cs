@@ -13,7 +13,7 @@ public class Animal : MonoBehaviour
     AudioSource audioSource;
     protected IEnumerator movementsHandlingCoroutine;
     Vector2 movement;
-    protected bool inEnclosure;
+    public bool inEnclosure;
     public Enclosure currentEnclosure;
     public int enclosureSlotUsed = 1; // 2 for Pigs
     public MovementState currentMovementState = MovementState.Standard;
