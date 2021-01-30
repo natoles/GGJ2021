@@ -16,7 +16,8 @@ public class Animal : MonoBehaviour
     protected IEnumerator rageCoroutine;
     Vector2 movement;
     public float moveInterval; //Interval between random movement
-    bool inEnclosure;
+    protected bool inEnclosure;
+    public Enclosure currentEnclosure;
 
     //Pahtfinding variables
     Path path;
@@ -47,16 +48,20 @@ public class Animal : MonoBehaviour
         seeker.StartPath(rb.position, target, OnPathComplete);
     }
 
-    public void EnterEnclosure()
+    
+    public void EnterEnclosure(Enclosure enclosure)
     {
         inEnclosure = true;
+        currentEnclosure = enclosure;
     }
 
     public void LeaveEnclosure()
     {
         inEnclosure = false;
+        currentEnclosure = null;
     }
 
+    //Start the RageState coroutine
     public void Enrage()
     {
         rageCoroutine = RageState();
@@ -64,6 +69,7 @@ public class Animal : MonoBehaviour
         StartCoroutine(rageCoroutine);
     }
 
+    //End the RageState coroutine
     public void Calm()
     {
         StopCoroutine(rageCoroutine);

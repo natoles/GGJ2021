@@ -9,7 +9,7 @@ public class Cow : Animal
     {
         base.Start();
 
-        moveInterval = 8f;
+        moveInterval = 2f;
     }
 
     // Update is called once per frame
@@ -22,14 +22,21 @@ public class Cow : Animal
     {
         while(true)
         {
-            Debug.Log(reachedEndOfPath);
-
-
+            Debug.Log("end of path :" + reachedEndOfPath);
             if (reachedEndOfPath)
             {
-                target.position *= -1; //TEMPORARY
-                MoveTo(target.position);
+                Debug.Log(inEnclosure);
+                if (inEnclosure)
+                {
+                    MoveTo(currentEnclosure.RandomPoint());
+                    Debug.Log(currentEnclosure.RandomPoint());
+                }
+                else
+                {
+                    //Outside
+                }
             }
+              
 
             yield return new WaitForSeconds(moveInterval);
         }

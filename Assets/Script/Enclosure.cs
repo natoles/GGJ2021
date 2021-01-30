@@ -53,6 +53,7 @@ public class Enclosure : MonoBehaviour
         
         animals.Add(animal);
         currentUsedSpace += 1;
+        animal.EnterEnclosure(this);
 
         return 0;
     }
@@ -65,7 +66,7 @@ public class Enclosure : MonoBehaviour
         
         animals.Remove(animal);
         currentUsedSpace -= 1;
-
+        animal.LeaveEnclosure();
         return 0;
     }
 
@@ -78,6 +79,8 @@ public class Enclosure : MonoBehaviour
 
         if (RemoveAnimal(animal) != 0) return -1;
         if (enclosureTo.AddAnimal(animal) != 0) return -1;
+
+
         
         return 0;
     }
