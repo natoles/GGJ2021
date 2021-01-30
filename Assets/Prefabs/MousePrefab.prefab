@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6512648318165197919}
   - component: {fileID: 3897744616608960134}
   - component: {fileID: 4291354083896481635}
+  - component: {fileID: 1029544317939552302}
   m_Layer: 0
   m_Name: MousePrefab
   m_TagString: Animal
@@ -220,10 +221,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6512648318908670932}
+  inEnclosure: 0
   currentEnclosure: {fileID: 0}
   enclosureSlotUsed: 1
   currentMovementState: 0
   nextWaypointDistance: 3
+--- !u!114 &1029544317939552302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512648318165197914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f8a56429de1f9469fec91cb2f4bd74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ruleName: 
+  ruleDescription: 
+  state: 0
+  isDefinitelyFailed: 0
+  isFailed: 0
+  failedTimerStarted: 0
+  timeMarginBeforeFail: 0
+  animal: {fileID: 0}
 --- !u!1 &6512648318908670929
 GameObject:
   m_ObjectHideFlags: 0

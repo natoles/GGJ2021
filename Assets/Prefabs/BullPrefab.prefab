@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6512648318908670932}
+  inEnclosure: 0
   currentEnclosure: {fileID: 0}
   enclosureSlotUsed: 1
   currentMovementState: 0
@@ -235,6 +236,7 @@ GameObject:
   - component: {fileID: 6512648318908670934}
   - component: {fileID: 6512648318908670933}
   - component: {fileID: 6512648318908670932}
+  - component: {fileID: 4165103854476631512}
   m_Layer: 0
   m_Name: BullSprite
   m_TagString: Untagged
@@ -326,3 +328,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4165103854476631512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512648318908670929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5cf8f420cf2ee4483b53834f09c4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ruleName: 
+  ruleDescription: 
+  state: 0
+  isDefinitelyFailed: 0
+  isFailed: 0
+  failedTimerStarted: 0
+  timeMarginBeforeFail: 0
+  animal: {fileID: 0}
