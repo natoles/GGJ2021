@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RuleCat : RuleAnimal
+public class Mouse : Animal
 {
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
+
+        minMoveInterval = 1f;
+        maxMoveInterval = 2f;
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-        if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse"))){
-            animal.Enrage();
-        } else {
-            animal.Calm();
+    }
+
+    protected override IEnumerator RageState()
+    {
+        while (true)
+        {
+            //Put rage behavior here
+            yield return new WaitForSeconds(Random.Range(minMoveInterval, maxMoveInterval));
         }
+
     }
 }
