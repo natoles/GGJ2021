@@ -46,10 +46,15 @@ public class Animal : MonoBehaviour
         seeker.StartPath(rb.position, target, OnPathComplete);
     }
 
-    protected virtual void Enrage()
+    public void Enrage()
     {
         rageCoroutine = RageState();
         StartCoroutine(rageCoroutine);
+    }
+
+    public void Calm()
+    {
+        StopCoroutine(rageCoroutine);
     }
 
     protected virtual IEnumerator RageState()
