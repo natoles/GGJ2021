@@ -7,27 +7,49 @@ public class Animal : MonoBehaviour
 {
     Rigidbody2D rb;
     public Animator animator;
-    public float moveSpeed;
-    public float topSpeed;
     bool isDragging;
     Vector3 baseScale;
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
-    protected IEnumerator rageCoroutine;
-    protected IEnumerator idleCoroutine;
+    protected IEnumerator movementsHandlingCoroutine;
     Vector2 movement;
-    public float minMoveInterval = 10000f; //Min time interval in seconds between random movement
-    public float maxMoveInterval = 10000f; //Max interval interval in seconds between random movement
     protected bool inEnclosure;
     public Enclosure currentEnclosure;
     public int enclosureSlotUsed = 1; // 2 for Pigs
+    public MovementState currentMovementState = MovementState.Standard;
+
+    [System.Serializable]
+    public class MovementProperties
+    {
+        public float moveSpeed;
+        public float topSpeed;
+        public float minMoveInterval; //Min time interval in seconds between random movement
+        public float maxMoveInterval; //Max interval interval in seconds between random movement
+        public float linearDrag; 
+    }
+
+    protected MovementProperties currentMovementProperties;
+
+    protected MovementProperties standardMovement;
+    protected MovementProperties rageMovement;
+    protected MovementProperties chaseMovement;
+    protected MovementProperties runMovement;
+
 
     //Pahtfinding variables
     Path path;
-    public float nexWaypointDistance = 3f;
+    public float nextWaypointDistance = 3f;
     int currentWaypoint = 0;
-    protected bool reachedEndOfPath = true;
+    protected bool reachedEndOfPath = true; //True if has finished pathfinding
     Seeker seeker;
+
+    public enum MovementState
+    {
+        Standard,
+        Rage,
+        Chase,
+        Run,
+    }
 
 
     protected virtual void Start()
@@ -37,30 +59,50 @@ public class Animal : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        idleCoroutine = IdleState();
-        StartCoroutine(idleCoroutine);
+        movementsHandlingCoroutine = MovemmentsHandling();
+        StartCoroutine(movementsHandlingCoroutine);
         baseScale = transform.localScale;
+
+        standardMovement = new MovementProperties();
+        standardMovement.moveSpeed = 400f;
+        standardMovement.topSpeed = 1f;
+        standardMovement.minMoveInterval = 4f;
+        standardMovement.maxMoveInterval = 7f;
+        standardMovement.linearDrag = 3f;
+
+        rageMovement = new MovementProperties();
+        rageMovement.moveSpeed = 500f;
+        rageMovement.topSpeed = 1.3f;
+        rageMovement.minMoveInterval = 1f;
+        rageMovement.maxMoveInterval = 2f;
+        rageMovement.linearDrag = 4f;
+
+        chaseMovement = new MovementProperties();
+        chaseMovement.moveSpeed = 700f;
+        chaseMovement.topSpeed = 1.3f;
+        chaseMovement.minMoveInterval = 0f;
+        chaseMovement.maxMoveInterval = 0.1f;
+        chaseMovement.linearDrag = 5f;
+
+        runMovement = new MovementProperties();
+        runMovement.moveSpeed = 800f;
+        runMovement.topSpeed = 10f;
+        runMovement.minMoveInterval = 0f;
+        runMovement.maxMoveInterval = 0.1f;
+        runMovement.linearDrag = 5f;
+
+        currentMovementProperties = new MovementProperties();
+        currentMovementProperties.moveSpeed = standardMovement.moveSpeed;
+        currentMovementProperties.topSpeed = standardMovement.topSpeed;
+        currentMovementProperties.minMoveInterval = standardMovement.minMoveInterval;
+        currentMovementProperties.maxMoveInterval = standardMovement.maxMoveInterval;
+        currentMovementProperties.linearDrag = standardMovement.linearDrag;
     }
 
     //Move an animal to the target position
     public void MoveTo(Vector3 target)
     {
         seeker.StartPath(rb.position, target, OnPathComplete);
-    }
-
-    public void ComputeAnimalMovement()
-    {
-        if (reachedEndOfPath)
-        {
-            if (inEnclosure)
-            {
-                MoveTo(currentEnclosure.RandomPoint());
-            }
-            else
-            {
-                //Outside
-            }
-        }
     }
 
     public void EnterEnclosure(Enclosure enclosure)
@@ -74,39 +116,85 @@ public class Animal : MonoBehaviour
         inEnclosure = false;
     }
 
+    #region Behavior functions
+
     //Start the RageState coroutine
     public void Enrage()
     {
         reachedEndOfPath = true;
         animator.SetBool("IsRage", true);
-        rageCoroutine = RageState();
-        StartCoroutine(rageCoroutine);
+        currentMovementState = MovementState.Rage;
     }
 
     //End the RageState coroutine
     public void Calm()
     {
         animator.SetBool("IsRage", false);
-        StopCoroutine(rageCoroutine);
+        currentMovementState = MovementState.Standard;
     }
 
-    protected virtual IEnumerator RageState()
+    public void Run()
     {
-        yield return new WaitForSeconds(1f);
+        if (currentEnclosure == null) return;
+
+        reachedEndOfPath = true; //End current path
+        currentMovementState = MovementState.Run;
+
     }
 
-    private IEnumerator IdleState()
+    public void Chase(Animal animal)
+    {
+        if (currentEnclosure == null) return;
+
+        reachedEndOfPath = true; //End current path
+        currentMovementState = MovementState.Chase;
+    }
+
+    #endregion
+
+    private void ComputeMovement(Vector3 Target, MovementProperties mProperties)
+    {
+        MoveTo(Target);
+        currentMovementProperties.moveSpeed = mProperties.moveSpeed;
+        currentMovementProperties.topSpeed = mProperties.topSpeed;
+        currentMovementProperties.minMoveInterval = mProperties.minMoveInterval;
+        currentMovementProperties.maxMoveInterval = mProperties.maxMoveInterval;
+    }
+
+    //Standard movement
+    private IEnumerator MovemmentsHandling()
     {
         while (true)
         {
-            ComputeAnimalMovement();
-            yield return new WaitForSeconds(Random.Range(minMoveInterval, maxMoveInterval));
-        }
+            if (currentEnclosure != null && reachedEndOfPath)
+            {
+                switch (currentMovementState)
+                {
+                    case MovementState.Standard:
+                        ComputeMovement(currentEnclosure.RandomPoint(), standardMovement);
+                        break;
+                    case MovementState.Rage:
+                        ComputeMovement(currentEnclosure.RandomPoint(), rageMovement);
+                        break;
+                    case MovementState.Run:
+                        ComputeMovement(currentEnclosure.RandomPoint(), runMovement);
+                        break;
+                    case MovementState.Chase:
+                        ComputeMovement(currentEnclosure.RandomPoint(), chaseMovement);
+                        break;
+                    default:
+                        break;
+                }
 
+                yield return new WaitForSeconds(Random.Range(currentMovementProperties.minMoveInterval, currentMovementProperties.maxMoveInterval));
+            }
+            else
+                yield return new WaitForSeconds(1f);
+        }
     }
 
 
-    //Callback
+    //Callback for pathfinding generation
     void OnPathComplete(Path p)
     {
         if (!p.error)
@@ -138,7 +226,6 @@ public class Animal : MonoBehaviour
         audioSource.Stop();
         reachedEndOfPath = true;
         transform.gameObject.tag = "Animal";
-        ComputeAnimalMovement();
         Cursor.visible = true;
     }
 
@@ -176,13 +263,14 @@ public class Animal : MonoBehaviour
             if (currentWaypoint >= path.vectorPath.Count)
             {
                 reachedEndOfPath = true;
+                rb.velocity = new Vector2(0, 0);
             }
             else
             {
                 reachedEndOfPath = false;
 
                 Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-                Vector2 force = direction * moveSpeed * Time.deltaTime;
+                Vector2 force = direction * currentMovementProperties.moveSpeed * Time.deltaTime;
 
                 rb.AddForce(force);
 
@@ -190,21 +278,20 @@ public class Animal : MonoBehaviour
 
                 if (currentWaypoint == path.vectorPath.Count - 1)
                 {
-                    if (distance < 0.7f) currentWaypoint++;
+                    if (distance < 0.1f) currentWaypoint++;
                 }
                 else
                 {
-                    if (distance < nexWaypointDistance) currentWaypoint++;
+                    if (distance < nextWaypointDistance) currentWaypoint++;
                 }
 
             }
+
+            if (rb.velocity.magnitude > currentMovementProperties.topSpeed)
+            {
+                rb.velocity = rb.velocity.normalized * currentMovementProperties.topSpeed;
+            }
         }
-        #endregion
-
-        if (rb.velocity.magnitude > topSpeed)
-            rb.velocity = rb.velocity.normalized * topSpeed;
-            
+        #endregion    
     }
-
-
 }

@@ -9,23 +9,12 @@ public class Dog : Animal
     {
         base.Start();
 
-        minMoveInterval = 1f;
-        maxMoveInterval = 3f;
+        currentMovementState = MovementState.Run;
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-    }
-
-    protected override IEnumerator RageState()
-    {
-        while (true)
-        {
-            //Put rage behavior here
-            yield return new WaitForSeconds(Random.Range(minMoveInterval, maxMoveInterval));
-        }
-
     }
 }
