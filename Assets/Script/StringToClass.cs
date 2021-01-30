@@ -22,7 +22,7 @@ public static class StringToClass
             case "Cat":
                 return typeof(Cat);
             case "Cow":
-                return typeof(Cat);
+                return typeof(Cow);
             case "Mouse":
                 return typeof(Mouse);
         }
