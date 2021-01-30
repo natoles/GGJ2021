@@ -8,8 +8,6 @@ public class Dog : Animal
     protected override void Start()
     {
         base.Start();
-
-        currentMovementState = MovementState.Run;
     }
 
     // Update is called once per frame

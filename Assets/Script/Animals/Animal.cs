@@ -213,7 +213,6 @@ public class Animal : MonoBehaviour
         audioSource.Play();
         transform.gameObject.tag = "Drag";
         path = null;
-        Cursor.visible = false;
     }
 
     //Stop drag
@@ -249,6 +248,22 @@ public class Animal : MonoBehaviour
 
             if (Input.GetAxis("Mouse X") != 0)
                 spriteRenderer.flipX = (Input.GetAxis("Mouse X") > 0);
+        }
+
+        if (currentMovementState == MovementState.Rage
+             || currentMovementState == MovementState.Run
+                || currentMovementState == MovementState.Chase)
+        {
+            Debug.Log("Rage");
+            if (!audioSource.isPlaying) audioSource.Play();
+        }
+        else if (isDragging)
+        {
+            if (!audioSource.isPlaying) audioSource.Play();
+        }
+        else
+        {
+            audioSource.Stop();
         }
             
     }
