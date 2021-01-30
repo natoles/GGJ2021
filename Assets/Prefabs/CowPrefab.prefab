@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6512648318165197918}
-  - component: {fileID: 6512648318165197917}
   - component: {fileID: 6512648318165197916}
   - component: {fileID: 6512648318165197915}
   - component: {fileID: 6512648318165197919}
   - component: {fileID: 3897744616608960134}
+  - component: {fileID: 6747116314608105039}
   m_Layer: 0
   m_Name: CowPrefab
   m_TagString: Untagged
@@ -36,23 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6512648318165197917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6512648318165197914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92dcdacb2aaba184894f3cc0be671507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 6512648318908670932}
-  moveSpeed: 400
-  topSpeed: 1
-  target: {fileID: 0}
-  nexWaypointDistance: 1.5
 --- !u!114 &6512648318165197916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +207,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6747116314608105039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512648318165197914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6dccc43aa1963419ddc0099202faf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6512648318908670932}
+  moveSpeed: 400
+  topSpeed: 1
+  target: {fileID: 0}
+  nexWaypointDistance: 1.5
 --- !u!1 &6512648318908670929
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 5159674575400226990, guid: 520d4f38813850249a24f2434a604703, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -25,7 +25,7 @@ public class Animal : MonoBehaviour
 
     Vector2 movement;
 
-    void Start()
+    protected virtual void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
@@ -71,7 +71,7 @@ public class Animal : MonoBehaviour
         audioSource.Stop();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         movement.x = Mathf.Clamp(rb.velocity.x, -1f, 1f);
         movement.y = Mathf.Clamp(rb.velocity.y, -1f, 1f);
