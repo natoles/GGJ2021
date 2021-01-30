@@ -259,16 +259,6 @@ Tilemap:
   m_GameObject: {fileID: 312640759}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: -20, y: -12, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 5
-      m_TileSpriteIndex: 5
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -17, y: -12, z: 0}
     second:
       serializedVersion: 2
@@ -590,16 +580,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: 15, y: -12, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 5
-      m_TileSpriteIndex: 5
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -20, y: -11, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 5
@@ -6561,7 +6541,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: ee55fe3b970984c4fa902a24563f92cb, type: 2}
   - m_RefCount: 97
     m_Data: {fileID: 11400000, guid: c4efbd275c86ee64f81e4b427ac3cde0, type: 2}
-  - m_RefCount: 138
+  - m_RefCount: 136
     m_Data: {fileID: 11400000, guid: ee954bb95da4ff449bed4da788469bf6, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -6574,10 +6554,10 @@ Tilemap:
     m_Data: {fileID: -6155793094389274881, guid: dff9628cf1b819748a87f2d62689c39d, type: 3}
   - m_RefCount: 97
     m_Data: {fileID: 8352600460040842314, guid: dff9628cf1b819748a87f2d62689c39d, type: 3}
-  - m_RefCount: 138
+  - m_RefCount: 136
     m_Data: {fileID: 86193011245836325, guid: dff9628cf1b819748a87f2d62689c39d, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 629
+  - m_RefCount: 627
     m_Data:
       e00: 1
       e01: 0
@@ -6596,7 +6576,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 629
+  - m_RefCount: 627
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -8461,7 +8441,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2000
+  m_Intensity: 10
   m_Range: 1e+30
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8521,6 +8501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 975421115}
   - component: {fileID: 975421114}
+  - component: {fileID: 975421116}
   m_Layer: 0
   m_Name: Soleil
   m_TagString: Untagged
@@ -8587,13 +8568,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975421113}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1878, y: 1993, z: 0}
+  m_LocalPosition: {x: -2730, y: 1838, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children:
   - {fileID: 683427272}
   m_Father: {fileID: 56488186}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &975421116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975421113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8302dced9cf884e4a8784053a7c4d4cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationCenter: {fileID: 1850762999}
+  rotationRadius: 3000
+  angularSpeed: 0.1
 --- !u!1 &1097770015
 GameObject:
   m_ObjectHideFlags: 0
@@ -8645,7 +8641,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 87bb51b7f2408094e903f8dfd3955ea8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10316,4 +10312,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1850762998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1850762999}
+  m_Layer: 0
+  m_Name: Rotation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1850762999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850762998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -32, y: -88, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
