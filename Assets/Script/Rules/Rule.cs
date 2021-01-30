@@ -7,14 +7,15 @@ public class Rule : MonoBehaviour
     // PUBLIC
     public string ruleName;
     public string ruleDescription;
+    public int state; // 0: Neutral, 1: On Failed Timer, 2: Failed, 3 Success
     public bool isDefinitelyFailed = false; // Rule have been failed for too much time
     public bool isFailed = false; // Rule is failed but there is still some time to repair it
     public bool failedTimerStarted = false; // Failed timer started
-    public float timeBeforeTrigger; // Time during which rule isn't considered failed yet
-    public float timeLeftBeforeTrigger;
+    public float timeMarginBeforeFail; // Time during which rule isn't considered failed yet
 
 
     // PRIVATE
+    private float _timeLeftBeforeFail;
 
 
         /* ===============================================
@@ -29,30 +30,42 @@ public class Rule : MonoBehaviour
         return isDefinitelyFailed;
     }
 
+    public float timeLeftBeforeFail()
+    {
+        return _timeLeftBeforeFail;
+    }
     
+    public int GetState()
+    {
+        return state;
+    }
+
     // ==================== TIMER BEFORE RULE FAILED
 
     public void startFailedTimer()
     {
         failedTimerStarted = true;
-        timeLeftBeforeTrigger = timeBeforeTrigger;
+        _timeLeftBeforeFail = timeMarginBeforeFail;
+        state = 1;
     }
 
     public void cancelFailedTimer()
     {
         failedTimerStarted = false;
-        timeLeftBeforeTrigger = timeBeforeTrigger;
+        _timeLeftBeforeFail = timeMarginBeforeFail;
+        state = 0;
     }
 
     public void updateFailedTimer()
     {
         if (failedTimerStarted)
         {
-            timeLeftBeforeTrigger -= Time.deltaTime;
-            Debug.Log("Time left: "+timeLeftBeforeTrigger.ToString());
-            if (timeLeftBeforeTrigger <= 0)
+            _timeLeftBeforeFail -= Time.deltaTime;
+            Debug.Log("Time left: "+_timeLeftBeforeFail.ToString());
+            if (_timeLeftBeforeFail <= 0)
             {
                 isDefinitelyFailed = true;
+                state = 2;
             }
         }
     }
@@ -66,10 +79,11 @@ public class Rule : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        state = 0;
         isDefinitelyFailed = false;
         isFailed = false;
         failedTimerStarted = false;
-        timeLeftBeforeTrigger = timeBeforeTrigger;
+        _timeLeftBeforeFail = timeMarginBeforeFail;
     }
 
     
@@ -81,15 +95,15 @@ public class Rule : MonoBehaviour
             if (isFailed && !failedTimerStarted)
             {
                 startFailedTimer();
-                Debug.Log("Timer started");
             }
             if (!isFailed && failedTimerStarted)
             {
-                Debug.Log("Timer canceled");
+                cancelFailedTimer();
             }
-        }
-        if (isDefinitelyFailed){
-            Debug.Log("FAILED!!");
+            if (failedTimerStarted)
+            {
+                updateFailedTimer();
+            }
         }
     }
 
