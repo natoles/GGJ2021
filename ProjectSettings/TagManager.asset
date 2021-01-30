@@ -44,9 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Animal
-    uniqueID: 2033253345
-    locked: 0
   - name: ground
     uniqueID: 355287893
     locked: 0
@@ -55,4 +52,7 @@ TagManager:
     locked: 0
   - name: Obstacle
     uniqueID: 514786961
+    locked: 0
+  - name: Animal
+    uniqueID: 2033253345
     locked: 0

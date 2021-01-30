@@ -38,7 +38,7 @@ public class Animal : MonoBehaviour
 
     //Pahtfinding variables
     Path path;
-    public float nextWaypointDistance = 3f;
+    float nextWaypointDistance = 10f;
     int currentWaypoint = 0;
     protected bool reachedEndOfPath = true; //True if has finished pathfinding
     Seeker seeker;
@@ -63,29 +63,29 @@ public class Animal : MonoBehaviour
         baseScale = transform.localScale;
 
         standardMovement = new MovementProperties();
-        standardMovement.moveSpeed = 400f;
-        standardMovement.topSpeed = 1f;
+        standardMovement.moveSpeed = 10000f;
+        standardMovement.topSpeed = 10f;
         standardMovement.minMoveInterval = 4f;
         standardMovement.maxMoveInterval = 7f;
-        standardMovement.linearDrag = 3f;
+        standardMovement.linearDrag = 6f;
 
         rageMovement = new MovementProperties();
-        rageMovement.moveSpeed = 500f;
-        rageMovement.topSpeed = 1.3f;
+        rageMovement.moveSpeed = 20000f;
+        rageMovement.topSpeed = 20f;
         rageMovement.minMoveInterval = 1f;
         rageMovement.maxMoveInterval = 2f;
         rageMovement.linearDrag = 4f;
 
         chaseMovement = new MovementProperties();
-        chaseMovement.moveSpeed = 700f;
-        chaseMovement.topSpeed = 1.3f;
+        chaseMovement.moveSpeed = 15000f;
+        chaseMovement.topSpeed = 15f;
         chaseMovement.minMoveInterval = 0f;
         chaseMovement.maxMoveInterval = 0.1f;
         chaseMovement.linearDrag = 5f;
 
         runMovement = new MovementProperties();
-        runMovement.moveSpeed = 800f;
-        runMovement.topSpeed = 10f;
+        runMovement.moveSpeed = 30000f;
+        runMovement.topSpeed = 30f;
         runMovement.minMoveInterval = 0f;
         runMovement.maxMoveInterval = 0.1f;
         runMovement.linearDrag = 5f;

@@ -25,6 +25,8 @@ public static class StringToClass
                 return typeof(Cow);
             case "Mouse":
                 return typeof(Mouse);
+            case "Dog":
+                return typeof(Dog);
         }
 
         return null;
