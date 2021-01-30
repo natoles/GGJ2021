@@ -53,7 +53,6 @@ public class Animal : MonoBehaviour
     {
         isDragging = true;
         animator.SetBool("isRage", true);
-
         transform.localScale = baseScale * 1.3f;
     }
 
@@ -62,8 +61,8 @@ public class Animal : MonoBehaviour
         isDragging = false;
         MoveTo(target.position);
         animator.SetBool("isRage", false);
-
         transform.localScale = baseScale;
+        spriteRenderer.flipX = false;
     }
 
     void Update()
