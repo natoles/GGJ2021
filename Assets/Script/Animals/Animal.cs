@@ -16,8 +16,8 @@ public class Animal : MonoBehaviour
     protected IEnumerator rageCoroutine;
     protected IEnumerator idleCoroutine;
     Vector2 movement;
-    public float minMoveInterval = 1f; //Min time interval in seconds between random movement
-    public float maxMoveInterval = 1f; //Max interval interval in seconds between random movement
+    public float minMoveInterval = 10000f; //Min time interval in seconds between random movement
+    public float maxMoveInterval = 10000f; //Max interval interval in seconds between random movement
     protected bool inEnclosure;
     public Enclosure currentEnclosure;
 
@@ -77,13 +77,15 @@ public class Animal : MonoBehaviour
     public void Enrage()
     {
         reachedEndOfPath = true;
-        rageCoroutine = RageState();
-        StartCoroutine(rageCoroutine);
+        animator.SetBool("IsRage", true);
+        //rageCoroutine = RageState();
+        //StartCoroutine(rageCoroutine);
     }
 
     //End the RageState coroutine
     public void Calm()
     {
+        animator.SetBool("IsRage", false);
         StopCoroutine(rageCoroutine);
     }
 
@@ -117,7 +119,7 @@ public class Animal : MonoBehaviour
     public void OnMouseDown()
     {
         isDragging = true;
-        animator.SetBool("IsRage", true);
+        animator.SetBool("IsDrag", true);
         transform.localScale = baseScale * 1.3f;
         audioSource.Play();
         transform.gameObject.tag = "Drag";
@@ -127,7 +129,7 @@ public class Animal : MonoBehaviour
     public void OnMouseUp()
     {
         isDragging = false;
-        animator.SetBool("IsRage", false);
+        animator.SetBool("IsDrag", false);
         transform.localScale = baseScale;
         spriteRenderer.flipX = false;
         audioSource.Stop();
