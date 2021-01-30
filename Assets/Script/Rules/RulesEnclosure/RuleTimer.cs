@@ -18,14 +18,14 @@ public class RuleTimer : RuleEnclosure
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         startTime = Time.time;
         isFinished = false;
     }
 
     // FixedUpdate is called at a fixed time interval
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
         if (!isFinished)
         {

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RuleEnclosure : Rule
+public class RuleNbAnimaux : RuleEnclosure
 {
-// Start is called before the first frame update
+    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();

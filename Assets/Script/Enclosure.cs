@@ -9,11 +9,16 @@ public class Enclosure : MonoBehaviour
     public int totalSpace = 15;
     public int currentUsedSpace = 0;
 
+    public List<Rule> rules;
+
     // PRIVATE
 
+    /* ===============================================
+    ====================   METHODS   =================
+    =============================================== */
 
-    // METHODS
 
+    // ==================== RANDOM POINT
     public static Vector2 RandomPointInBounds(Bounds bounds)
     {
         return new Vector2(
@@ -28,6 +33,7 @@ public class Enclosure : MonoBehaviour
         return RandomPointInBounds(gameObject.GetComponent<BoxCollider2D>().bounds);
     }
 
+    // ==================== GETTTER AND STATE
     public bool IsFull()
     {
        return currentUsedSpace >= totalSpace;
@@ -43,7 +49,10 @@ public class Enclosure : MonoBehaviour
     {
        currentUsedSpace = 0;
        animals.Clear();
+       rules.Clear();
     }
+
+    // ==================== ANIMAL MANAGEMENT
 
     // Add an animal into the enclosure. Return 0 for success and -1 on fail.
     public int AddAnimal(Animal animal)
@@ -109,6 +118,20 @@ public class Enclosure : MonoBehaviour
         }
     }
 
+
+    // ==================== RULE MANAGEMENT
+
+
+
+
+
+
+
+
+
+
+    // ==================== START AND UPDATES
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,8 +139,8 @@ public class Enclosure : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //void Update()
+    //{
+    //    
+    //}
 }
