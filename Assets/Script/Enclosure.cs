@@ -6,7 +6,7 @@ public class Enclosure : MonoBehaviour
 {
     // PUBLIC
     public List<Animal> animals;
-    public int totalSpace = 10;
+    public int totalSpace = 15;
     public int currentUsedSpace = 0;
 
     // PRIVATE
@@ -49,6 +49,7 @@ public class Enclosure : MonoBehaviour
     public int AddAnimal(Animal animal)
     {
         if (IsFull()) return -1;
+        if (animals.Contains(animal)) return -1;
         
         animals.Add(animal);
         currentUsedSpace += 1;
@@ -60,6 +61,7 @@ public class Enclosure : MonoBehaviour
     public int RemoveAnimal(Animal animal)
     {
         if (IsEmpty()) return -1;
+        if (!animals.Contains(animal)) return -1;
         
         animals.Remove(animal);
         currentUsedSpace -= 1;
@@ -67,16 +69,29 @@ public class Enclosure : MonoBehaviour
         return 0;
     }
 
-    // Remove an animal into the enclosure. Return 0 for success and -1 on fail.
-    public int TransferAnimal(Animal animal, Enclosure enclosureFrom)
+    // Remove an animal from the current enclosure to the "enclosureTo" one. Return 0 for success and -1 on fail.
+    public int TransferAnimal(Animal animal, Enclosure enclosureTo)
     {
-        if (enclosureFrom.IsFull()) return -1;
-        if (!animals.Contains(animal)) return -1;
+        if (enclosureTo.IsFull()
+            || !animals.Contains(animal)
+            || enclosureTo.animals.Contains(animal)) return -1;
 
-        if (enclosureFrom.AddAnimal(animal) != 0) return -1;
         if (RemoveAnimal(animal) != 0) return -1;
+        if (enclosureTo.AddAnimal(animal) != 0) return -1;
         
         return 0;
+    }
+
+    // Adding animal that has been collided with collider
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag != "Drag") return;
+        Animal animal = collider.gameObject.GetComponent<Animal>();
+        
+        if (AddAnimal(animal) == 0)
+        {
+            // TODO: animal.has_been_added_to_enclosure(...)
+        }
     }
 
     // Start is called before the first frame update

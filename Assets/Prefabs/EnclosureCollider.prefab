@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5519931847484240874}
-  - component: {fileID: -4933127270447702738}
   - component: {fileID: 1784129617587551674}
   - component: {fileID: -3867798112504166617}
+  - component: {fileID: 8402641036790982587}
   m_Layer: 0
   m_Name: EnclosureCollider
   m_TagString: Enclosure
@@ -33,21 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4933127270447702738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2894898027707389211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 021b97282afadf2409580ed1f92bf144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animals: []
-  totalSpace: 10
-  currentUsedSpace: 0
 --- !u!61 &1784129617587551674
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,3 +110,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8402641036790982587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2894898027707389211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021b97282afadf2409580ed1f92bf144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animals: []
+  totalSpace: 15
+  currentUsedSpace: 0
