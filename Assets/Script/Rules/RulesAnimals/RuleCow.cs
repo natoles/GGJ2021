@@ -18,6 +18,10 @@ public class RuleCow : RuleAnimal
         {
             animal.Calm();
         }
+        else if(IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse")))
+        {
+            animal.Run();
+        }
         else
         {
             animal.Enrage();

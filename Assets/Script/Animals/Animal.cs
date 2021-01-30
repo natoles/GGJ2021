@@ -63,11 +63,11 @@ public class Animal : MonoBehaviour
         baseScale = transform.localScale;
 
         standardMovement = new MovementProperties();
-        standardMovement.moveSpeed = 400f;
-        standardMovement.topSpeed = 1f;
+        standardMovement.moveSpeed = 10000f;
+        standardMovement.topSpeed = 100f;
         standardMovement.minMoveInterval = 4f;
         standardMovement.maxMoveInterval = 7f;
-        standardMovement.linearDrag = 3f;
+        standardMovement.linearDrag = 6f;
 
         rageMovement = new MovementProperties();
         rageMovement.moveSpeed = 500f;
