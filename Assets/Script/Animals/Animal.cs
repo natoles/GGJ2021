@@ -272,7 +272,11 @@ public class Animal : MonoBehaviour
         {
             audioSource.Stop();
         }
-            
+
+        /*
+        transform.position = new Vector3 (transform.position.x, transform.position.y, Mathf.Abs(transform.position.y));
+        rb.position = new Vector3(rb.position.x, rb.position.y, 0);
+        */
     }
 
     private void FixedUpdate()
