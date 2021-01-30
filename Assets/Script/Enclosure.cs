@@ -82,7 +82,7 @@ public class Enclosure : MonoBehaviour
         return 0;
     }
 
-    // Adding animal that has been collided with collider
+    // Adding dragged animal that has entered the enclosure collider
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag != "Drag") return;
@@ -90,7 +90,19 @@ public class Enclosure : MonoBehaviour
         
         if (AddAnimal(animal) == 0)
         {
-            // TODO: animal.has_been_added_to_enclosure(...)
+            // Error code
+        }
+    }
+
+    // Removing dragged animal that has left the enclosure collider
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag != "Drag") return;
+        Animal animal = collider.gameObject.GetComponent<Animal>();
+        
+        if (RemoveAnimal(animal) == 0)
+        {
+            // Error code
         }
     }
 
