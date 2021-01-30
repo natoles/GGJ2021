@@ -20,8 +20,6 @@ public class Cow : Animal
 
     protected override IEnumerator RageState()
     {
-        
-
         while(true)
         {
             Debug.Log(reachedEndOfPath);

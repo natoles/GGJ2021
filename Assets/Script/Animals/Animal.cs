@@ -71,8 +71,7 @@ public class Animal : MonoBehaviour
 
     protected virtual IEnumerator RageState()
     {
-        Debug.Log("animal cor");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
     }
 
 
@@ -93,6 +92,7 @@ public class Animal : MonoBehaviour
         animator.SetBool("IsRage", true);
         transform.localScale = baseScale * 1.3f;
         audioSource.Play();
+        transform.gameObject.tag = "Drag";
     }
 
     //Stop drag
@@ -105,6 +105,7 @@ public class Animal : MonoBehaviour
         spriteRenderer.flipX = false;
         audioSource.Stop();
         reachedEndOfPath = true;
+        transform.gameObject.tag = "Animal";
     }
 
     protected virtual void Update()
