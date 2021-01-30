@@ -23,7 +23,7 @@ public class RuleAnimal : Rule
     // TODO: remove current animal from the list :)
     public List<Animal> GetNeighborAnimals()
     {
-        if (!animal.inEnclosure)
+        if (!animal.IsInEnclosure())
         {
             return new List<Animal>();
         }

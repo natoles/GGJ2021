@@ -88,7 +88,7 @@ public class MyGameManager : MonoBehaviour
             // Getting Camera dimension
             //Screen.width, Screen.height;
             //Camera
-            //TODO: automate this
+            //TODO: automate this based on camera view
             int xmin = -300;
             int xmax = 300;
             int ymin = -300;
