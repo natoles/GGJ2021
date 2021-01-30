@@ -14,6 +14,9 @@ public class Animal : MonoBehaviour
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
     protected IEnumerator rageCoroutine;
+    Vector2 movement;
+    public float moveInterval; //Interval between random movement
+
 
 
     //Pahtfinding variables
@@ -21,10 +24,9 @@ public class Animal : MonoBehaviour
     public Transform target;
     public float nexWaypointDistance = 3f;
     int currentWaypoint = 0;
-    bool reachedEndOfPath = false;
+    protected bool reachedEndOfPath = true;
     Seeker seeker;
 
-    Vector2 movement;
 
     protected virtual void Start()
     {
@@ -35,7 +37,7 @@ public class Animal : MonoBehaviour
 
         baseScale = transform.localScale;
 
-        MoveTo(target.position);
+        moveInterval = 5f;
 
         Enrage();
     }
@@ -49,6 +51,7 @@ public class Animal : MonoBehaviour
     public void Enrage()
     {
         rageCoroutine = RageState();
+        reachedEndOfPath = true;
         StartCoroutine(rageCoroutine);
     }
 
@@ -87,11 +90,12 @@ public class Animal : MonoBehaviour
     public void OnMouseUp()
     {
         isDragging = false;
-        MoveTo(target.position);
+        //MoveTo(target.position);
         animator.SetBool("IsRage", false);
         transform.localScale = baseScale;
         spriteRenderer.flipX = false;
         audioSource.Stop();
+        reachedEndOfPath = true;
     }
 
     protected virtual void Update()

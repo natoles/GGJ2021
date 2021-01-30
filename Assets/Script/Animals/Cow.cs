@@ -8,6 +8,8 @@ public class Cow : Animal
     protected override void Start()
     {
         base.Start();
+
+        moveInterval = 8f;
     }
 
     // Update is called once per frame
@@ -18,7 +20,21 @@ public class Cow : Animal
 
     protected override IEnumerator RageState()
     {
-        Debug.Log("cow cor");
-        yield return new WaitForSeconds(0.5f);
+        
+
+        while(true)
+        {
+            Debug.Log(reachedEndOfPath);
+
+
+            if (reachedEndOfPath)
+            {
+                target.position *= -1; //TEMPORARY
+                MoveTo(target.position);
+            }
+
+            yield return new WaitForSeconds(moveInterval);
+        }
+        
     }
 }
