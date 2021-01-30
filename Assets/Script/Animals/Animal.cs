@@ -10,7 +10,9 @@ public class Animal : MonoBehaviour
     public float moveSpeed;
     public float topSpeed;
     bool isDragging;
-    
+    Vector3 baseScale;
+    SpriteRenderer spriteRenderer;
+
 
     //Pahtfinding variables
     Path path;
@@ -26,7 +28,10 @@ public class Animal : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-       
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        baseScale = transform.localScale;
+
         MoveTo(target.position);
     }
 
@@ -47,12 +52,18 @@ public class Animal : MonoBehaviour
     public void OnMouseDown()
     {
         isDragging = true;
+        animator.SetBool("isRage", true);
+
+        transform.localScale = baseScale * 1.3f;
     }
 
     public void OnMouseUp()
     {
         isDragging = false;
         MoveTo(target.position);
+        animator.SetBool("isRage", false);
+
+        transform.localScale = baseScale;
     }
 
     void Update()
@@ -72,6 +83,9 @@ public class Animal : MonoBehaviour
             path = null; //Cancel movement
             rb.velocity = new Vector2(0, 0);
         }
+
+        if (isDragging && Input.GetAxis("Mouse X") != 0)
+            spriteRenderer.flipX = (Input.GetAxis("Mouse X") > 0);
     }
 
     private void FixedUpdate()
