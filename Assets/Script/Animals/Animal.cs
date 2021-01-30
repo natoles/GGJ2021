@@ -13,9 +13,11 @@ public class Animal : MonoBehaviour
     AudioSource audioSource;
     protected IEnumerator movementsHandlingCoroutine;
     Vector2 movement;
+    public bool inEnclosure = false;
     public Enclosure currentEnclosure;
     public int enclosureSlotUsed = 1; // 2 for Pigs
     public MovementState currentMovementState = MovementState.Standard;
+    Animal animalTarget; //Target animal for the chase
 
     [System.Serializable]
     public class MovementProperties
@@ -76,16 +78,16 @@ public class Animal : MonoBehaviour
         rageMovement.linearDrag = 3f;
 
         chaseMovement = new MovementProperties();
-        chaseMovement.moveSpeed = 15000f;
-        chaseMovement.topSpeed = 15f;
-        chaseMovement.minMoveInterval = 1f;
-        chaseMovement.maxMoveInterval = 2f;
+        chaseMovement.moveSpeed = 20000f;
+        chaseMovement.topSpeed = 20f;
+        chaseMovement.minMoveInterval = 0.5f;
+        chaseMovement.maxMoveInterval = 0.5f;
         chaseMovement.linearDrag = 5f;
 
         runMovement = new MovementProperties();
-        runMovement.moveSpeed = 30000f;
-        runMovement.topSpeed = 30f;
-        runMovement.minMoveInterval = 0f;
+        runMovement.moveSpeed = 40000f;
+        runMovement.topSpeed = 40f;
+        runMovement.minMoveInterval = 0.1f;
         runMovement.maxMoveInterval = 0.1f;
         runMovement.linearDrag = 5f;
 
@@ -103,20 +105,15 @@ public class Animal : MonoBehaviour
         seeker.StartPath(rb.position, target, OnPathComplete);
     }
 
-    public bool IsInEnclosure()
-    {
-        if (currentEnclosure == null){
-            return false;
-        }
-        return !currentEnclosure.isExterior;
-    }
     public void EnterEnclosure(Enclosure enclosure)
     {
         currentEnclosure = enclosure;
+        inEnclosure = !currentEnclosure.isExterior;
     }
 
     public void LeaveEnclosure()
     {
+        //inEnclosure = !currentEnclosure.isExterior;
     }
 
     #region Behavior functions
@@ -158,6 +155,7 @@ public class Animal : MonoBehaviour
         if (currentMovementState != MovementState.Chase)
             reachedEndOfPath = true; //End current path
 
+        animalTarget = animal;
         currentMovementState = MovementState.Chase;
     }
 
@@ -177,7 +175,7 @@ public class Animal : MonoBehaviour
     {
         while (true)
         {
-            if (currentEnclosure != null && reachedEndOfPath)
+            if (currentEnclosure != null && (reachedEndOfPath || currentMovementState == MovementState.Chase))
             {
                 switch (currentMovementState)
                 {
@@ -191,7 +189,7 @@ public class Animal : MonoBehaviour
                         ComputeMovement(currentEnclosure.RandomPoint(), runMovement);
                         break;
                     case MovementState.Chase:
-                        ComputeMovement(currentEnclosure.RandomPoint(), chaseMovement);
+                        ComputeMovement(animalTarget.transform.position, chaseMovement);
                         break;
                     default:
                         break;
@@ -265,7 +263,6 @@ public class Animal : MonoBehaviour
              || currentMovementState == MovementState.Run
                 || currentMovementState == MovementState.Chase)
         {
-            Debug.Log("Rage");
             if (!audioSource.isPlaying) audioSource.Play();
         }
         else if (isDragging)
@@ -308,7 +305,7 @@ public class Animal : MonoBehaviour
 
                 if (currentWaypoint == path.vectorPath.Count - 1)
                 {
-                    if (distance < 0.1f) currentWaypoint++;
+                    if (distance < 0.7f) currentWaypoint++;
                 }
                 else
                 {
