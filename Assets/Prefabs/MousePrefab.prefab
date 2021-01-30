@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6512648318165197915}
   - component: {fileID: 6512648318165197919}
   - component: {fileID: 3897744616608960134}
-  - component: {fileID: 6747116314608105039}
+  - component: {fileID: 4291354083896481635}
   m_Layer: 0
-  m_Name: CowPrefab
+  m_Name: MousePrefab
   m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e72acd710c0e211498ae79c3e617423c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b228d9d19006da64f8d2d3aecdb46097, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -207,7 +207,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6747116314608105039
+--- !u!114 &4291354083896481635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,15 +216,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6512648318165197914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f6dccc43aa1963419ddc0099202faf5, type: 3}
+  m_Script: {fileID: 11500000, guid: 978e50e140776e84a817b5aec88dc0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6512648318908670932}
   moveSpeed: 400
   topSpeed: 1
   minMoveInterval: 1
-  maxMoveInterval: 1
+  maxMoveInterval: 3
   currentEnclosure: {fileID: 0}
+  enclosureSlotUsed: 1
   nexWaypointDistance: 1.5
 --- !u!1 &6512648318908670929
 GameObject:
@@ -238,7 +239,7 @@ GameObject:
   - component: {fileID: 6512648318908670933}
   - component: {fileID: 6512648318908670932}
   m_Layer: 0
-  m_Name: CowSprite
+  m_Name: MouseSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,7 +299,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 5159674575400226990, guid: 520d4f38813850249a24f2434a604703, type: 3}
+  m_Sprite: {fileID: -3192632981830732600, guid: cdec57e7ea1a3e84091d5a6520516791, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -319,7 +320,7 @@ Animator:
   m_GameObject: {fileID: 6512648318908670929}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0271dcf0b77271b47af61270250a42e8, type: 2}
+  m_Controller: {fileID: 9100000, guid: bd936d0bdd9f3f0478b17a46b838f787, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
