@@ -25,7 +25,7 @@ public class Enclosure : MonoBehaviour
     // Returns a random point into the collider
     public Vector2 RandomPoint()
     {
-        return RandomPointInBounds(gameObject.GetComponent<Collider>().bounds);
+        return RandomPointInBounds(gameObject.GetComponent<BoxCollider2D>().bounds);
     }
 
     public bool IsFull()
@@ -68,12 +68,12 @@ public class Enclosure : MonoBehaviour
     }
 
     // Remove an animal into the enclosure. Return 0 for success and -1 on fail.
-    public int TransferAnimal(Animal animal, Enclosure enclosure)
+    public int TransferAnimal(Animal animal, Enclosure enclosureFrom)
     {
-        if (enclosure.IsFull()) return -1;
+        if (enclosureFrom.IsFull()) return -1;
         if (!animals.Contains(animal)) return -1;
 
-        if (enclosure.AddAnimal(animal) != 0) return -1;
+        if (enclosureFrom.AddAnimal(animal) != 0) return -1;
         if (RemoveAnimal(animal) != 0) return -1;
         
         return 0;
