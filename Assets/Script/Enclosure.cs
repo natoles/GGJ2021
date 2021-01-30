@@ -31,7 +31,7 @@ public class Enclosure : MonoBehaviour
     // Returns a random point into the collider
     public Vector2 RandomPoint()
     {
-        return RandomPointInBounds(gameObject.GetComponent<BoxCollider2D>().bounds);
+        return RandomPointInBounds(gameObject.GetComponent<Collider2D>().bounds);
     }
 
     // ==================== GETTTER AND STATE
@@ -106,8 +106,6 @@ public class Enclosure : MonoBehaviour
 
         if (RemoveAnimal(animal) != 0) return -1;
         if (enclosureTo.AddAnimal(animal) != 0) return -1;
-
-
         
         return 0;
     }
@@ -138,13 +136,6 @@ public class Enclosure : MonoBehaviour
 
 
     // ==================== RULE MANAGEMENT
-
-
-
-
-
-
-
 
 
 

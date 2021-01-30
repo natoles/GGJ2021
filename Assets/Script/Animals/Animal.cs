@@ -38,7 +38,7 @@ public class Animal : MonoBehaviour
 
     //Pahtfinding variables
     Path path;
-    float nextWaypointDistance = 10f;
+    float nextWaypointDistance = 5f;
     int currentWaypoint = 0;
     protected bool reachedEndOfPath = true; //True if has finished pathfinding
     Seeker seeker;
@@ -67,20 +67,20 @@ public class Animal : MonoBehaviour
         standardMovement.topSpeed = 10f;
         standardMovement.minMoveInterval = 4f;
         standardMovement.maxMoveInterval = 7f;
-        standardMovement.linearDrag = 6f;
+        standardMovement.linearDrag = 4f;
 
         rageMovement = new MovementProperties();
-        rageMovement.moveSpeed = 20000f;
-        rageMovement.topSpeed = 20f;
+        rageMovement.moveSpeed = 30000f;
+        rageMovement.topSpeed = 30f;
         rageMovement.minMoveInterval = 1f;
         rageMovement.maxMoveInterval = 2f;
-        rageMovement.linearDrag = 4f;
+        rageMovement.linearDrag = 3f;
 
         chaseMovement = new MovementProperties();
         chaseMovement.moveSpeed = 15000f;
         chaseMovement.topSpeed = 15f;
-        chaseMovement.minMoveInterval = 0f;
-        chaseMovement.maxMoveInterval = 0.1f;
+        chaseMovement.minMoveInterval = 1f;
+        chaseMovement.maxMoveInterval = 2f;
         chaseMovement.linearDrag = 5f;
 
         runMovement = new MovementProperties();
@@ -106,8 +106,8 @@ public class Animal : MonoBehaviour
 
     public void EnterEnclosure(Enclosure enclosure)
     {
-        inEnclosure = true;
         currentEnclosure = enclosure;
+        inEnclosure = currentEnclosure.isExterior;
     }
 
     public void LeaveEnclosure()
@@ -120,7 +120,9 @@ public class Animal : MonoBehaviour
     //Start the RageState coroutine
     public void Enrage()
     {
-        reachedEndOfPath = true;
+        if (currentMovementState != MovementState.Rage) 
+            reachedEndOfPath = true; //End current path
+
         animator.SetBool("IsRage", true);
         currentMovementState = MovementState.Rage;
     }
@@ -128,6 +130,9 @@ public class Animal : MonoBehaviour
     //End the RageState coroutine
     public void Calm()
     {
+        if (currentMovementState != MovementState.Standard)
+            reachedEndOfPath = true; //End current path
+
         animator.SetBool("IsRage", false);
         currentMovementState = MovementState.Standard;
     }
@@ -136,16 +141,19 @@ public class Animal : MonoBehaviour
     {
         if (currentEnclosure == null) return;
 
-        reachedEndOfPath = true; //End current path
-        currentMovementState = MovementState.Run;
+        if (currentMovementState != MovementState.Run)
+            reachedEndOfPath = true; //End current path
 
+        currentMovementState = MovementState.Run;
     }
 
     public void Chase(Animal animal)
     {
         if (currentEnclosure == null) return;
 
-        reachedEndOfPath = true; //End current path
+        if (currentMovementState != MovementState.Chase)
+            reachedEndOfPath = true; //End current path
+
         currentMovementState = MovementState.Chase;
     }
 
@@ -264,7 +272,11 @@ public class Animal : MonoBehaviour
         {
             audioSource.Stop();
         }
-            
+
+        /*
+        transform.position = new Vector3 (transform.position.x, transform.position.y, Mathf.Abs(transform.position.y));
+        rb.position = new Vector3(rb.position.x, rb.position.y, 0);
+        */
     }
 
     private void FixedUpdate()

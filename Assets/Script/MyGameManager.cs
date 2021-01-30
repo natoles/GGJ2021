@@ -16,7 +16,6 @@ public class MyGameManager : MonoBehaviour
     /*
     - Level manager -> prends un tableau en entrée
     - Référence à chacun des animaux/enclos/règles
-    - Boucle de jeu
     - Barre de stress
     - Condition de 
     */
@@ -28,7 +27,11 @@ public class MyGameManager : MonoBehaviour
     public Transform dogPrefab;
     public Transform mousePrefab;
 
-    public Camera camera;
+    public Camera gameCamera;
+
+
+    public int objectiveAnimalInEnclosure = 0;
+    public int currentAnimalInEnclosure = 0;
 
     // PRIVATE
     private float levelTimeStart;
@@ -37,8 +40,21 @@ public class MyGameManager : MonoBehaviour
     public List<Animal> aliveAnimalList;
 
     // TODO: Ajouter les animaux morts à spawnList avec t+5s
+    private void OnStartComputeObjective()
+    {
+        objectiveAnimalInEnclosure = 0;
+        foreach (SpawnInfo spawnInfo in spawnList)
+        {
+            if (SelectAnimalPrefab(spawnInfo.type) == null){
+                Debug.Log(spawnInfo.type + " is not a valid animal! Use Bull, Cat, Cow, Mouse");
+                spawnList.Remove(spawnInfo);
+            } else {
+                objectiveAnimalInEnclosure += spawnInfo.quantity;
+            }
+        }
+    }
 
-    public Transform selectAnimalPrefab(string animal)
+    public Transform SelectAnimalPrefab(string animal)
     {
         switch(animal)
         {
@@ -57,14 +73,17 @@ public class MyGameManager : MonoBehaviour
         return null;
     }
 
-    public void spawnAnimal(SpawnInfo spawnInfo)
+    public int SpawnAnimal(SpawnInfo spawnInfo)
     {
         Transform prefab;
         for (int i = 0; i < spawnInfo.quantity; i++)
         {
             // Selecting prefab
-            prefab = selectAnimalPrefab(spawnInfo.type);
-            Assert.IsNotNull(prefab, spawnInfo.type + " is not a valid animal! Use Bull, Cat, Cow, Mouse");
+            prefab = SelectAnimalPrefab(spawnInfo.type);
+            if (prefab == null){
+                Debug.Log(spawnInfo.type + " is not a valid animal! Use Bull, Cat, Cow, Mouse");
+                return -1;
+            }
 
             // Getting Camera dimension
             //Screen.width, Screen.height;
@@ -90,17 +109,18 @@ public class MyGameManager : MonoBehaviour
             // Spawning Animal
             Instantiate(prefab, new Vector2(x, y), Quaternion.identity);
         }
+
+        return 0;
     }
 
-    public void updateSpawnAnimals()
+    public void UpdateSpawnAnimals()
     {
         float currentTime = Time.time - levelTimeStart;
         List<SpawnInfo> toSpawn = spawnList.FindAll(x => x.time - currentTime < 0);
 
-        for (int i = 0; i < toSpawn.Count; i++)
+        foreach (SpawnInfo spawnInfo in spawnList)
         {
-            SpawnInfo spawnInfo = toSpawn[i];
-            spawnAnimal(spawnInfo);
+            SpawnAnimal(spawnInfo);
             spawnList.Remove(spawnInfo);
         }
     }
@@ -109,11 +129,12 @@ public class MyGameManager : MonoBehaviour
     void Start()
     {
         levelTimeStart = Time.time;
+        OnStartComputeObjective();
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateSpawnAnimals();
+        UpdateSpawnAnimals();
     }
 }
