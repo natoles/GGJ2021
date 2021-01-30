@@ -14,14 +14,15 @@ public class Animal : MonoBehaviour
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
     protected IEnumerator rageCoroutine;
+    protected IEnumerator idleCoroutine;
     Vector2 movement;
-    public float moveInterval; //Interval between random movement
+    public float minMoveInterval = 10000f; //Min time interval in seconds between random movement
+    public float maxMoveInterval = 10000f; //Max interval interval in seconds between random movement
     protected bool inEnclosure;
     public Enclosure currentEnclosure;
 
     //Pahtfinding variables
     Path path;
-    public Transform target;
     public float nexWaypointDistance = 3f;
     int currentWaypoint = 0;
     protected bool reachedEndOfPath = true;
@@ -35,11 +36,9 @@ public class Animal : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
+        idleCoroutine = IdleState();
+        StartCoroutine(idleCoroutine);
         baseScale = transform.localScale;
-
-        moveInterval = 5f;
-
-        Enrage();
     }
 
     //Move an animal to the target position
@@ -48,7 +47,21 @@ public class Animal : MonoBehaviour
         seeker.StartPath(rb.position, target, OnPathComplete);
     }
 
-    
+    public void ComputeAnimalMovement()
+    {
+        if (reachedEndOfPath)
+        {
+            if (inEnclosure)
+            {
+                MoveTo(currentEnclosure.RandomPoint());
+            }
+            else
+            {
+                //Outside
+            }
+        }
+    }
+
     public void EnterEnclosure(Enclosure enclosure)
     {
         inEnclosure = true;
@@ -58,26 +71,37 @@ public class Animal : MonoBehaviour
     public void LeaveEnclosure()
     {
         inEnclosure = false;
-        currentEnclosure = null;
     }
 
     //Start the RageState coroutine
     public void Enrage()
     {
-        rageCoroutine = RageState();
         reachedEndOfPath = true;
-        StartCoroutine(rageCoroutine);
+        animator.SetBool("IsRage", true);
+        //rageCoroutine = RageState();
+        //StartCoroutine(rageCoroutine);
     }
 
     //End the RageState coroutine
     public void Calm()
     {
+        animator.SetBool("IsRage", false);
         StopCoroutine(rageCoroutine);
     }
 
     protected virtual IEnumerator RageState()
     {
         yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator IdleState()
+    {
+        while (true)
+        {
+            ComputeAnimalMovement();
+            yield return new WaitForSeconds(Random.Range(minMoveInterval, maxMoveInterval));
+        }
+
     }
 
 
@@ -95,7 +119,7 @@ public class Animal : MonoBehaviour
     public void OnMouseDown()
     {
         isDragging = true;
-        animator.SetBool("IsRage", true);
+        animator.SetBool("IsDrag", true);
         transform.localScale = baseScale * 1.3f;
         audioSource.Play();
         transform.gameObject.tag = "Drag";
@@ -105,13 +129,13 @@ public class Animal : MonoBehaviour
     public void OnMouseUp()
     {
         isDragging = false;
-        //MoveTo(target.position);
-        animator.SetBool("IsRage", false);
+        animator.SetBool("IsDrag", false);
         transform.localScale = baseScale;
         spriteRenderer.flipX = false;
         audioSource.Stop();
         reachedEndOfPath = true;
         transform.gameObject.tag = "Animal";
+        ComputeAnimalMovement();
     }
 
     protected virtual void Update()

@@ -74,6 +74,24 @@ TextureImporter:
   - first:
       213: 924033953599817340
     second: Tileset Chat Complet_23
+  - first:
+      213: 1872741681540772123
+    second: Tileset Chat Complet_24
+  - first:
+      213: -1075836748779877942
+    second: Tileset Chat Complet_25
+  - first:
+      213: -6678087760112076768
+    second: Tileset Chat Complet_26
+  - first:
+      213: 6279648725312666968
+    second: Tileset Chat Complet_27
+  - first:
+      213: 7517971450977350991
+    second: Tileset Chat Complet_28
+  - first:
+      213: -4095023111934809428
+    second: Tileset Chat Complet_29
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -167,7 +185,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 481
+        y: 631
         width: 64
         height: 64
       alignment: 0
@@ -188,7 +206,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 481
+        y: 631
         width: 64
         height: 64
       alignment: 0
@@ -209,7 +227,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 481
+        y: 631
         width: 64
         height: 64
       alignment: 0
@@ -230,7 +248,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 417
+        y: 567
         width: 64
         height: 64
       alignment: 0
@@ -251,7 +269,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 417
+        y: 567
         width: 64
         height: 64
       alignment: 0
@@ -272,7 +290,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 417
+        y: 567
         width: 64
         height: 64
       alignment: 0
@@ -293,7 +311,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 353
+        y: 503
         width: 64
         height: 64
       alignment: 0
@@ -314,7 +332,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 353
+        y: 503
         width: 64
         height: 64
       alignment: 0
@@ -335,7 +353,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 353
+        y: 503
         width: 64
         height: 64
       alignment: 0
@@ -356,7 +374,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 289
+        y: 439
         width: 64
         height: 64
       alignment: 0
@@ -377,7 +395,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 289
+        y: 439
         width: 64
         height: 64
       alignment: 0
@@ -398,7 +416,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 289
+        y: 439
         width: 64
         height: 64
       alignment: 0
@@ -419,7 +437,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 225
+        y: 375
         width: 64
         height: 64
       alignment: 0
@@ -440,7 +458,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 225
+        y: 375
         width: 64
         height: 64
       alignment: 0
@@ -461,7 +479,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 225
+        y: 375
         width: 64
         height: 64
       alignment: 0
@@ -482,7 +500,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 161
+        y: 311
         width: 64
         height: 64
       alignment: 0
@@ -503,7 +521,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 161
+        y: 311
         width: 64
         height: 64
       alignment: 0
@@ -524,7 +542,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 161
+        y: 311
         width: 64
         height: 64
       alignment: 0
@@ -545,7 +563,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 97
+        y: 247
         width: 64
         height: 64
       alignment: 0
@@ -566,7 +584,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 97
+        y: 247
         width: 64
         height: 64
       alignment: 0
@@ -587,7 +605,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 97
+        y: 247
         width: 64
         height: 64
       alignment: 0
@@ -608,7 +626,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 33
+        y: 183
         width: 64
         height: 64
       alignment: 0
@@ -629,7 +647,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 33
+        y: 183
         width: 64
         height: 64
       alignment: 0
@@ -650,7 +668,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 33
+        y: 183
         width: 64
         height: 64
       alignment: 0
@@ -662,6 +680,132 @@ TextureImporter:
       bones: []
       spriteID: c7687bc2cf3d2dc00800000000000000
       internalID: 924033953599817340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Chat Complet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 119
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b113e4c13a05df910800000000000000
+      internalID: 1872741681540772123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Chat Complet_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 119
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac90aa05d2cd111f0800000000000000
+      internalID: -1075836748779877942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Chat Complet_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 119
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 028b2af609aa253a0800000000000000
+      internalID: -6678087760112076768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Chat Complet_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 55
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85dfe72ae3bc52750800000000000000
+      internalID: 6279648725312666968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Chat Complet_28
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 55
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f457807e333355860800000000000000
+      internalID: 7517971450977350991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Chat Complet_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 55
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa6c121d2e8b27c0800000000000000
+      internalID: -4095023111934809428
       vertices: []
       indices: 
       edges: []
