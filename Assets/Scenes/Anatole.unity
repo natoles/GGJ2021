@@ -14314,7 +14314,7 @@ MonoBehaviour:
   - {fileID: 2089097359}
   enclosureExteriorLimits:
   - maxCapacity: 5
-    time: 1
+    time: 0
 --- !u!4 &1774558761
 Transform:
   m_ObjectHideFlags: 0
