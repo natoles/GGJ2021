@@ -293,6 +293,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c9f3f35ce238fe4da89114062e51cf0, type: 3}
+--- !u!114 &250261661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+  m_PrefabInstance: {fileID: 1906901284}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021b97282afadf2409580ed1f92bf144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &352470838
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722153746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 443, y: 200, z: -5008.723}
+  m_LocalPosition: {x: 443, y: 200, z: 0}
   m_LocalScale: {x: 77.299, y: 49.991173, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -588,6 +599,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &726230262 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+  m_PrefabInstance: {fileID: 1839081722}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021b97282afadf2409580ed1f92bf144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &773962435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1265,7 +1287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530940006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -32, y: 200, z: -5008.723}
+  m_LocalPosition: {x: -26, y: 212, z: 0}
   m_LocalScale: {x: 77.299, y: 49.991173, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11158,11 +11180,18 @@ MonoBehaviour:
   p2: {fileID: 1627237125}
   p3: {fileID: 66450173}
   p4: {fileID: 1242769137}
+  bus: {fileID: 722153746}
+  tilemapObstacles: {fileID: 1544289997}
+  enclosures:
+  - {fileID: 250261661}
+  - {fileID: 726230262}
+  - {fileID: 2089097359}
   objectiveAnimalInEnclosure: 0
   currentAnimalInEnclosure: 0
+  victory: 0
   spawnList:
   - type: Cat
-    quantity: 2
+    quantity: 0
     time: 1
   - type: Dog
     quantity: 0
@@ -11176,7 +11205,7 @@ MonoBehaviour:
   - type: Cow
     quantity: 0
     time: 9
-  aliveAnimalList: []
+  animalsInEnclosure: []
 --- !u!4 &1774558761
 Transform:
   m_ObjectHideFlags: 0
@@ -11185,7 +11214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774558759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.792725, y: -15.087647, z: -106.21492}
+  m_LocalPosition: {x: -61.9, y: 159.7, z: -106.21492}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11517,3 +11546,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2089097359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+  m_PrefabInstance: {fileID: 1503739293}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021b97282afadf2409580ed1f92bf144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

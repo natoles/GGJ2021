@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Pathfinding;
 
 [System.Serializable]
 public class SpawnInfo {
@@ -34,14 +35,21 @@ public class MyGameManager : MonoBehaviour
     public Transform p3;
     public Transform p4;
 
+    public GameObject bus;
+    public GameObject tilemapObstacles;
+
+    public List<Enclosure> enclosures;
+
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
+
+    public bool victory = false;
 
     // PRIVATE
     private float levelTimeStart;
 
     public List<SpawnInfo> spawnList;
-    public List<Animal> aliveAnimalList;
+    public List<Animal> animalsInEnclosure;
 
     // TODO: Ajouter les animaux morts à spawnList avec t+5s
     private void OnStartComputeObjective()
@@ -54,6 +62,18 @@ public class MyGameManager : MonoBehaviour
                 spawnList.Remove(spawnInfo);
             } else {
                 objectiveAnimalInEnclosure += spawnInfo.quantity;
+            }
+        }
+    }
+
+    private void UpdateAnimalsReference()
+    {
+        animalsInEnclosure.Clear();
+        foreach (Enclosure enclosure in enclosures)
+        {
+            foreach (Animal animal in enclosure.animals)
+            {
+                animalsInEnclosure.Add(animal);
             }
         }
     }
@@ -132,6 +152,30 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+    public void Victory()
+    {
+        UpdateAnimalsReference();
+        tilemapObstacles.GetComponent<Collider2D>().enabled = false;
+        Debug.Log(AstarPath.active);
+        AstarPath.active.Scan();
+        foreach(Animal animal in animalsInEnclosure)
+        {
+            animal.StopCoroutine(animal.movementsHandlingCoroutine);
+
+            MovementProperties mProperties = new MovementProperties();
+
+            mProperties.moveSpeed = 50000f;
+            mProperties.topSpeed = 50f;
+            mProperties.minMoveInterval = 0f;
+            mProperties.maxMoveInterval = 0f;
+            mProperties.linearDrag = 6f;
+
+            animal.ComputeMovement(GameObject.Find("BusStopPos").transform.position, mProperties);
+            animal.MoveTo(GameObject.Find("BusStopPos").transform.position);
+        }
+
+    }
+
 
     // TODO: progress bar
     public void updateProgressBar()
@@ -152,5 +196,12 @@ public class MyGameManager : MonoBehaviour
     void Update()
     {
         UpdateSpawnAnimals();
+        
+
+        if (victory == true)
+        {
+            victory = false;
+            Victory();
+        }
     }
 }
