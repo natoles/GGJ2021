@@ -15,7 +15,13 @@ public class RuleSheep : RuleAnimal
     {
         base.Update();
         if (animal.IsInEnclosure()){
-            
+            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Dog"))) {
+                animal.Follow(FindNeighborTypeOf(StringToClass.TypeFromString("Dog")));
+            } else if (GetNeighborAnimals().Count <= 0){
+                animal.Run();
+            } else {
+                animal.Calm();
+            }
         }
     }
 }

@@ -15,7 +15,9 @@ public class RuleDog : RuleAnimal
     {
         base.Update();
         if (animal.IsInEnclosure()){
-            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Cat"))){
+            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Wolf"))) {
+                animal.Chase(FindNeighborTypeOf(StringToClass.TypeFromString("Wolf")));
+            } else if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Cat"))){
                 animal.Enrage();
             } else {
                 animal.Calm();

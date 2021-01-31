@@ -15,7 +15,13 @@ public class RulePig : RuleAnimal
     {
         base.Update();
         if (animal.IsInEnclosure()){
-            
+            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Wolf"))){
+                animal.Enrage();
+            } else if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Pig"))){
+                if (animal.GetType() == StringToClass.TypeFromString("Pig")){
+                    ((Pig) animal).ThrowMud();
+                }
+            }
         }
     }
 }

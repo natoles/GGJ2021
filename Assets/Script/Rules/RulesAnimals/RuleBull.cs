@@ -10,6 +10,8 @@ public class RuleBull : RuleAnimal
         base.Start();
     }
 
+    //TODO: Implement "fight without killing"
+
     // Update is called once per frame
     protected override void Update()
     {
