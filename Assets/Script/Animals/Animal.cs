@@ -5,9 +5,10 @@ using Pathfinding;
 
 public class Animal : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     public Animator animator;
     bool isDragging;
+    bool isFighting;
     Vector3 baseScale;
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
@@ -132,6 +133,11 @@ public class Animal : MonoBehaviour
         //inEnclosure = !currentEnclosure.isExterior;
     }
 
+    public void SetVisibility(bool visibility)
+    {
+        GetComponentInChildren<SpriteRenderer>().enabled = visibility;
+    }
+
     #region Behavior functions
 
     //Start the RageState coroutine
@@ -179,11 +185,26 @@ public class Animal : MonoBehaviour
 
     #region Action functions
 
+    //Fight = fight animation + kill
     public void Fight(Animal victim)
     {
-        Destroy(victim.gameObject);
-
+        isFighting = true;
+        victim.rb.velocity = Vector2.zero;
+        rb.velocity = Vector2.zero;
         Instantiate(fightPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+        StartCoroutine(FightRoutine(victim));
+    }
+
+    //Hides killer while fight anim, then kills the victim 
+    private IEnumerator FightRoutine(Animal victim)
+    {
+        SetVisibility(false);
+        victim.SetVisibility(false);
+        yield return new WaitForSeconds(3f); //FightScript.lifespan
+        SetVisibility(true);
+        victim.SetVisibility(true);
+        victim.Kill();
+        isFighting = false;
     }
 
     //Kill this instance and respawns an other
@@ -200,6 +221,8 @@ public class Animal : MonoBehaviour
     }
 
     #endregion
+
+    #region Movement
 
     private void ComputeMovement(Vector3 Target, MovementProperties mProperties)
     {
@@ -242,16 +265,9 @@ public class Animal : MonoBehaviour
         }
     }
 
+    #endregion  
 
-    //Callback for pathfinding generation
-    void OnPathComplete(Path p)
-    {
-        if (!p.error)
-        {
-            path = p;
-            currentWaypoint = 0;
-        }
-    }
+    #region Drag and Drop
 
     //Start drag
     public void OnMouseDown()
@@ -277,6 +293,18 @@ public class Animal : MonoBehaviour
         Cursor.visible = true;
     }
 
+    #endregion
+
+    //Callback for pathfinding generation
+    void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            currentWaypoint = 0;
+        }
+    }
+
     protected virtual void Update()
     {
         movement.x = Mathf.Clamp(rb.velocity.x, -1f, 1f);
@@ -293,7 +321,7 @@ public class Animal : MonoBehaviour
             transform.Translate(mousePosition);
 
             path = null; //Cancel movement
-            rb.velocity = new Vector2(0, 0);
+            rb.velocity = Vector2.zero;
 
             if (Input.GetAxis("Mouse X") != 0)
                 spriteRenderer.flipX = (Input.GetAxis("Mouse X") > 0);
@@ -314,8 +342,9 @@ public class Animal : MonoBehaviour
             audioSource.Stop();
         }
 
+        //----------------------- Fight -------------------------//
 
-        if (animalTarget != null)
+        if (animalTarget != null && !isFighting)
         {
             if (Vector2.Distance(new Vector2(animalTarget.transform.position.x, animalTarget.transform.position.y)
                                     , new Vector2(transform.position.x, transform.position.y)) < 5f)
@@ -339,7 +368,7 @@ public class Animal : MonoBehaviour
             if (currentWaypoint >= path.vectorPath.Count)
             {
                 reachedEndOfPath = true;
-                rb.velocity = new Vector2(0, 0);
+                rb.velocity = Vector2.zero;
             }
             else
             {

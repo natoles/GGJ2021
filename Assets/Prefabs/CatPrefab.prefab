@@ -82,7 +82,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   enclosureSlotUsed: 1
   currentMovementState: 0
-  fightPrefab: {fileID: 0}
+  fightPrefab: {fileID: 2798565287811166088, guid: de5a57e9a23815a4882233e5e185f6d1, type: 3}
 --- !u!50 &6512648318165197915
 Rigidbody2D:
   serializedVersion: 4
