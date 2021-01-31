@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class SpawnInfo {
@@ -26,22 +27,37 @@ public class MyGameManager : MonoBehaviour
     public Transform cowPrefab;
     public Transform dogPrefab;
     public Transform mousePrefab;
+    public Transform pigPrefab;
+    public Transform sheepPrefab;
+    public Transform wolfPrefab;
 
     public Camera gameCamera;
+
+    public GameObject tilemapObstacles;
+    public GameObject bus;
 
     public Transform p1;
     public Transform p2;
     public Transform p3;
     public Transform p4;
 
+    public Text rightLimit, leftLimit, bottomLimit;
+
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
+    public int nbRulesInGame, nbRulesFailed;
+    public float progression;
+
+    public ProgressBar progressBar;
+
+    public bool victoryTest;
 
     // PRIVATE
     private float levelTimeStart;
 
     public List<SpawnInfo> spawnList;
-    public List<Animal> aliveAnimalList;
+    public List<Animal> animalsInEnclosure;
+    public List<Enclosure> enclosureList;
 
     // TODO: Ajouter les animaux morts à spawnList avec t+5s
     private void OnStartComputeObjective()
@@ -54,6 +70,18 @@ public class MyGameManager : MonoBehaviour
                 spawnList.Remove(spawnInfo);
             } else {
                 objectiveAnimalInEnclosure += spawnInfo.quantity;
+            }
+        }
+    }
+
+    private void UpdateAnimalsReference()
+    {
+        animalsInEnclosure.Clear();
+        foreach (Enclosure enclosure in enclosureList)
+        {
+            foreach (Animal animal in enclosure.animals)
+            {
+                animalsInEnclosure.Add(animal);
             }
         }
     }
@@ -72,6 +100,12 @@ public class MyGameManager : MonoBehaviour
                 return dogPrefab;
             case "Mouse":
                 return mousePrefab;
+            case "Pig":
+                return pigPrefab;
+            case "Sheep":
+                return sheepPrefab;
+            case "Wolf":
+                return wolfPrefab;
         }
         
         return null;
@@ -132,25 +166,96 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+    public float ComputeProgressionPercent()
+    {
+        
+        int animalsInEnclosure = 0;
+        foreach(Enclosure enclosure in enclosureList)
+        {
+            animalsInEnclosure += enclosure.CountAnimals();
+            Debug.Log(animalsInEnclosure.ToString());
+        }
 
-    // TODO: progress bar
+        if ((objectiveAnimalInEnclosure + nbRulesInGame) == 0)
+            return 0;
+        return ((float) (animalsInEnclosure + nbRulesInGame - nbRulesFailed))
+                / ((float) (objectiveAnimalInEnclosure + nbRulesInGame));
+    }
+
     public void updateProgressBar()
     {
-
-        // TODO:
-        //setPrgrogressBarPercentage(float percent);
+        progressBar.CurrentValue = progression;
     }
+
+
+    // ==================== VICTORY
+    public void Victory()
+    {
+        victoryTest = false;
+        UpdateAnimalsReference();
+        tilemapObstacles.GetComponent<Collider2D>().enabled = false;
+        Debug.Log(AstarPath.active);
+        AstarPath.active.Scan();
+        foreach (Animal animal in animalsInEnclosure)
+        {
+            animal.StopCoroutine(animal.movementsHandlingCoroutine);
+
+            MovementProperties mProperties = new MovementProperties();
+
+            mProperties.moveSpeed = 40000f;
+            mProperties.topSpeed = 40f;
+            mProperties.minMoveInterval = 0f;
+            mProperties.maxMoveInterval = 0f;
+            mProperties.linearDrag = 5f;
+
+            bus.GetComponent<BusScript>().firstPhase = true;
+            bus.GetComponent<BusScript>().leave = true;
+
+            animal.ComputeMovement(GameObject.Find("BusStopPos").transform.position, mProperties);
+            animal.MoveTo(GameObject.Find("BusStopPos").transform.position);
+        }
+    }
+
+
+    // ==================== START AND UPDATES
 
     // Start is called before the first frame update
     void Start()
     {
         levelTimeStart = Time.time;
         OnStartComputeObjective();
+
+        rightLimit.text = "cool ça marche";
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateSpawnAnimals();
+        progression = ComputeProgressionPercent();
+        updateProgressBar();
+        if ((1f - progression) < 1e-4 || victoryTest){
+            Victory();
+        }
+
+        //Limit text
+        int current, max;
+        current = enclosureList[0].currentUsedSpace;
+        max = enclosureList[0].totalSpace;
+        bottomLimit.text = current.ToString() + "/" + max.ToString();
+        if (current == max) bottomLimit.color = Color.red;
+        else bottomLimit.color = Color.gray;
+
+        current = enclosureList[1].currentUsedSpace;
+        max = enclosureList[1].totalSpace;
+        leftLimit.text = current.ToString() + "/" + max.ToString();
+        if (current == max) leftLimit.color = Color.red;
+        else leftLimit.color = Color.gray;
+
+        current = enclosureList[2].currentUsedSpace;
+        max = enclosureList[2].totalSpace;
+        rightLimit.text = current.ToString() + "/" + max.ToString();
+        if (current == max) rightLimit.color = Color.red;
+        else rightLimit.color = Color.gray;
     }
 }
