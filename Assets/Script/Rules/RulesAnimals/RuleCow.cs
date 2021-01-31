@@ -14,15 +14,30 @@ public class RuleCow : RuleAnimal
     protected override void Update()
     {
         base.Update();
-        if (animal.IsInEnclosure()){
-            int nBull = CountNeighborTypeOf(StringToClass.TypeFromString("Bull"));
-            if (nBull == 1){
-                animal.Calm();
-            } else if (nBull == 2){
-                animal.Run();
-            } else {
-                animal.Enrage();
+        Debug.Log(animal.IsInEnclosure());
+        if (animal.IsInEnclosure())
+        {
+            if (animal.IsInEnclosure())
+            {
+                int nBull = CountNeighborTypeOf(StringToClass.TypeFromString("Bull"));
+                if (nBull == 1)
+                {
+                    animal.Calm();
+                }
+                else if (nBull >= 2)
+                {
+                    animal.Run();
+                }
+                else
+                {
+                    animal.Enrage();
+                }
             }
         }
+        else
+        {
+            animal.Calm();
+        }
+        
     }
 }
