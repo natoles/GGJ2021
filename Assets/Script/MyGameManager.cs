@@ -59,7 +59,7 @@ public class MyGameManager : MonoBehaviour
     public Transform p4;
     public Enclosure exteriorEnclusure;
 
-    public Text rightLimit, leftLimit, bottomLimit;
+    public Text rightLimit, leftLimit, bottomLimit, exteriorLimit;
 
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
@@ -346,5 +346,9 @@ public class MyGameManager : MonoBehaviour
 
         if (launchShake) cameraShake.TriggerShake();
         else cameraShake.StopShake();
+
+        current = exteriorEnclusure.currentUsedSpace;
+        max = exteriorEnclusure.totalSpace;
+        exteriorLimit.text = current.ToString() + "/" + max.ToString();
     }
 }

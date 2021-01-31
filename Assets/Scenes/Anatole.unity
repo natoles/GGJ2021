@@ -14189,6 +14189,7 @@ MonoBehaviour:
   p2: {fileID: 1627237125}
   p3: {fileID: 66450173}
   p4: {fileID: 1242769137}
+  exteriorEnclusure: {fileID: 0}
   rightLimit: {fileID: 993728422}
   leftLimit: {fileID: 2073742968}
   bottomLimit: {fileID: 1338785874}
@@ -14220,6 +14221,9 @@ MonoBehaviour:
   - {fileID: 250261661}
   - {fileID: 726230262}
   - {fileID: 2089097359}
+  enclosureExteriorLimits:
+  - maxCapacity: 5
+    time: 0
 --- !u!4 &1774558761
 Transform:
   m_ObjectHideFlags: 0

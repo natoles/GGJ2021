@@ -14,7 +14,6 @@ public class RuleCow : RuleAnimal
     protected override void Update()
     {
         base.Update();
-        Debug.Log(animal.IsInEnclosure());
         if (animal.IsInEnclosure())
         {
             if (animal.IsInEnclosure())
