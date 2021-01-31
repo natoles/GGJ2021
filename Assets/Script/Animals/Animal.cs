@@ -115,7 +115,8 @@ public class Animal : MonoBehaviour
         {
             return false;
         }
-        return true;
+
+        return !currentEnclosure.isExterior;
     }
 
     //Move an animal to the target position

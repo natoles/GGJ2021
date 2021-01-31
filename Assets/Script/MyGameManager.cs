@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class SpawnInfo {
@@ -42,13 +43,15 @@ public class MyGameManager : MonoBehaviour
     public GameObject tilemapObstacles;
     public GameObject bus;
 
+    public string LevelToLoad;
+
     public Transform p1;
     public Transform p2;
     public Transform p3;
     public Transform p4;
     public Enclosure exteriorEnclusure;
 
-    public Text rightLimit, leftLimit, bottomLimit;
+    public Text rightLimit, leftLimit, bottomLimit, exteriorLimit;
 
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
@@ -268,8 +271,8 @@ public class MyGameManager : MonoBehaviour
     
     public void Defeat()
     {
-
-
+        Debug.Log("DEFEAT");
+        //SceneManager.LoadScene(LevelToLoad);
     }
 
 
@@ -345,5 +348,9 @@ public class MyGameManager : MonoBehaviour
 
         if (launchShake) cameraShake.TriggerShake();
         else cameraShake.StopShake();
+
+        current = exteriorEnclusure.currentUsedSpace;
+        max = exteriorEnclusure.totalSpace;
+        exteriorLimit.text = current.ToString() + "/" + max.ToString();
     }
 }
