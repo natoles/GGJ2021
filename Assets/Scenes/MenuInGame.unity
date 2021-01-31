@@ -1015,15 +1015,15 @@ RectTransform:
   m_GameObject: {fileID: 532419704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9565218, y: 2.2, z: 1}
+  m_LocalScale: {x: 0.26570046, y: 0.6111111, z: 1}
   m_Children: []
   m_Father: {fileID: 450459526}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.6087, y: 69}
-  m_SizeDelta: {x: -75.2968, y: -3}
+  m_AnchoredPosition: {x: -0.00025177, y: 62}
+  m_SizeDelta: {x: 7.2732, y: -3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &532419706
 MonoBehaviour:
@@ -1041,18 +1041,18 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 313cfb40c1fcf5544bf72679517e7a93, type: 3}
-    m_FontSize: 10
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 20
-    m_Alignment: 6
+    m_MaxSize: 80
+    m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2073,14 +2073,14 @@ RectTransform:
   m_GameObject: {fileID: 1048644314}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1078244318}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9, y: -0.5}
+  m_AnchoredPosition: {x: -16.8, y: -5.4}
   m_SizeDelta: {x: -28, y: -3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1048644316
@@ -2105,18 +2105,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 313cfb40c1fcf5544bf72679517e7a93, type: 3}
-    m_FontSize: 10
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 20
+    m_MaxSize: 80
     m_Alignment: 6
     m_AlignByGeometry: 1
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Plein \xE9cran"
+  m_Text: Plein ecran
 --- !u!222 &1048644317
 CanvasRenderer:
   m_ObjectHideFlags: 0
