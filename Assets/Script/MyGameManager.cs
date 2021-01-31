@@ -161,17 +161,17 @@ public class MyGameManager : MonoBehaviour
         foreach(Enclosure enclosure in enclosureList)
         {
             animalsInEnclosure += enclosure.CountAnimals();
+            Debug.Log(animalsInEnclosure.ToString());
         }
 
         if ((objectiveAnimalInEnclosure + nbRulesInGame) == 0)
             return 0;
-        else 
-            return (animalsInEnclosure + nbRulesInGame - nbRulesFailed) / (objectiveAnimalInEnclosure + nbRulesInGame);
+        return ((float) (animalsInEnclosure + nbRulesInGame - nbRulesFailed))
+                / ((float) (objectiveAnimalInEnclosure + nbRulesInGame));
     }
 
     public void updateProgressBar()
     {
-        
         progressBar.CurrentValue = progression;
     }
 
