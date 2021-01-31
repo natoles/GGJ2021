@@ -205,6 +205,8 @@ public class Animal : MonoBehaviour
         victim.SetVisibility(true);
         victim.Kill();
         isFighting = false;
+        animalTarget = null;
+        Calm();
     }
 
     //Kill this instance and respawns an other
@@ -213,7 +215,7 @@ public class Animal : MonoBehaviour
         SpawnInfo spawnInfo = new SpawnInfo();
         spawnInfo.type = type;
         spawnInfo.quantity = 1;
-        spawnInfo.time = 1;
+        spawnInfo.time = Time.time + 3f;
 
         gameManager.SpawnAnimal(spawnInfo);
 
