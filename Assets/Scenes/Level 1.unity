@@ -10797,10 +10797,10 @@ MonoBehaviour:
   objectiveAnimalInEnclosure: 0
   currentAnimalInEnclosure: 0
   spawnList:
-  - type: Cat
-    quantity: 2
-    time: 1
   - type: Dog
+    quantity: 1
+    time: 1
+  - type: Cat
     quantity: 1
     time: 3
   - type: Mouse
