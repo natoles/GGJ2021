@@ -68,6 +68,7 @@ public class RuleAnimal : Rule
     {
         base.Start();
         animal = gameObject.GetComponent<Animal>();
+        neighbors = new List<Animal>();
     }
 
     // Update is called once per frame

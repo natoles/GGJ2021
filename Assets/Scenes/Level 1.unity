@@ -4427,7 +4427,7 @@ MonoBehaviour:
   sheepPrefab: {fileID: 6512648318165197918, guid: 6f48b307dce95394cbeb61546cd5ec18, type: 3}
   wolfPrefab: {fileID: 6512648318165197918, guid: d12645e4781cc08489df1c0e00727e23, type: 3}
   gameCamera: {fileID: 1779870628}
-  cameraShake: {fileID: 0}
+  cameraShake: {fileID: 633977578}
   tilemapObstacles: {fileID: 268083061}
   bus: {fileID: 2054570443}
   p1: {fileID: 1097053322}
