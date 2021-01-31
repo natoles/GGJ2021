@@ -38,6 +38,7 @@ public class Animal : MonoBehaviour
     protected MovementProperties rageMovement;
     protected MovementProperties chaseMovement;
     protected MovementProperties runMovement;
+    protected Vector3 lastPosOnClicDown;
 
 
     //Pahtfinding variables
@@ -269,9 +270,15 @@ public class Animal : MonoBehaviour
 
     #region Drag and Drop
 
+    public void resetPosition()
+    {
+        transform.position = lastPosOnClicDown;
+    }
+
     //Start drag
     public void OnMouseDown()
     {
+        lastPosOnClicDown = transform.position;
         isDragging = true;
         animator.SetBool("IsDrag", true);
         transform.localScale = baseScale * 1.3f;
