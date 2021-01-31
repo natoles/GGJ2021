@@ -32,6 +32,7 @@ public class MyGameManager : MonoBehaviour
     public Transform wolfPrefab;
 
     public Camera gameCamera;
+    public ShakeBehavior cameraShake;
 
     public GameObject tilemapObstacles;
     public GameObject bus;
