@@ -14350,16 +14350,16 @@ MonoBehaviour:
   sheepPrefab: {fileID: 0}
   wolfPrefab: {fileID: 0}
   gameCamera: {fileID: 109440016}
-  cameraShake: {fileID: 1490002459}
+  cameraShake: {fileID: 0}
   tilemapObstacles: {fileID: 1544289997}
   bus: {fileID: 722153746}
   p1: {fileID: 1002431739}
   p2: {fileID: 1627237125}
   p3: {fileID: 66450173}
   p4: {fileID: 1242769137}
-  rightLimit: {fileID: 993728422}
-  leftLimit: {fileID: 2073742968}
-  bottomLimit: {fileID: 1338785874}
+  rightLimit: {fileID: 0}
+  leftLimit: {fileID: 0}
+  bottomLimit: {fileID: 0}
   objectiveAnimalInEnclosure: 0
   currentAnimalInEnclosure: 0
   nbRulesInGame: 0
@@ -15506,7 +15506,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 1828134745
+  m_SortingLayerID: -1233536031
   m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &2118081626
