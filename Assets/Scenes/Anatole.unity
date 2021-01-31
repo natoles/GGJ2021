@@ -1371,7 +1371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530940006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26, y: 212, z: 0}
+  m_LocalPosition: {x: -135, y: 211, z: 0}
   m_LocalScale: {x: 77.299, y: 49.991173, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11261,6 +11261,7 @@ MonoBehaviour:
   mousePrefab: {fileID: 6512648318165197918, guid: 1c9f3f35ce238fe4da89114062e51cf0, type: 3}
   gameCamera: {fileID: 109440016}
   tilemapObstacles: {fileID: 1544289997}
+  bus: {fileID: 722153746}
   p1: {fileID: 1002431739}
   p2: {fileID: 1627237125}
   p3: {fileID: 66450173}
@@ -11271,6 +11272,7 @@ MonoBehaviour:
   nbRulesFailed: 0
   progression: 0
   progressBar: {fileID: 1447479551}
+  victoryTest: 0
   spawnList:
   - type: Cat
     quantity: 0
@@ -11300,7 +11302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774558759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.9, y: 159.7, z: -106.21492}
+  m_LocalPosition: {x: -336, y: 528, z: -106.21492}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

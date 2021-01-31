@@ -12,7 +12,6 @@ public class BusScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector2(-5000f, 0));
         firstPhase = true;
     }
 
@@ -30,5 +29,13 @@ public class BusScript : MonoBehaviour
             leave = false;
             rb.AddForce(new Vector2(-5000f, 0));
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag != "Animal") return;
+        //collider.gameObject.GetComponent<Animal>();
+
+        Destroy(collider.gameObject);
     }
 }

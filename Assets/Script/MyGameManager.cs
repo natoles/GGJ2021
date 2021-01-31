@@ -30,6 +30,7 @@ public class MyGameManager : MonoBehaviour
     public Camera gameCamera;
 
     public GameObject tilemapObstacles;
+    public GameObject bus;
 
     public Transform p1;
     public Transform p2;
@@ -177,7 +178,8 @@ public class MyGameManager : MonoBehaviour
 
     // ==================== VICTORY
     public void Victory()
-    { 
+    {
+        victoryTest = false;
         UpdateAnimalsReference();
         tilemapObstacles.GetComponent<Collider2D>().enabled = false;
         Debug.Log(AstarPath.active);
@@ -188,11 +190,14 @@ public class MyGameManager : MonoBehaviour
 
             MovementProperties mProperties = new MovementProperties();
 
-            mProperties.moveSpeed = 50000f;
-            mProperties.topSpeed = 50f;
+            mProperties.moveSpeed = 40000f;
+            mProperties.topSpeed = 40f;
             mProperties.minMoveInterval = 0f;
             mProperties.maxMoveInterval = 0f;
-            mProperties.linearDrag = 6f;
+            mProperties.linearDrag = 5f;
+
+            bus.GetComponent<BusScript>().firstPhase = true;
+            bus.GetComponent<BusScript>().leave = true;
 
             animal.ComputeMovement(GameObject.Find("BusStopPos").transform.position, mProperties);
             animal.MoveTo(GameObject.Find("BusStopPos").transform.position);
