@@ -75,7 +75,7 @@ public class Enclosure : MonoBehaviour
     // Add an animal into the enclosure. Return 0 for success and -1 on fail.
     public int AddAnimal(Animal animal)
     {
-        if (IsFull()) return -1;
+        //if (IsFull()) return -1;
         if (animals.Contains(animal)) return -1;
         
         animals.Add(animal);
@@ -100,8 +100,9 @@ public class Enclosure : MonoBehaviour
     // Remove an animal from the current enclosure to the "enclosureTo" one. Return 0 for success and -1 on fail.
     public int TransferAnimal(Animal animal, Enclosure enclosureTo)
     {
-        if (enclosureTo.IsFull()
-            || !animals.Contains(animal)
+        //if (enclosureTo.IsFull()
+        //    || 
+        if (!animals.Contains(animal)
             || enclosureTo.animals.Contains(animal)) return -1;
 
         if (enclosureTo.AddAnimal(animal) != 0) return -1;
@@ -133,7 +134,6 @@ public class Enclosure : MonoBehaviour
             // Error code
         }
     }
-
 
     // ==================== RULE MANAGEMENT
 

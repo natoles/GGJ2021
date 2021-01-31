@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class SpawnInfo {
@@ -26,6 +27,9 @@ public class MyGameManager : MonoBehaviour
     public Transform cowPrefab;
     public Transform dogPrefab;
     public Transform mousePrefab;
+    public Transform pigPrefab;
+    public Transform sheepPrefab;
+    public Transform wolfPrefab;
 
     public Camera gameCamera;
 
@@ -36,6 +40,8 @@ public class MyGameManager : MonoBehaviour
     public Transform p2;
     public Transform p3;
     public Transform p4;
+
+    public Text rightLimit, leftLimit, bottomLimit;
 
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
@@ -94,6 +100,12 @@ public class MyGameManager : MonoBehaviour
                 return dogPrefab;
             case "Mouse":
                 return mousePrefab;
+            case "Pig":
+                return pigPrefab;
+            case "Sheep":
+                return sheepPrefab;
+            case "Wolf":
+                return wolfPrefab;
         }
         
         return null;
@@ -212,6 +224,8 @@ public class MyGameManager : MonoBehaviour
     {
         levelTimeStart = Time.time;
         OnStartComputeObjective();
+
+        rightLimit.text = "cool ça marche";
     }
 
     // Update is called once per frame
@@ -223,5 +237,25 @@ public class MyGameManager : MonoBehaviour
         if ((1f - progression) < 1e-4 || victoryTest){
             Victory();
         }
+
+        //Limit text
+        int current, max;
+        current = enclosureList[0].currentUsedSpace;
+        max = enclosureList[0].totalSpace;
+        bottomLimit.text = current.ToString() + "/" + max.ToString();
+        if (current == max) bottomLimit.color = Color.red;
+        else bottomLimit.color = Color.gray;
+
+        current = enclosureList[1].currentUsedSpace;
+        max = enclosureList[1].totalSpace;
+        leftLimit.text = current.ToString() + "/" + max.ToString();
+        if (current == max) leftLimit.color = Color.red;
+        else leftLimit.color = Color.gray;
+
+        current = enclosureList[2].currentUsedSpace;
+        max = enclosureList[2].totalSpace;
+        rightLimit.text = current.ToString() + "/" + max.ToString();
+        if (current == max) rightLimit.color = Color.red;
+        else rightLimit.color = Color.gray;
     }
 }

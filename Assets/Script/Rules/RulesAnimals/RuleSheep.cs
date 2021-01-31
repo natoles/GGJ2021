@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RuleMouse : RuleAnimal
+public class RuleSheep : RuleAnimal
 {
     // Start is called before the first frame update
     protected override void Start()
@@ -15,10 +15,10 @@ public class RuleMouse : RuleAnimal
     {
         base.Update();
         if (animal.IsInEnclosure()){
-            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Cat"))){
+            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Dog"))) {
+                animal.Follow(FindNeighborTypeOf(StringToClass.TypeFromString("Dog")));
+            } else if (GetNeighborAnimals().Count <= 0){
                 animal.Run();
-            } else if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse"))){
-                animal.Enrage();
             } else {
                 animal.Calm();
             }
