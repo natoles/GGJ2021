@@ -15,12 +15,11 @@ public class RuleMouse : RuleAnimal
     {
         base.Update();
         if (animal.IsInEnclosure()){
-            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Cat")))
-            {
+            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Cat"))){
                 animal.Run();
-            }
-            else
-            {
+            } else if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse"))){
+                animal.Enrage();
+            } else {
                 animal.Calm();
             }
         }

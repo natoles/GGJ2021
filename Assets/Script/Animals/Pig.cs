@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Pig : Animal
 {
+
+    public void ThrowMud()
+    {
+        
+    }
     // Start is called before the first frame update
     protected override void Start()
     {

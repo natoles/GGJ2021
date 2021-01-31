@@ -11,6 +11,13 @@ public class SpawnInfo {
     public float time;
 };
 
+[System.Serializable]
+public class EnclosureInfo {
+    public Enclosure enclosure;
+    public int maxCapacity;
+    public float time;
+};
+
 public class MyGameManager : MonoBehaviour
 {
     // TODO:
@@ -32,6 +39,7 @@ public class MyGameManager : MonoBehaviour
     public Transform wolfPrefab;
 
     public Camera gameCamera;
+    public ShakeBehavior cameraShake;
 
     public GameObject tilemapObstacles;
     public GameObject bus;
@@ -56,10 +64,10 @@ public class MyGameManager : MonoBehaviour
     private float levelTimeStart;
 
     public List<SpawnInfo> spawnList;
+    public List<EnclosureInfo> enclosureCapacityList;
     public List<Animal> animalsInEnclosure;
     public List<Enclosure> enclosureList;
 
-    // TODO: Ajouter les animaux morts à spawnList avec t+5s
     private void OnStartComputeObjective()
     {
         objectiveAnimalInEnclosure = 0;
@@ -166,6 +174,18 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+    public void UpdateEnclosureCapacity()
+    {
+        float currentTime = Time.time - levelTimeStart;
+        List<EnclosureInfo> toModify = enclosureCapacityList.FindAll(x => x.time - currentTime < 0);
+
+        foreach (EnclosureInfo enclosureInfo in toModify)
+        {
+            Enclosure enc = enclosureInfo.enclosure;
+            enc.totalSpace = enclosureInfo.maxCapacity;
+        }
+    }
+
     public float ComputeProgressionPercent()
     {
         
@@ -232,6 +252,7 @@ public class MyGameManager : MonoBehaviour
     void Update()
     {
         UpdateSpawnAnimals();
+        UpdateEnclosureCapacity();
         progression = ComputeProgressionPercent();
         updateProgressBar();
         if ((1f - progression) < 1e-4 || victoryTest){
@@ -239,23 +260,48 @@ public class MyGameManager : MonoBehaviour
         }
 
         //Limit text
+        bool launchShake = false;
         int current, max;
         current = enclosureList[0].currentUsedSpace;
         max = enclosureList[0].totalSpace;
         bottomLimit.text = current.ToString() + "/" + max.ToString();
-        if (current == max) bottomLimit.color = Color.red;
-        else bottomLimit.color = Color.gray;
+        if (current > max)
+        {
+            bottomLimit.color = Color.red;
+            launchShake = true;
+        }
+        else
+        {
+            bottomLimit.color = Color.gray;
+        }
 
         current = enclosureList[1].currentUsedSpace;
         max = enclosureList[1].totalSpace;
         leftLimit.text = current.ToString() + "/" + max.ToString();
-        if (current == max) leftLimit.color = Color.red;
-        else leftLimit.color = Color.gray;
+        if (current > max)
+        {
+            leftLimit.color = Color.red;
+            launchShake = true;
+        }
+        else
+        {
+            leftLimit.color = Color.gray;
+        }
 
         current = enclosureList[2].currentUsedSpace;
         max = enclosureList[2].totalSpace;
         rightLimit.text = current.ToString() + "/" + max.ToString();
-        if (current == max) rightLimit.color = Color.red;
-        else rightLimit.color = Color.gray;
+        if (current > max)
+        {
+            rightLimit.color = Color.red;
+            launchShake = true;
+        }
+        else
+        {
+            rightLimit.color = Color.gray;
+        }
+
+        if (launchShake) cameraShake.TriggerShake();
+        else cameraShake.StopShake();
     }
 }

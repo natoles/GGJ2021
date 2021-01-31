@@ -29,6 +29,7 @@ public class Animal : MonoBehaviour
     public int enclosureSlotUsed = 1; // 2 for Pigs
     public MovementState currentMovementState = MovementState.Standard;
     Animal animalTarget; //Target animal for the chase
+    Animal animalChasing; //Animal currently chasing us
     protected string type;
     public Transform fightPrefab;
 
@@ -38,6 +39,7 @@ public class Animal : MonoBehaviour
     protected MovementProperties rageMovement;
     protected MovementProperties chaseMovement;
     protected MovementProperties runMovement;
+    protected MovementProperties followMovement;
     protected Vector3 lastPosOnClicDown;
 
 
@@ -52,8 +54,10 @@ public class Animal : MonoBehaviour
     {
         Standard,
         Rage,
-        Chase,
+        ChaseFight,
+        ChaseFlee,
         Run,
+        Follow,
     }
 
     protected virtual void Start()
@@ -168,18 +172,47 @@ public class Animal : MonoBehaviour
         currentMovementState = MovementState.Run;
     }
 
-    public void Chase(Animal animal)
+    public void ChaseFight(Animal animal)
     {
         if (currentEnclosure == null) return;
 
-        if (currentMovementState != MovementState.Chase)
+        if (currentMovementState != MovementState.ChaseFlee)
             reachedEndOfPath = true; //End current path
 
         animalTarget = animal;
-        currentMovementState = MovementState.Chase;
+        animalTarget.isChasedBy(gameObject.GetComponent<Animal>());
+        currentMovementState = MovementState.ChaseFight;
+    }
+
+    public void ChaseFlee(Animal animal)
+    {
+        if (currentEnclosure == null) return;
+
+        if (currentMovementState != MovementState.ChaseFight)
+            reachedEndOfPath = true; //End current path
+
+        animalTarget = animal;
+        animalTarget.isChasedBy(gameObject.GetComponent<Animal>());
+        currentMovementState = MovementState.ChaseFlee;
+    }
+
+    public void Follow(Animal animal)
+    {
+        if (currentEnclosure == null) return;
+
+        if (currentMovementState != MovementState.Follow)
+            reachedEndOfPath = true; //End current path
+
+        animalTarget = animal;
+        currentMovementState = MovementState.Follow;
     }
 
     #endregion
+
+    public void isChasedBy(Animal animal)
+    {
+        animalChasing = animal;
+    }
 
     #region Action functions
 
@@ -239,7 +272,7 @@ public class Animal : MonoBehaviour
     {
         while (true)
         {
-            if (currentEnclosure != null && (reachedEndOfPath || currentMovementState == MovementState.Chase))
+            if (currentEnclosure != null && (reachedEndOfPath || currentMovementState == MovementState.ChaseFight || currentMovementState == MovementState.ChaseFlee))
             {
                 switch (currentMovementState)
                 {
@@ -252,8 +285,14 @@ public class Animal : MonoBehaviour
                     case MovementState.Run:
                         ComputeMovement(currentEnclosure.RandomPoint(), runMovement);
                         break;
-                    case MovementState.Chase:
+                    case MovementState.ChaseFight:
                         ComputeMovement(animalTarget.transform.position, chaseMovement);
+                        break;
+                    case MovementState.ChaseFlee:
+                        ComputeMovement(animalTarget.transform.position, chaseMovement);
+                        break;
+                    case MovementState.Follow:
+                        ComputeMovement(animalTarget.transform.position, followMovement);
                         break;
                     default:
                         break;
@@ -337,7 +376,8 @@ public class Animal : MonoBehaviour
 
         if (currentMovementState == MovementState.Rage
              || currentMovementState == MovementState.Run
-                || currentMovementState == MovementState.Chase)
+                || currentMovementState == MovementState.ChaseFight
+                    || currentMovementState == MovementState.ChaseFlee)
         {
             if (!audioSource.isPlaying) audioSource.Play();
         }
@@ -352,7 +392,7 @@ public class Animal : MonoBehaviour
 
         //----------------------- Fight -------------------------//
 
-        if (animalTarget != null && !isFighting && currentMovementState == MovementState.Chase)
+        if (animalTarget != null && !isFighting && currentMovementState == MovementState.ChaseFight)
         {
             if (Vector2.Distance(new Vector2(animalTarget.transform.position.x, animalTarget.transform.position.y)
                                     , new Vector2(transform.position.x, transform.position.y)) < 5f)

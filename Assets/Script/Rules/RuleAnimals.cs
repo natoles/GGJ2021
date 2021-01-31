@@ -6,6 +6,7 @@ public class RuleAnimal : Rule
 {
     // PUBLIC
     public Animal animal;
+    protected List<Animal> neighbors;
 
     // PRIVATE
 
@@ -20,14 +21,19 @@ public class RuleAnimal : Rule
         return animal.currentEnclosure;
     }
 
-    // TODO: remove current animal from the list :)
     public List<Animal> GetNeighborAnimals()
     {
-        if (!animal.IsInEnclosure())
+        neighbors.Clear();
+        if (!animal.IsInEnclosure()) return neighbors;
+
+        // Get enclosure animals and remove the current one
+        List<Animal> enclosureAnimals = animal.currentEnclosure.GetAnimals();
+        foreach (Animal animalEnclosure in enclosureAnimals)
         {
-            return new List<Animal>();
+            if (animalEnclosure != animal) neighbors.Add(animalEnclosure);
         }
-        return animal.currentEnclosure.GetAnimals();
+
+        return neighbors;
     }
 
     // ==================== SEARCH TOOLS INTO ENCLOSURE
@@ -40,6 +46,13 @@ public class RuleAnimal : Rule
         if (tmp.Count <= 0) return null; // NO NEIGHBHOR OF THAT TYPE
         
         return tmp[(int) Random.Range(0, tmp.Count-0.1f)];
+    }
+
+    public int CountNeighborTypeOf(System.Type type)
+    {
+        List<Animal> neighbors = GetNeighborAnimals();
+        List<Animal> tmp = neighbors.FindAll(x => x.GetType() == type);
+        return tmp.Count;
     }
 
     // Checks if an animal of the given type exists in the same enclosure
