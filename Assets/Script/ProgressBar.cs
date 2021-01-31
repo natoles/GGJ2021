@@ -22,10 +22,12 @@ public class ProgressBar : MonoBehaviour
     // Use this for initialization
     void Start () {
         CurrentValue = 0f;
+        if (slider == null)
+            slider = gameObject.GetComponent<Slider>();
     }
 
     // Update is called once per frame
     void Update () {
-        slider = gameObject.GetComponent<Slider>();
+        
     }
 }
