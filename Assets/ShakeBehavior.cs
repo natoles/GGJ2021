@@ -8,7 +8,7 @@ public class ShakeBehavior : MonoBehaviour
     private Transform objectTransform;
 
     // Desired duration of the shake effect
-    private float shakeDuration = 4f;
+    private float shakeDuration = 0f;
 
     // A measure of magnitude for the shake. Tweak based on your preference
     private float shakeMagnitude = 10f;
@@ -51,5 +51,10 @@ public class ShakeBehavior : MonoBehaviour
     public void TriggerShake()
     {
         shakeDuration = 2.0f;
+    }
+
+    public void StopShake()
+    {
+        shakeDuration = 0;
     }
 }
