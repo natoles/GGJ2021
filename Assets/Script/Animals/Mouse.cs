@@ -8,6 +8,8 @@ public class Mouse : Animal
     protected override void Start()
     {
         base.Start();
+
+        type = "Mouse";
     }
 
     // Update is called once per frame

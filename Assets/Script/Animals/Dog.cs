@@ -8,6 +8,8 @@ public class Dog : Animal
     protected override void Start()
     {
         base.Start();
+
+        type = "Dog";
     }
 
     // Update is called once per frame

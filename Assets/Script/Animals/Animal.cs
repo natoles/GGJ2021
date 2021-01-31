@@ -15,9 +15,13 @@ public class Animal : MonoBehaviour
     Vector2 movement;
     //public bool inEnclosure = false;
     public Enclosure currentEnclosure;
+    public MyGameManager gameManager;
     public int enclosureSlotUsed = 1; // 2 for Pigs
     public MovementState currentMovementState = MovementState.Standard;
     Animal animalTarget; //Target animal for the chase
+    protected string type;
+    public Transform fightPrefab;
+
 
     [System.Serializable]
     public class MovementProperties
@@ -64,6 +68,7 @@ public class Animal : MonoBehaviour
         baseScale = transform.localScale;
 
         currentEnclosure = GameObject.Find("Enclosures/ExteriorEnclosure").GetComponent<Enclosure>();
+        gameManager = GameObject.Find("MyGameManagerDesu").GetComponent<MyGameManager>();
 
         standardMovement = new MovementProperties();
         standardMovement.moveSpeed = 10000f;
@@ -168,6 +173,30 @@ public class Animal : MonoBehaviour
 
         animalTarget = animal;
         currentMovementState = MovementState.Chase;
+    }
+
+    #endregion
+
+    #region Action functions
+
+    public void Fight(Animal victim)
+    {
+        Destroy(victim.gameObject);
+
+        Instantiate(fightPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+    }
+
+    //Kill this instance and respawns an other
+    public void Kill()
+    {
+        SpawnInfo spawnInfo = new SpawnInfo();
+        spawnInfo.type = type;
+        spawnInfo.quantity = 1;
+        spawnInfo.time = 1;
+
+        gameManager.SpawnAnimal(spawnInfo);
+
+        Destroy(gameObject);
     }
 
     #endregion
@@ -285,6 +314,15 @@ public class Animal : MonoBehaviour
             audioSource.Stop();
         }
 
+
+        if (animalTarget != null)
+        {
+            if (Vector2.Distance(new Vector2(animalTarget.transform.position.x, animalTarget.transform.position.y)
+                                    , new Vector2(transform.position.x, transform.position.y)) < 5f)
+            {
+                Fight(animalTarget);
+            }
+        }
         /*
         transform.position = new Vector3 (transform.position.x, transform.position.y, Mathf.Abs(transform.position.y));
         rb.position = new Vector3(rb.position.x, rb.position.y, 0);
