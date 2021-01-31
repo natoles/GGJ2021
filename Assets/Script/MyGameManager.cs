@@ -61,6 +61,7 @@ public class MyGameManager : MonoBehaviour
     public ProgressBar progressBar;
 
     bool oneVictory = true;
+    public bool checkIfCalm = true;
 
     // PRIVATE
     private float levelTimeStart;
@@ -221,7 +222,10 @@ public class MyGameManager : MonoBehaviour
         if ((objectiveAnimalInEnclosure + nbRulesInGame) == 0)
             return 0;        
         
-        return ((float) (2*animalsInEnclosure - calmAnimals + nbRulesInGame - nbRulesFailed))
+        if (checkIfCalm)
+            return ((float) (2*animalsInEnclosure - calmAnimals + nbRulesInGame - nbRulesFailed))
+                / ((float) (objectiveAnimalInEnclosure + nbRulesInGame));
+        return ((float) (animalsInEnclosure + nbRulesInGame - nbRulesFailed))
                 / ((float) (objectiveAnimalInEnclosure + nbRulesInGame));
     }
 
