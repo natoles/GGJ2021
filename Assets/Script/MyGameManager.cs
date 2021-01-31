@@ -129,7 +129,7 @@ public class MyGameManager : MonoBehaviour
         float currentTime = Time.time - levelTimeStart;
         List<SpawnInfo> toSpawn = spawnList.FindAll(x => x.time - currentTime < 0);
 
-        foreach (SpawnInfo spawnInfo in spawnList)
+        foreach (SpawnInfo spawnInfo in toSpawn)
         {
             SpawnAnimal(spawnInfo);
             spawnList.Remove(spawnInfo);
