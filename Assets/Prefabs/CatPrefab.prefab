@@ -78,11 +78,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6512648318908670932}
-  inEnclosure: 0
   currentEnclosure: {fileID: 0}
   enclosureSlotUsed: 1
   currentMovementState: 0
-  nextWaypointDistance: 3
 --- !u!50 &6512648318165197915
 Rigidbody2D:
   serializedVersion: 4

@@ -29,6 +29,10 @@ public class MyGameManager : MonoBehaviour
 
     public Camera gameCamera;
 
+    public Transform p1;
+    public Transform p2;
+    public Transform p3;
+    public Transform p4;
 
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
@@ -89,21 +93,28 @@ public class MyGameManager : MonoBehaviour
             //Screen.width, Screen.height;
             //Camera
             //TODO: automate this based on camera view
-            int xmin = -300;
-            int xmax = 300;
-            int ymin = -300;
-            int ymax = 300;
 
-            // Selecting random point for spawn
-            bool onXAxis = Random.value > 0.5;
-            int x,y;
-            if (onXAxis)
+            float r = Random.value;
+            float x, y;
+            if (r < 0.25)
+            {  
+                x = Random.Range(p1.transform.position.x, p2.transform.position.x);
+                y = p1.transform.position.y;
+            } 
+            else if (r < 0.5)
             {
-                x = Random.Range(xmin, xmax);
-                y = Random.value > 0.5 ?  ymin - 5: ymax + 5;
-            } else {
-                x = Random.value > 0.5 ?  xmin - 5: xmax + 5;
-                y = Random.Range(ymin, ymax);
+                x = Random.Range(p3.transform.position.x, p4.transform.position.x);
+                y = p3.transform.position.y;
+            }
+            else if (r < 0.75)
+            {
+                x = p1.transform.position.x;
+                y = Random.Range(p1.transform.position.y, p4.transform.position.y);
+            }
+            else
+            {
+                x = p2.transform.position.x;
+                y = Random.Range(p2.transform.position.y, p3.transform.position.y);
             }
 
             // Spawning Animal

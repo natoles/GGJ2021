@@ -63,6 +63,8 @@ public class Animal : MonoBehaviour
         StartCoroutine(movementsHandlingCoroutine);
         baseScale = transform.localScale;
 
+        currentEnclosure = GameObject.Find("Enclosures/ExteriorEnclosure").GetComponent<Enclosure>();
+
         standardMovement = new MovementProperties();
         standardMovement.moveSpeed = 10000f;
         standardMovement.topSpeed = 10f;
