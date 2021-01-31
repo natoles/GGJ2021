@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-using Pathfinding;
 
 [System.Serializable]
 public class SpawnInfo {
@@ -35,21 +34,15 @@ public class MyGameManager : MonoBehaviour
     public Transform p3;
     public Transform p4;
 
-    public GameObject bus;
-    public GameObject tilemapObstacles;
-
-    public List<Enclosure> enclosures;
-
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
-
-    public bool victory = false;
 
     // PRIVATE
     private float levelTimeStart;
 
     public List<SpawnInfo> spawnList;
-    public List<Animal> animalsInEnclosure;
+    public List<Animal> aliveAnimalList;
+    public List<Enclosure> enclosureList;
 
     // TODO: Ajouter les animaux morts à spawnList avec t+5s
     private void OnStartComputeObjective()
@@ -152,38 +145,32 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
-    public void Victory()
+    public float ComputeProgressionPercent()
     {
-        UpdateAnimalsReference();
-        tilemapObstacles.GetComponent<Collider2D>().enabled = false;
-        Debug.Log(AstarPath.active);
-        AstarPath.active.Scan();
-        foreach(Animal animal in animalsInEnclosure)
+        
+        int animalsInEnclosure = 0;
+        foreach(Enclosure enclosure in enclosureList)
         {
-            animal.StopCoroutine(animal.movementsHandlingCoroutine);
-
-            MovementProperties mProperties = new MovementProperties();
-
-            mProperties.moveSpeed = 50000f;
-            mProperties.topSpeed = 50f;
-            mProperties.minMoveInterval = 0f;
-            mProperties.maxMoveInterval = 0f;
-            mProperties.linearDrag = 6f;
-
-            animal.ComputeMovement(GameObject.Find("BusStopPos").transform.position, mProperties);
-            animal.MoveTo(GameObject.Find("BusStopPos").transform.position);
+            animalsInEnclosure += enclosure.CountAnimals();
         }
-
+        return (animalsInEnclosure + nbRulesInGame - nbRulesFailed) / (objectiveAnimalInEnclosure + nbRulesInGame);
     }
 
-
-    // TODO: progress bar
     public void updateProgressBar()
     {
-
-        // TODO:
-        //setPrgrogressBarPercentage(float percent);
+        
+        progressBar.CurrentValue = progression;
     }
+
+
+    // ==================== VICTORY
+    public void Victory()
+    {
+        
+    }
+
+
+    // ==================== START AND UPDATES
 
     // Start is called before the first frame update
     void Start()
@@ -196,11 +183,9 @@ public class MyGameManager : MonoBehaviour
     void Update()
     {
         UpdateSpawnAnimals();
-        
-
-        if (victory == true)
-        {
-            victory = false;
+        progression = ComputeProgressionPercent();
+        updateProgressBar();
+        if ((1f - progression) < 1e-4){
             Victory();
         }
     }
