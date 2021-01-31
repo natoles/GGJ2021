@@ -84,6 +84,7 @@ MonoBehaviour:
   enclosureSlotUsed: 1
   currentMovementState: 0
   fightPrefab: {fileID: 2798565287811166088, guid: de5a57e9a23815a4882233e5e185f6d1, type: 3}
+  reachedEndOfPath: 1
 --- !u!50 &6512648318165197915
 Rigidbody2D:
   serializedVersion: 4
@@ -141,9 +142,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 466305ca63bd80c44b91c86e71b04538, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5b0366bdb3e86e74687e40707ba0f92e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 248e190ced11aba4d93f5605b5dbb7f5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.853
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -317,7 +318,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2033253345
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 10
   m_Sprite: {fileID: -7134683610744449994, guid: b5724b21eb3b85149b2227d06e8b8058, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -19,6 +19,12 @@ public class EnclosureInfo {
     public float time;
 };
 
+[System.Serializable]
+public class EnclosureExteriorLimits {
+    public int maxCapacity;
+    public float time;
+};
+
 public class MyGameManager : MonoBehaviour
 {
     // TODO:
@@ -51,6 +57,7 @@ public class MyGameManager : MonoBehaviour
     public Transform p2;
     public Transform p3;
     public Transform p4;
+    public Enclosure exteriorEnclusure;
 
     public Text rightLimit, leftLimit, bottomLimit;
 
@@ -70,6 +77,7 @@ public class MyGameManager : MonoBehaviour
     public List<EnclosureInfo> enclosureCapacityList;
     public List<Animal> animalsInEnclosure;
     public List<Enclosure> enclosureList;
+    public List<EnclosureExteriorLimits> enclosureExteriorLimits;
 
     private void OnStartComputeObjective()
     {
@@ -189,6 +197,17 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+    public void UpdateEnclosureExteriorLimit()
+    {
+        float currentTime = Time.time - levelTimeStart;
+        List<EnclosureExteriorLimits> limits = enclosureExteriorLimits.FindAll(x => x.time - currentTime < 0);
+
+        foreach (EnclosureExteriorLimits enclosureExteriorLimits in limits)
+        {
+            exteriorEnclusure.totalSpace = enclosureExteriorLimits.maxCapacity;
+        }
+    }
+
     public float ComputeProgressionPercent()
     {
         
@@ -204,7 +223,7 @@ public class MyGameManager : MonoBehaviour
                 / ((float) (objectiveAnimalInEnclosure + nbRulesInGame));
     }
 
-    public void updateProgressBar()
+    public void UpdateProgressBar()
     {
         progressBar.CurrentValue = progression;
     }
@@ -237,6 +256,17 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+
+    // Return true if deafeat, false else
+    public bool IsDefeatConditionsFulfilled()
+    {
+
+        if (exteriorEnclusure.currentUsedSpace > exteriorEnclusure.totalSpace) return true;
+
+        return false;
+    }
+
+    
     public void Defeat()
     {
         Debug.Log("DEFEAT");
@@ -260,10 +290,14 @@ public class MyGameManager : MonoBehaviour
     {
         UpdateSpawnAnimals();
         UpdateEnclosureCapacity();
+        UpdateEnclosureExteriorLimit();
         progression = ComputeProgressionPercent();
-        updateProgressBar();
-        if ((1f - progression) < 1e-4 && oneVictory)
-        {
+        UpdateProgressBar();
+
+        if (IsDefeatConditionsFulfilled()){
+            Defeat();
+        }
+        if ((1f - progression) < 1e-4 && oneVictory){
             oneVictory = false;
             Victory();
         }
