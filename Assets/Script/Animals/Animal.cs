@@ -185,6 +185,20 @@ public class Animal : MonoBehaviour
         currentMovementState = MovementState.ChaseFight;
     }
 
+    public bool IsTargetReachable()
+    {
+        if (animalTarget != null){
+            List<Animal> neighbors = currentEnclosure.GetAnimals();
+            return neighbors.Contains(animalTarget);
+        }
+        return false;
+    }
+
+    public void UpdateTargetReachable()
+    {
+        if (!IsTargetReachable()) animalTarget = null;
+    }
+
     public void ChaseFlee(Animal animal)
     {
         if (currentEnclosure == null) return;
@@ -367,6 +381,8 @@ public class Animal : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.magnitude);
         
+        if (animalTarget != null) UpdateTargetReachable();
+
         //Drag and drop
         if (isDragging)
         {
