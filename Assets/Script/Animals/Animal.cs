@@ -38,6 +38,7 @@ public class Animal : MonoBehaviour
     protected MovementProperties rageMovement;
     protected MovementProperties chaseMovement;
     protected MovementProperties runMovement;
+    protected MovementProperties followMovement;
     protected Vector3 lastPosOnClicDown;
 
 
@@ -54,6 +55,7 @@ public class Animal : MonoBehaviour
         Rage,
         Chase,
         Run,
+        Follow,
     }
 
     protected virtual void Start()
@@ -179,6 +181,17 @@ public class Animal : MonoBehaviour
         currentMovementState = MovementState.Chase;
     }
 
+    public void Follow(Animal animal)
+    {
+        if (currentEnclosure == null) return;
+
+        if (currentMovementState != MovementState.Follow)
+            reachedEndOfPath = true; //End current path
+
+        animalTarget = animal;
+        currentMovementState = MovementState.Follow;
+    }
+
     #endregion
 
     #region Action functions
@@ -254,6 +267,9 @@ public class Animal : MonoBehaviour
                         break;
                     case MovementState.Chase:
                         ComputeMovement(animalTarget.transform.position, chaseMovement);
+                        break;
+                    case MovementState.Follow:
+                        ComputeMovement(animalTarget.transform.position, followMovement);
                         break;
                     default:
                         break;
