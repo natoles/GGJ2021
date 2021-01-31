@@ -193,7 +193,6 @@ public class MyGameManager : MonoBehaviour
         foreach(Enclosure enclosure in enclosureList)
         {
             animalsInEnclosure += enclosure.CountAnimals();
-            Debug.Log(animalsInEnclosure.ToString());
         }
 
         if ((objectiveAnimalInEnclosure + nbRulesInGame) == 0)
