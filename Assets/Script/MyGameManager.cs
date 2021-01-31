@@ -58,7 +58,7 @@ public class MyGameManager : MonoBehaviour
 
     public ProgressBar progressBar;
 
-    public bool victoryTest;
+    bool oneVictory = true;
 
     // PRIVATE
     private float levelTimeStart;
@@ -210,7 +210,6 @@ public class MyGameManager : MonoBehaviour
     // ==================== VICTORY
     public void Victory()
     {
-        victoryTest = false;
         UpdateAnimalsReference();
         tilemapObstacles.GetComponent<Collider2D>().enabled = false;
         Debug.Log(AstarPath.active);
@@ -254,7 +253,9 @@ public class MyGameManager : MonoBehaviour
         UpdateEnclosureCapacity();
         progression = ComputeProgressionPercent();
         updateProgressBar();
-        if ((1f - progression) < 1e-4 || victoryTest){
+        if ((1f - progression) < 1e-4 && oneVictory)
+        {
+            oneVictory = false;
             Victory();
         }
 
