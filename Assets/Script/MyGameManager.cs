@@ -11,6 +11,13 @@ public class SpawnInfo {
     public float time;
 };
 
+[System.Serializable]
+public class EnclosureInfo {
+    public Enclosure enclosure;
+    public int maxCapacity;
+    public float time;
+};
+
 public class MyGameManager : MonoBehaviour
 {
     // TODO:
@@ -57,10 +64,10 @@ public class MyGameManager : MonoBehaviour
     private float levelTimeStart;
 
     public List<SpawnInfo> spawnList;
+    public List<EnclosureInfo> enclosureCapacityList;
     public List<Animal> animalsInEnclosure;
     public List<Enclosure> enclosureList;
 
-    // TODO: Ajouter les animaux morts à spawnList avec t+5s
     private void OnStartComputeObjective()
     {
         objectiveAnimalInEnclosure = 0;
@@ -167,6 +174,18 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+    public void UpdateEnclosureCapacity()
+    {
+        float currentTime = Time.time - levelTimeStart;
+        List<EnclosureInfo> toModify = enclosureCapacityList.FindAll(x => x.time - currentTime < 0);
+
+        foreach (EnclosureInfo enclosureInfo in toModify)
+        {
+            Enclosure enc = enclosureInfo.enclosure;
+            enc.totalSpace = enclosureInfo.maxCapacity;
+        }
+    }
+
     public float ComputeProgressionPercent()
     {
         
@@ -233,6 +252,7 @@ public class MyGameManager : MonoBehaviour
     void Update()
     {
         UpdateSpawnAnimals();
+        UpdateEnclosureCapacity();
         progression = ComputeProgressionPercent();
         updateProgressBar();
         if ((1f - progression) < 1e-4 || victoryTest){
