@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class SpawnInfo {
@@ -36,6 +37,8 @@ public class MyGameManager : MonoBehaviour
     public Transform p2;
     public Transform p3;
     public Transform p4;
+
+    public Text rightLimit, leftLimit, bottomLimit;
 
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
@@ -212,6 +215,8 @@ public class MyGameManager : MonoBehaviour
     {
         levelTimeStart = Time.time;
         OnStartComputeObjective();
+
+        rightLimit.text = "cool ça marche";
     }
 
     // Update is called once per frame
@@ -223,5 +228,13 @@ public class MyGameManager : MonoBehaviour
         if ((1f - progression) < 1e-4 || victoryTest){
             Victory();
         }
+
+        bottomLimit.text = (enclosureList[0].currentUsedSpace).ToString() + "/" + (enclosureList[0].totalSpace).ToString();
+        leftLimit.text = (enclosureList[1].currentUsedSpace).ToString() + "/" + (enclosureList[1].totalSpace).ToString();
+        rightLimit.text = (enclosureList[2].currentUsedSpace).ToString() + "/" + (enclosureList[2].totalSpace).ToString();
+
+
+
+
     }
 }

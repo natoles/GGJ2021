@@ -278,6 +278,7 @@ public class Animal : MonoBehaviour
         audioSource.Play();
         transform.gameObject.tag = "Drag";
         path = null;
+        Cursor.visible = false;
     }
 
     //Stop drag
