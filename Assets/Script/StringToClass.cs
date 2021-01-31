@@ -20,6 +20,12 @@ public static class StringToClass
                 return typeof(Mouse);
             case "Dog":
                 return typeof(Dog);
+            case "Pig":
+                return typeof(Pig);
+            case "Sheep":
+                return typeof(Sheep);
+            case "Wolf":
+                return typeof(Wolf);
             default:
                 Debug.LogError("WRONG TYPE TO CONVERT: "+type);
                 break;
