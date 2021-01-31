@@ -4071,6 +4071,7 @@ RectTransform:
   - {fileID: 753481295}
   - {fileID: 873806019}
   - {fileID: 645388892}
+  - {fileID: 1169614650}
   m_Father: {fileID: 1463405296}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4408,6 +4409,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &617349326 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+  m_PrefabInstance: {fileID: 1110044023}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617349316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021b97282afadf2409580ed1f92bf144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &645388891
 GameObject:
   m_ObjectHideFlags: 0
@@ -5617,6 +5629,85 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1784129617587551674, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+--- !u!1 &1169614649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1169614650}
+  - component: {fileID: 1169614651}
+  - component: {fileID: 1169614652}
+  m_Layer: 5
+  m_Name: ExteriorLimit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1169614650
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169614649}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 587190939}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4.2413006, y: 431}
+  m_SizeDelta: {x: 197.1514, y: 62.0779}
+  m_Pivot: {x: 0.5784104, y: 0.5}
+--- !u!222 &1169614651
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169614649}
+  m_CullTransparentMesh: 1
+--- !u!114 &1169614652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169614649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.05286588, b: 0.023584902, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 313cfb40c1fcf5544bf72679517e7a93, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: RightLimit
 --- !u!1 &1175544562
 GameObject:
   m_ObjectHideFlags: 0
@@ -6241,50 +6332,94 @@ MonoBehaviour:
   cowPrefab: {fileID: 6512648318165197918, guid: 948ba028a20dd2e458ffb5bccf67eef3, type: 3}
   dogPrefab: {fileID: 6512648318165197918, guid: d7e2183934a1664498fa8832ccb3fc35, type: 3}
   mousePrefab: {fileID: 6512648318165197918, guid: 1c9f3f35ce238fe4da89114062e51cf0, type: 3}
-  pigPrefab: {fileID: 0}
-  sheepPrefab: {fileID: 0}
-  wolfPrefab: {fileID: 0}
+  pigPrefab: {fileID: 6512648318165197918, guid: a81e5a9f6ab91c749acf0d55d97317f1, type: 3}
+  sheepPrefab: {fileID: 6512648318165197918, guid: 6f48b307dce95394cbeb61546cd5ec18, type: 3}
+  wolfPrefab: {fileID: 6512648318165197918, guid: d12645e4781cc08489df1c0e00727e23, type: 3}
   gameCamera: {fileID: 1715453198}
   cameraShake: {fileID: 363766010}
   tilemapObstacles: {fileID: 48841157}
   bus: {fileID: 1458729524}
+  LevelToLoad: MainMenu
   p1: {fileID: 1211613337}
   p2: {fileID: 969790016}
   p3: {fileID: 2126011083}
   p4: {fileID: 69793467}
-  exteriorEnclusure: {fileID: 0}
+  exteriorEnclusure: {fileID: 617349326}
   rightLimit: {fileID: 753481297}
   leftLimit: {fileID: 873806021}
   bottomLimit: {fileID: 645388894}
+  exteriorLimit: {fileID: 1169614652}
   objectiveAnimalInEnclosure: 0
   currentAnimalInEnclosure: 0
   nbRulesInGame: 0
   nbRulesFailed: 0
   progression: 0
   progressBar: {fileID: 1841698485}
+  checkIfCalm: 1
   spawnList:
-  - type: Cat
-    quantity: 2
-    time: 1
+  - type: Sheep
+    quantity: 3
+    time: 5
   - type: Dog
-    quantity: 2
+    quantity: 1
+    time: 1
+  - type: Wolf
+    quantity: 1
     time: 3
+  - type: Sheep
+    quantity: 1
+    time: 16
+  - type: Wolf
+    quantity: 1
+    time: 19
+  - type: Cat
+    quantity: 1
+    time: 23
+  - type: Mouse
+    quantity: 1
+    time: 26
+  - type: Wolf
+    quantity: 1
+    time: 36
+  - type: Cat
+    quantity: 1
+    time: 39
   - type: Mouse
     quantity: 2
-    time: 5
-  - type: Bull
-    quantity: 2
-    time: 7
-  - type: Cow
-    quantity: 2
-    time: 9
-  enclosureCapacityList: []
+    time: 42
+  - type: Cat
+    quantity: 1
+    time: 52
+  - type: Mouse
+    quantity: 1
+    time: 55
+  enclosureCapacityList:
+  - enclosure: {fileID: 1704029293}
+    maxCapacity: 3
+    time: 0
+  - enclosure: {fileID: 1704029293}
+    maxCapacity: 6
+    time: 60
+  - enclosure: {fileID: 1292504828}
+    maxCapacity: 3
+    time: 0
+  - enclosure: {fileID: 1292504828}
+    maxCapacity: 6
+    time: 60
+  - enclosure: {fileID: 585532435}
+    maxCapacity: 3
+    time: 0
+  - enclosure: {fileID: 585532435}
+    maxCapacity: 6
+    time: 60
   animalsInEnclosure: []
   enclosureList:
   - {fileID: 1704029293}
   - {fileID: 1292504828}
   - {fileID: 585532435}
-  enclosureExteriorLimits: []
+  enclosureExteriorLimits:
+  - maxCapacity: 8
+    time: 0
 --- !u!4 &1446341838
 Transform:
   m_ObjectHideFlags: 0
