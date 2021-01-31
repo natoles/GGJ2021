@@ -232,6 +232,7 @@ public class MyGameManager : MonoBehaviour
 
     public void UpdateProgressBar()
     {
+        if (progressBar == null) return;
         progressBar.CurrentValue = progression;
     }
 
@@ -305,6 +306,8 @@ public class MyGameManager : MonoBehaviour
             oneVictory = false;
             Victory();
         }
+
+        if (bottomLimit == null) return;
 
         //Limit text
         bool launchShake = false;
