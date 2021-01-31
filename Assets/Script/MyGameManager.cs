@@ -27,14 +27,6 @@ public class EnclosureExteriorLimits {
 
 public class MyGameManager : MonoBehaviour
 {
-    // TODO:
-    /*
-    - Level manager -> prends un tableau en entrée
-    - Référence à chacun des animaux/enclos/règles
-    - Barre de stress
-    - Condition de 
-    */
-    
     // PUBLIC
     public Transform bullPrefab;
     public Transform catPrefab;
@@ -59,7 +51,7 @@ public class MyGameManager : MonoBehaviour
     public Transform p4;
     public Enclosure exteriorEnclusure;
 
-    public Text rightLimit, leftLimit, bottomLimit;
+    public Text rightLimit, leftLimit, bottomLimit, exteriorLimit;
 
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
@@ -69,6 +61,7 @@ public class MyGameManager : MonoBehaviour
     public ProgressBar progressBar;
 
     bool oneVictory = true;
+    public bool checkIfCalm = true;
 
     // PRIVATE
     private float levelTimeStart;
@@ -167,7 +160,8 @@ public class MyGameManager : MonoBehaviour
             }
 
             // Spawning Animal
-            Instantiate(prefab, new Vector2(x, y), Quaternion.identity);
+            Instantiate(prefab, new Vector2(x, y), Quaternion.identity); 
+            exteriorEnclusure.currentUsedSpace += 1;
         }
 
         return 0;
@@ -212,13 +206,26 @@ public class MyGameManager : MonoBehaviour
     {
         
         int animalsInEnclosure = 0;
+        int calmAnimals = 0;
         foreach(Enclosure enclosure in enclosureList)
         {
             animalsInEnclosure += enclosure.CountAnimals();
+
+            // Check how many animals are calm
+            List<Animal> enclosureAnimals = enclosure.GetAnimals();
+            foreach (Animal a in enclosureAnimals)
+            {
+                if (a.IsCalm()) calmAnimals += 1;
+            }
         }
 
+        // Error division by 0
         if ((objectiveAnimalInEnclosure + nbRulesInGame) == 0)
-            return 0;
+            return 0;        
+        
+        if (checkIfCalm)
+            return ((float) (2*animalsInEnclosure - calmAnimals + nbRulesInGame - nbRulesFailed))
+                / ((float) (objectiveAnimalInEnclosure + nbRulesInGame));
         return ((float) (animalsInEnclosure + nbRulesInGame - nbRulesFailed))
                 / ((float) (objectiveAnimalInEnclosure + nbRulesInGame));
     }
@@ -269,8 +276,7 @@ public class MyGameManager : MonoBehaviour
     
     public void Defeat()
     {
-        Debug.Log("DEFEAT");
-        //SceneManager.LoadScene(LevelToLoad);
+        SceneManager.LoadScene(LevelToLoad);
     }
 
 
@@ -281,8 +287,6 @@ public class MyGameManager : MonoBehaviour
     {
         levelTimeStart = Time.time;
         OnStartComputeObjective();
-
-        rightLimit.text = "cool ça marche";
     }
 
     // Update is called once per frame
@@ -346,5 +350,9 @@ public class MyGameManager : MonoBehaviour
 
         if (launchShake) cameraShake.TriggerShake();
         else cameraShake.StopShake();
+
+        current = exteriorEnclusure.currentUsedSpace;
+        max = exteriorEnclusure.totalSpace;
+        exteriorLimit.text = "!! " + current.ToString() + "/" + max.ToString() + " !!";
     }
 }
