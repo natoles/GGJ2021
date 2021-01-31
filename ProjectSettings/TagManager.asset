@@ -53,6 +53,9 @@ TagManager:
   - name: Obstacle
     uniqueID: 514786961
     locked: 0
+  - name: OtherStuff
+    uniqueID: 2508785015
+    locked: 0
   - name: Animal
     uniqueID: 2033253345
     locked: 0
