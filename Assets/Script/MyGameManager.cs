@@ -27,14 +27,6 @@ public class EnclosureExteriorLimits {
 
 public class MyGameManager : MonoBehaviour
 {
-    // TODO:
-    /*
-    - Level manager -> prends un tableau en entrée
-    - Référence à chacun des animaux/enclos/règles
-    - Barre de stress
-    - Condition de 
-    */
-    
     // PUBLIC
     public Transform bullPrefab;
     public Transform catPrefab;
@@ -212,14 +204,24 @@ public class MyGameManager : MonoBehaviour
     {
         
         int animalsInEnclosure = 0;
+        int calmAnimals = 0;
         foreach(Enclosure enclosure in enclosureList)
         {
             animalsInEnclosure += enclosure.CountAnimals();
+
+            // Check how many animals are calm
+            List<Animal> enclosureAnimals = enclosure.GetAnimals();
+            foreach (Animal a in enclosureAnimals)
+            {
+                if (a.IsCalm()) calmAnimals += 1;
+            }
         }
 
+        // Error division by 0
         if ((objectiveAnimalInEnclosure + nbRulesInGame) == 0)
-            return 0;
-        return ((float) (animalsInEnclosure + nbRulesInGame - nbRulesFailed))
+            return 0;        
+        
+        return ((float) (2*animalsInEnclosure - calmAnimals + nbRulesInGame - nbRulesFailed))
                 / ((float) (objectiveAnimalInEnclosure + nbRulesInGame));
     }
 
