@@ -89,11 +89,7 @@ public class MyGameManager : MonoBehaviour
                 return -1;
             }
 
-            // Getting Camera dimension
-            //Screen.width, Screen.height;
-            //Camera
-            //TODO: automate this based on camera view
-
+            // Selecting spawning point
             float r = Random.value;
             float x, y;
             if (r < 0.25)
@@ -134,6 +130,15 @@ public class MyGameManager : MonoBehaviour
             SpawnAnimal(spawnInfo);
             spawnList.Remove(spawnInfo);
         }
+    }
+
+
+    // TODO: progress bar
+    public void updateProgressBar()
+    {
+
+        // TODO:
+        //setPrgrogressBarPercentage(float percent);
     }
 
     // Start is called before the first frame update
