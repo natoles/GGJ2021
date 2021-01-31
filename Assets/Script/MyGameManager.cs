@@ -234,6 +234,12 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+    public void Defeat()
+    {
+
+        
+    }
+
 
     // ==================== START AND UPDATES
 
