@@ -28,6 +28,7 @@ public class MyGameManager : MonoBehaviour
     public Transform mousePrefab;
 
     public Camera gameCamera;
+    public ProgressBar progressBar;
 
     public Transform p1;
     public Transform p2;
@@ -36,12 +37,16 @@ public class MyGameManager : MonoBehaviour
 
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
+    public int nbRulesInGame = 0;
+    public int nbRulesFailed = 0;
+    public float progression = 0;
 
     // PRIVATE
     private float levelTimeStart;
 
     public List<SpawnInfo> spawnList;
     public List<Animal> aliveAnimalList;
+    public List<Enclosure> enclosureList;
 
     // TODO: Ajouter les animaux morts à spawnList avec t+5s
     private void OnStartComputeObjective()
@@ -132,14 +137,32 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+    public float ComputeProgressionPercent()
+    {
+        
+        int animalsInEnclosure = 0;
+        foreach(Enclosure enclosure in enclosureList)
+        {
+            animalsInEnclosure += enclosure.CountAnimals();
+        }
+        return (animalsInEnclosure + nbRulesInGame - nbRulesFailed) / (objectiveAnimalInEnclosure + nbRulesInGame);
+    }
 
-    // TODO: progress bar
     public void updateProgressBar()
     {
-
-        // TODO:
-        //setPrgrogressBarPercentage(float percent);
+        
+        progressBar.CurrentValue = progression;
     }
+
+
+    // ==================== VICTORY
+    public void Victory()
+    {
+        
+    }
+
+
+    // ==================== START AND UPDATES
 
     // Start is called before the first frame update
     void Start()
@@ -152,5 +175,10 @@ public class MyGameManager : MonoBehaviour
     void Update()
     {
         UpdateSpawnAnimals();
+        progression = ComputeProgressionPercent();
+        updateProgressBar();
+        if ((1f - progression) < 1e-4){
+            Victory();
+        }
     }
 }

@@ -27,6 +27,5 @@ public class ProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update () {
         slider = gameObject.GetComponent<Slider>();
-        CurrentValue += 0.0043f;
     }
 }
