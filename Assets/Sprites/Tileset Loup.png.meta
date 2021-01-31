@@ -74,6 +74,12 @@ TextureImporter:
   - first:
       213: 1361860594042898889
     second: Tileset Loup_23
+  - first:
+      213: 1584886643209710891
+    second: Tileset Loup_24
+  - first:
+      213: 1866097655540892763
+    second: Tileset Loup_25
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -167,7 +173,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 448
+        y: 544
         width: 64
         height: 64
       alignment: 0
@@ -188,7 +194,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 448
+        y: 544
         width: 64
         height: 64
       alignment: 0
@@ -209,7 +215,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 448
+        y: 544
         width: 64
         height: 64
       alignment: 0
@@ -230,7 +236,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 480
         width: 64
         height: 64
       alignment: 0
@@ -251,7 +257,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 384
+        y: 480
         width: 64
         height: 64
       alignment: 0
@@ -272,7 +278,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 384
+        y: 480
         width: 64
         height: 64
       alignment: 0
@@ -293,7 +299,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
+        y: 416
         width: 64
         height: 64
       alignment: 0
@@ -314,7 +320,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 320
+        y: 416
         width: 64
         height: 64
       alignment: 0
@@ -335,7 +341,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 320
+        y: 416
         width: 64
         height: 64
       alignment: 0
@@ -356,7 +362,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 352
         width: 64
         height: 64
       alignment: 0
@@ -377,7 +383,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 256
+        y: 352
         width: 64
         height: 64
       alignment: 0
@@ -398,7 +404,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 256
+        y: 352
         width: 64
         height: 64
       alignment: 0
@@ -419,7 +425,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
+        y: 288
         width: 64
         height: 64
       alignment: 0
@@ -440,7 +446,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 192
+        y: 288
         width: 64
         height: 64
       alignment: 0
@@ -461,7 +467,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 192
+        y: 288
         width: 64
         height: 64
       alignment: 0
@@ -482,7 +488,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 224
         width: 64
         height: 64
       alignment: 0
@@ -503,7 +509,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 224
         width: 64
         height: 64
       alignment: 0
@@ -524,7 +530,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 224
         width: 64
         height: 64
       alignment: 0
@@ -545,7 +551,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 160
         width: 64
         height: 64
       alignment: 0
@@ -566,7 +572,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 160
         width: 64
         height: 64
       alignment: 0
@@ -587,7 +593,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
+        y: 160
         width: 64
         height: 64
       alignment: 0
@@ -608,7 +614,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 96
         width: 64
         height: 64
       alignment: 0
@@ -629,7 +635,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 96
         width: 64
         height: 64
       alignment: 0
@@ -650,7 +656,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 96
         width: 64
         height: 64
       alignment: 0
@@ -662,6 +668,48 @@ TextureImporter:
       bones: []
       spriteID: 9c9878daefc46e210800000000000000
       internalID: 1361860594042898889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Loup_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2da6c14106aef510800000000000000
+      internalID: 1584886643209710891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Loup_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5444b24ee5b5e910800000000000000
+      internalID: 1866097655540892763
       vertices: []
       indices: 
       edges: []
