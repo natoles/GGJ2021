@@ -29,6 +29,7 @@ public class Animal : MonoBehaviour
     public int enclosureSlotUsed = 1; // 2 for Pigs
     public MovementState currentMovementState = MovementState.Standard;
     Animal animalTarget; //Target animal for the chase
+    Animal animalChasing; //Animal currently chasing us
     protected string type;
     public Transform fightPrefab;
 
@@ -178,6 +179,7 @@ public class Animal : MonoBehaviour
             reachedEndOfPath = true; //End current path
 
         animalTarget = animal;
+        animalTarget.isChasedBy(gameObject.GetComponent<Animal>());
         currentMovementState = MovementState.Chase;
     }
 
@@ -193,6 +195,11 @@ public class Animal : MonoBehaviour
     }
 
     #endregion
+
+    public void isChasedBy(Animal animal)
+    {
+        animalChasing = animal;
+    }
 
     #region Action functions
 
