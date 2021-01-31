@@ -27,6 +27,9 @@ public class MyGameManager : MonoBehaviour
     public Transform cowPrefab;
     public Transform dogPrefab;
     public Transform mousePrefab;
+    public Transform pigPrefab;
+    public Transform sheepPrefab;
+    public Transform wolfPrefab;
 
     public Camera gameCamera;
 
@@ -97,6 +100,12 @@ public class MyGameManager : MonoBehaviour
                 return dogPrefab;
             case "Mouse":
                 return mousePrefab;
+            case "Pig":
+                return pigPrefab;
+            case "Sheep":
+                return sheepPrefab;
+            case "Wolf":
+                return wolfPrefab;
         }
         
         return null;
