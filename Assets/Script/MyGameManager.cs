@@ -240,23 +240,48 @@ public class MyGameManager : MonoBehaviour
         }
 
         //Limit text
+        bool launchShake = false;
         int current, max;
         current = enclosureList[0].currentUsedSpace;
         max = enclosureList[0].totalSpace;
         bottomLimit.text = current.ToString() + "/" + max.ToString();
-        if (current == max) bottomLimit.color = Color.red;
-        else bottomLimit.color = Color.gray;
+        if (current > max)
+        {
+            bottomLimit.color = Color.red;
+            launchShake = true;
+        }
+        else
+        {
+            bottomLimit.color = Color.gray;
+        }
 
         current = enclosureList[1].currentUsedSpace;
         max = enclosureList[1].totalSpace;
         leftLimit.text = current.ToString() + "/" + max.ToString();
-        if (current == max) leftLimit.color = Color.red;
-        else leftLimit.color = Color.gray;
+        if (current > max)
+        {
+            leftLimit.color = Color.red;
+            launchShake = true;
+        }
+        else
+        {
+            leftLimit.color = Color.gray;
+        }
 
         current = enclosureList[2].currentUsedSpace;
         max = enclosureList[2].totalSpace;
         rightLimit.text = current.ToString() + "/" + max.ToString();
-        if (current == max) rightLimit.color = Color.red;
-        else rightLimit.color = Color.gray;
+        if (current > max)
+        {
+            rightLimit.color = Color.red;
+            launchShake = true;
+        }
+        else
+        {
+            rightLimit.color = Color.gray;
+        }
+
+        if (launchShake) cameraShake.TriggerShake();
+        else cameraShake.StopShake();
     }
 }
