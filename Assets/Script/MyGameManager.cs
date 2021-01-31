@@ -160,7 +160,8 @@ public class MyGameManager : MonoBehaviour
             }
 
             // Spawning Animal
-            Instantiate(prefab, new Vector2(x, y), Quaternion.identity);
+            Instantiate(prefab, new Vector2(x, y), Quaternion.identity); 
+            exteriorEnclusure.currentUsedSpace += 1;
         }
 
         return 0;
@@ -275,8 +276,7 @@ public class MyGameManager : MonoBehaviour
     
     public void Defeat()
     {
-        Debug.Log("DEFEAT");
-        //SceneManager.LoadScene(LevelToLoad);
+        SceneManager.LoadScene(LevelToLoad);
     }
 
 
@@ -287,8 +287,6 @@ public class MyGameManager : MonoBehaviour
     {
         levelTimeStart = Time.time;
         OnStartComputeObjective();
-
-        rightLimit.text = "cool ça marche";
     }
 
     // Update is called once per frame
@@ -355,6 +353,6 @@ public class MyGameManager : MonoBehaviour
 
         current = exteriorEnclusure.currentUsedSpace;
         max = exteriorEnclusure.totalSpace;
-        exteriorLimit.text = current.ToString() + "/" + max.ToString();
+        exteriorLimit.text = "!! " + current.ToString() + "/" + max.ToString() + " !!";
     }
 }
