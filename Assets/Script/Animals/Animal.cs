@@ -231,7 +231,7 @@ public class Animal : MonoBehaviour
     {
         SetVisibility(false);
         victim.SetVisibility(false);
-        yield return new WaitForSeconds(3f); //FightScript.lifespan
+        yield return new WaitForSeconds(1f); //FightScript.lifespan
         SetVisibility(true);
         victim.SetVisibility(true);
         victim.Kill();

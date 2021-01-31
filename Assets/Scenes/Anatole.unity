@@ -334,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66450172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 600, y: -430, z: 0}
+  m_LocalPosition: {x: 600, y: -372, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 988951384}
@@ -2815,7 +2815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242769136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -450, y: -430, z: 0}
+  m_LocalPosition: {x: -450, y: -372, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 988951384}
@@ -3429,6 +3429,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5282993789039246149, guid: 0845d1fc820088244bb3610144061032, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1233536031
+      objectReference: {fileID: 0}
     - target: {fileID: 5633627937032819089, guid: 0845d1fc820088244bb3610144061032, type: 3}
       propertyPath: slider
       value: 
@@ -3442,12 +3446,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7816267785476123044, guid: 0845d1fc820088244bb3610144061032, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -6.9244
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816267785476123044, guid: 0845d1fc820088244bb3610144061032, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -40.396
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816267785476123044, guid: 0845d1fc820088244bb3610144061032, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816267785476123044, guid: 0845d1fc820088244bb3610144061032, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 19
+      value: -19
       objectReference: {fileID: 0}
     - target: {fileID: 7816267785476123044, guid: 0845d1fc820088244bb3610144061032, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 554
+      value: -86
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0845d1fc820088244bb3610144061032, type: 3}
@@ -3563,7 +3579,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0.0062602162, y: -0.44932234}
+  m_Offset: {x: 0.0062602162, y: -0.4005683}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3574,7 +3590,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0104336, y: 0.16164204}
+  m_Size: {x: 1.0104336, y: 0.064134}
   m_EdgeRadius: 0
 --- !u!61 &1451945395
 BoxCollider2D:
@@ -3679,13 +3695,13 @@ CompositeCollider2D:
   - m_Collider: {fileID: 1451945394}
     m_ColliderPaths:
     - - X: 4984043739
-        Y: -2860940032
+        Y: -2334733824
       - X: 4984043739
         Y: -1988632064
       - X: -4862039552
         Y: -1988632357
       - X: -4862039259
-        Y: -2860940032
+        Y: -2334733824
   - m_Collider: {fileID: 1451945395}
     m_ColliderPaths:
     - - X: -2387336741
@@ -3708,8 +3724,12 @@ CompositeCollider2D:
         Y: 1637707008
   m_CompositePaths:
     m_Paths:
-    - - {x: 498.40436, y: -286.094}
-      - {x: 498.40442, y: -269.827}
+    - - {x: -117.70472, y: -285.07727}
+      - {x: -117.70465, y: -233.47339}
+      - {x: 116.68823, y: -233.4734}
+      - {x: 116.68827, y: -285.07727}
+      - {x: 242.95488, y: -285.07724}
+      - {x: 242.95491, y: -269.827}
       - {x: 502.27457, y: -269.82697}
       - {x: 502.27457, y: 269.827}
       - {x: 500.6635, y: 269.82703}
@@ -3720,8 +3740,6 @@ CompositeCollider2D:
       - {x: -494.03146, y: -284.06052}
       - {x: -487.22073, y: -284.06055}
       - {x: -487.22073, y: -285.07727}
-      - {x: -486.20392, y: -285.0773}
-      - {x: -486.20392, y: -286.094}
     - - {x: -117.70465, y: -198.86322}
       - {x: -117.70472, y: -4.8081565}
       - {x: -238.73367, y: -4.808137}
@@ -14163,7 +14181,7 @@ MonoBehaviour:
   sheepPrefab: {fileID: 0}
   wolfPrefab: {fileID: 0}
   gameCamera: {fileID: 109440016}
-  cameraShake: {fileID: 0}
+  cameraShake: {fileID: 1490002459}
   tilemapObstacles: {fileID: 1544289997}
   bus: {fileID: 722153746}
   p1: {fileID: 1002431739}
@@ -14179,22 +14197,21 @@ MonoBehaviour:
   nbRulesFailed: 0
   progression: 0
   progressBar: {fileID: 1447479551}
-  victoryTest: 0
   spawnList:
   - type: Cat
-    quantity: 0
+    quantity: 2
     time: 1
   - type: Dog
-    quantity: 0
+    quantity: 2
     time: 3
   - type: Mouse
-    quantity: 0
+    quantity: 2
     time: 5
   - type: Bull
-    quantity: 0
+    quantity: 2
     time: 7
   - type: Cow
-    quantity: 0
+    quantity: 2
     time: 9
   enclosureCapacityList: []
   animalsInEnclosure: []

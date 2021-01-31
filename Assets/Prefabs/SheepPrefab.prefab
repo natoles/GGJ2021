@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6512648318165197919}
   - component: {fileID: 3897744616608960134}
   - component: {fileID: 7656511264980947456}
+  - component: {fileID: 2168021571449359614}
   m_Layer: 15
   m_Name: SheepPrefab
   m_TagString: Animal
@@ -227,6 +228,26 @@ MonoBehaviour:
   currentMovementState: 0
   fightPrefab: {fileID: 2798565287811166088, guid: de5a57e9a23815a4882233e5e185f6d1, type: 3}
   reachedEndOfPath: 1
+--- !u!114 &2168021571449359614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512648318165197914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7bec8bca1bd6c4698a0c6379aeeb01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ruleName: 
+  ruleDescription: 
+  state: 0
+  isDefinitelyFailed: 0
+  isFailed: 0
+  failedTimerStarted: 0
+  timeMarginBeforeFail: 0
+  animal: {fileID: 0}
 --- !u!1 &6512648318908670929
 GameObject:
   m_ObjectHideFlags: 0
