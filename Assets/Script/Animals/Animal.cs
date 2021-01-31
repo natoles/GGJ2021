@@ -214,6 +214,11 @@ public class Animal : MonoBehaviour
         animalChasing = animal;
     }
 
+    public bool IsCalm()
+    {
+        return (currentMovementState == MovementState.Standard);
+    }
+
     #region Action functions
 
     //Fight = fight animation + kill
