@@ -28,7 +28,8 @@ public class MyGameManager : MonoBehaviour
     public Transform mousePrefab;
 
     public Camera gameCamera;
-    public ProgressBar progressBar;
+
+    public GameObject tilemapObstacles;
 
     public Transform p1;
     public Transform p2;
@@ -37,15 +38,18 @@ public class MyGameManager : MonoBehaviour
 
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
-    public int nbRulesInGame = 0;
-    public int nbRulesFailed = 0;
-    public float progression = 0;
+    public int nbRulesInGame, nbRulesFailed;
+    public float progression;
+
+    public ProgressBar progressBar;
+
+    public bool victoryTest;
 
     // PRIVATE
     private float levelTimeStart;
 
     public List<SpawnInfo> spawnList;
-    public List<Animal> aliveAnimalList;
+    public List<Animal> animalsInEnclosure;
     public List<Enclosure> enclosureList;
 
     // TODO: Ajouter les animaux morts à spawnList avec t+5s
@@ -59,6 +63,18 @@ public class MyGameManager : MonoBehaviour
                 spawnList.Remove(spawnInfo);
             } else {
                 objectiveAnimalInEnclosure += spawnInfo.quantity;
+            }
+        }
+    }
+
+    private void UpdateAnimalsReference()
+    {
+        animalsInEnclosure.Clear();
+        foreach (Enclosure enclosure in enclosureList)
+        {
+            foreach (Animal animal in enclosure.animals)
+            {
+                animalsInEnclosure.Add(animal);
             }
         }
     }
@@ -145,7 +161,11 @@ public class MyGameManager : MonoBehaviour
         {
             animalsInEnclosure += enclosure.CountAnimals();
         }
-        return (animalsInEnclosure + nbRulesInGame - nbRulesFailed) / (objectiveAnimalInEnclosure + nbRulesInGame);
+
+        if ((objectiveAnimalInEnclosure + nbRulesInGame) == 0)
+            return 0;
+        else 
+            return (animalsInEnclosure + nbRulesInGame - nbRulesFailed) / (objectiveAnimalInEnclosure + nbRulesInGame);
     }
 
     public void updateProgressBar()
@@ -157,8 +177,26 @@ public class MyGameManager : MonoBehaviour
 
     // ==================== VICTORY
     public void Victory()
-    {
-        
+    { 
+        UpdateAnimalsReference();
+        tilemapObstacles.GetComponent<Collider2D>().enabled = false;
+        Debug.Log(AstarPath.active);
+        AstarPath.active.Scan();
+        foreach (Animal animal in animalsInEnclosure)
+        {
+            animal.StopCoroutine(animal.movementsHandlingCoroutine);
+
+            MovementProperties mProperties = new MovementProperties();
+
+            mProperties.moveSpeed = 50000f;
+            mProperties.topSpeed = 50f;
+            mProperties.minMoveInterval = 0f;
+            mProperties.maxMoveInterval = 0f;
+            mProperties.linearDrag = 6f;
+
+            animal.ComputeMovement(GameObject.Find("BusStopPos").transform.position, mProperties);
+            animal.MoveTo(GameObject.Find("BusStopPos").transform.position);
+        }
     }
 
 
@@ -177,7 +215,7 @@ public class MyGameManager : MonoBehaviour
         UpdateSpawnAnimals();
         progression = ComputeProgressionPercent();
         updateProgressBar();
-        if ((1f - progression) < 1e-4){
+        if ((1f - progression) < 1e-4 || victoryTest){
             Victory();
         }
     }

@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+public class MovementProperties
+{
+    public float moveSpeed;
+    public float topSpeed;
+    public float minMoveInterval; //Min time interval in seconds between random movement
+    public float maxMoveInterval; //Max interval interval in seconds between random movement
+    public float linearDrag;
+}
+
 public class Animal : MonoBehaviour
 {
     public Rigidbody2D rb;
@@ -12,7 +21,7 @@ public class Animal : MonoBehaviour
     Vector3 baseScale;
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
-    protected IEnumerator movementsHandlingCoroutine;
+    public Coroutine movementsHandlingCoroutine;
     Vector2 movement;
     //public bool inEnclosure = false;
     public Enclosure currentEnclosure;
@@ -22,17 +31,6 @@ public class Animal : MonoBehaviour
     Animal animalTarget; //Target animal for the chase
     protected string type;
     public Transform fightPrefab;
-
-
-    [System.Serializable]
-    public class MovementProperties
-    {
-        public float moveSpeed;
-        public float topSpeed;
-        public float minMoveInterval; //Min time interval in seconds between random movement
-        public float maxMoveInterval; //Max interval interval in seconds between random movement
-        public float linearDrag; 
-    }
 
     protected MovementProperties currentMovementProperties;
 
@@ -46,7 +44,7 @@ public class Animal : MonoBehaviour
     Path path;
     float nextWaypointDistance = 5f;
     int currentWaypoint = 0;
-    protected bool reachedEndOfPath = true; //True if has finished pathfinding
+    public bool reachedEndOfPath = true; //True if has finished pathfinding
     Seeker seeker;
 
     public enum MovementState
@@ -64,8 +62,7 @@ public class Animal : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        movementsHandlingCoroutine = MovemmentsHandling();
-        StartCoroutine(movementsHandlingCoroutine);
+        movementsHandlingCoroutine = StartCoroutine(MovemmentsHandling());
         baseScale = transform.localScale;
 
         currentEnclosure = GameObject.Find("Enclosures/ExteriorEnclosure").GetComponent<Enclosure>();
@@ -219,6 +216,7 @@ public class Animal : MonoBehaviour
 
         gameManager.SpawnAnimal(spawnInfo);
 
+        currentEnclosure.RemoveAnimal(this);
         Destroy(gameObject);
     }
 
@@ -226,7 +224,7 @@ public class Animal : MonoBehaviour
 
     #region Movement
 
-    private void ComputeMovement(Vector3 Target, MovementProperties mProperties)
+    public void ComputeMovement(Vector3 Target, MovementProperties mProperties)
     {
         MoveTo(Target);
         currentMovementProperties.moveSpeed = mProperties.moveSpeed;
@@ -236,7 +234,7 @@ public class Animal : MonoBehaviour
     }
 
     //Standard movement
-    private IEnumerator MovemmentsHandling()
+    public IEnumerator MovemmentsHandling()
     {
         while (true)
         {
