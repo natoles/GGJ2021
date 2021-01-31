@@ -14184,6 +14184,7 @@ MonoBehaviour:
   cameraShake: {fileID: 1490002459}
   tilemapObstacles: {fileID: 1544289997}
   bus: {fileID: 722153746}
+  LevelToLoad: MainMenu
   p1: {fileID: 1002431739}
   p2: {fileID: 1627237125}
   p3: {fileID: 66450173}
@@ -14448,6 +14449,10 @@ PrefabInstance:
     - target: {fileID: 5519931847484240874, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+      propertyPath: isExterior
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1784129617587551674, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}

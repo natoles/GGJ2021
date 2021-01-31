@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class SpawnInfo {
@@ -49,6 +50,8 @@ public class MyGameManager : MonoBehaviour
 
     public GameObject tilemapObstacles;
     public GameObject bus;
+
+    public string LevelToLoad;
 
     public Transform p1;
     public Transform p2;
@@ -266,8 +269,8 @@ public class MyGameManager : MonoBehaviour
     
     public void Defeat()
     {
-
-
+        Debug.Log("DEFEAT");
+        //SceneManager.LoadScene(LevelToLoad);
     }
 
 
