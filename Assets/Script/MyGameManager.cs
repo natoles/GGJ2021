@@ -229,12 +229,24 @@ public class MyGameManager : MonoBehaviour
             Victory();
         }
 
-        bottomLimit.text = (enclosureList[0].currentUsedSpace).ToString() + "/" + (enclosureList[0].totalSpace).ToString();
-        leftLimit.text = (enclosureList[1].currentUsedSpace).ToString() + "/" + (enclosureList[1].totalSpace).ToString();
-        rightLimit.text = (enclosureList[2].currentUsedSpace).ToString() + "/" + (enclosureList[2].totalSpace).ToString();
+        //Limit text
+        int current, max;
+        current = enclosureList[0].currentUsedSpace;
+        max = enclosureList[0].totalSpace;
+        bottomLimit.text = current.ToString() + "/" + max.ToString();
+        if (current == max) bottomLimit.color = Color.red;
+        else bottomLimit.color = Color.gray;
 
+        current = enclosureList[1].currentUsedSpace;
+        max = enclosureList[1].totalSpace;
+        leftLimit.text = current.ToString() + "/" + max.ToString();
+        if (current == max) leftLimit.color = Color.red;
+        else leftLimit.color = Color.gray;
 
-
-
+        current = enclosureList[2].currentUsedSpace;
+        max = enclosureList[2].totalSpace;
+        rightLimit.text = current.ToString() + "/" + max.ToString();
+        if (current == max) rightLimit.color = Color.red;
+        else rightLimit.color = Color.gray;
     }
 }
