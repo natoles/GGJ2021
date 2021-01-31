@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bull : Animal
 {
+
     // Start is called before the first frame update
     protected override void Start()
     {

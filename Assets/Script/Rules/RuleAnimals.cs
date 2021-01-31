@@ -48,6 +48,13 @@ public class RuleAnimal : Rule
         return tmp[(int) Random.Range(0, tmp.Count-0.1f)];
     }
 
+    public int CountNeighborTypeOf(System.Type type)
+    {
+        List<Animal> neighbors = GetNeighborAnimals();
+        List<Animal> tmp = neighbors.FindAll(x => x.GetType() == type);
+        return tmp.Count;
+    }
+
     // Checks if an animal of the given type exists in the same enclosure
     public bool IsAnyNeighborTypeOf(System.Type type)
     {
