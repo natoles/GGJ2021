@@ -540,12 +540,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109440014}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30, y: -80, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 153.04286, y: -170.79237, z: -66665.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1490002460}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &109811734
 PrefabInstance:
@@ -1554,7 +1554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &623733240
 GameObject:
@@ -2480,7 +2480,7 @@ Transform:
   - {fileID: 66450173}
   - {fileID: 1242769137}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &993728420
 GameObject:
@@ -3559,7 +3559,7 @@ Transform:
   - {fileID: 1544289998}
   - {fileID: 352470839}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1447479550
 PrefabInstance:
@@ -4019,6 +4019,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468012121}
   m_CullTransparentMesh: 1
+--- !u!1 &1490002458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1490002460}
+  - component: {fileID: 1490002459}
+  m_Layer: 0
+  m_Name: ShakeCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1490002459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490002458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de416ab7a57d79a4ab2705e8a6806581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1490002460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490002458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -183.04286, y: 90.79237, z: 66655.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 109440017}
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1496617358
 GameObject:
   m_ObjectHideFlags: 0
@@ -14306,15 +14350,16 @@ MonoBehaviour:
   sheepPrefab: {fileID: 0}
   wolfPrefab: {fileID: 0}
   gameCamera: {fileID: 109440016}
+  cameraShake: {fileID: 0}
   tilemapObstacles: {fileID: 1544289997}
   bus: {fileID: 722153746}
   p1: {fileID: 1002431739}
   p2: {fileID: 1627237125}
   p3: {fileID: 66450173}
   p4: {fileID: 1242769137}
-  rightLimit: {fileID: 993728422}
-  leftLimit: {fileID: 2073742968}
-  bottomLimit: {fileID: 1338785874}
+  rightLimit: {fileID: 0}
+  leftLimit: {fileID: 0}
+  bottomLimit: {fileID: 0}
   objectiveAnimalInEnclosure: 0
   currentAnimalInEnclosure: 0
   nbRulesInGame: 0
@@ -15461,7 +15506,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 1828134745
+  m_SortingLayerID: -1233536031
   m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &2118081626

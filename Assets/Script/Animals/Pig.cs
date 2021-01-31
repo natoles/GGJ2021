@@ -9,7 +9,6 @@ public class Pig : Animal
     {
         
     }
-
     // Start is called before the first frame update
     protected override void Start()
     {

@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 6512648318165197915}
   - component: {fileID: 6512648318165197919}
   - component: {fileID: 3897744616608960134}
-  - component: {fileID: 6747116314608105039}
-  - component: {fileID: 875229933737014310}
+  - component: {fileID: -4005674492399385442}
   m_Layer: 15
-  m_Name: CowPrefab
+  m_Name: PigPrefab
   m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +121,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 466305ca63bd80c44b91c86e71b04538, type: 2}
-  m_audioClip: {fileID: 8300000, guid: e72acd710c0e211498ae79c3e617423c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6e9908a863959ab4aa8dbe86bb580377, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -208,7 +207,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6747116314608105039
+--- !u!114 &-4005674492399385442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,37 +216,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6512648318165197914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f6dccc43aa1963419ddc0099202faf5, type: 3}
+  m_Script: {fileID: 11500000, guid: 340a586741438754983988fb727e7cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   animator: {fileID: 6512648318908670932}
   currentEnclosure: {fileID: 0}
   gameManager: {fileID: 0}
-  enclosureSlotUsed: 1
+  enclosureSlotUsed: 2
   currentMovementState: 0
   fightPrefab: {fileID: 2798565287811166088, guid: de5a57e9a23815a4882233e5e185f6d1, type: 3}
   reachedEndOfPath: 1
---- !u!114 &875229933737014310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6512648318165197914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa71117b83b917b48a361be8ae971d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ruleName: 
-  ruleDescription: 
-  state: 0
-  isDefinitelyFailed: 0
-  isFailed: 0
-  failedTimerStarted: 0
-  timeMarginBeforeFail: 0
-  animal: {fileID: 0}
 --- !u!1 &6512648318908670929
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +239,7 @@ GameObject:
   - component: {fileID: 6512648318908670933}
   - component: {fileID: 6512648318908670932}
   m_Layer: 15
-  m_Name: CowSprite
+  m_Name: PigSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -320,12 +299,12 @@ SpriteRenderer:
   m_SortingLayerID: 2033253345
   m_SortingLayer: 5
   m_SortingOrder: 10
-  m_Sprite: {fileID: 5159674575400226990, guid: 520d4f38813850249a24f2434a604703, type: 3}
+  m_Sprite: {fileID: 5178709806214237726, guid: d66ee0f88c2edae4f92f43908518eb3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 96, y: 96}
+  m_Size: {x: 96, y: 64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -341,7 +320,7 @@ Animator:
   m_GameObject: {fileID: 6512648318908670929}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0271dcf0b77271b47af61270250a42e8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5c4abde2fe8b1004bb72b105add958f9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

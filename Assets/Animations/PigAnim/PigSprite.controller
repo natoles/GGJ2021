@@ -159,7 +159,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 8b34bf6e572a3a446ae54879d4beb852, type: 2}
+    m_Motion: {fileID: 7400000, guid: 74cdd3ef07c2e984984b97bdfec04872, type: 2}
     m_Threshold: -1
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
@@ -167,7 +167,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 8baedecd758445b449511ef67ee9b1da, type: 2}
+    m_Motion: {fileID: 7400000, guid: 600f2a35f35b23a42ada0d687681fd93, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -175,7 +175,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 11b2bab196cc3754fa08e964397a02bc, type: 2}
+    m_Motion: {fileID: 7400000, guid: 64a9c4bdd0465e645b7de16eb98104e7, type: 2}
     m_Threshold: 3
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -183,7 +183,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 3b77a2ab0fd21964fba3617f5a5d5b44, type: 2}
+    m_Motion: {fileID: 7400000, guid: 2d15e2d6710738149a7feece1c4472d6, type: 2}
     m_Threshold: 5
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -206,7 +206,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 2566520e6fd83b84087dc86af8ffa0e2, type: 2}
+    m_Motion: {fileID: 7400000, guid: 59f2b8f33f6cdd747b627c25adc429c1, type: 2}
     m_Threshold: 0
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -214,7 +214,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: a613c8d2bb7114d4fb46771ec71035a9, type: 2}
+    m_Motion: {fileID: 7400000, guid: 64a9c4bdd0465e645b7de16eb98104e7, type: 2}
     m_Threshold: 0.33333334
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -222,7 +222,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 57d89b2f964d30b4ebcb6d0e8735a76b, type: 2}
+    m_Motion: {fileID: 7400000, guid: 600f2a35f35b23a42ada0d687681fd93, type: 2}
     m_Threshold: 0.6666667
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -230,7 +230,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 8b34bf6e572a3a446ae54879d4beb852, type: 2}
+    m_Motion: {fileID: 7400000, guid: 74cdd3ef07c2e984984b97bdfec04872, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
@@ -251,7 +251,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CatIdle
+  m_Name: PigIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -266,7 +266,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c54251d12fefc7f4ebf0c1b2258b679d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 789d1202e2c802f4ba6fcf21724905f2, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -278,7 +278,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CatSprite
+  m_Name: PigSprite
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Horizontal
@@ -584,7 +584,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CatDrag
+  m_Name: PigDrag
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -598,7 +598,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 79c3a6898886eb44b9452bdfe9094ecb, type: 2}
+  m_Motion: {fileID: 7400000, guid: 49e6fa55ef0de47418eb86abfc4f028d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
