@@ -344,7 +344,7 @@ public class Animal : MonoBehaviour
 
         //----------------------- Fight -------------------------//
 
-        if (animalTarget != null && !isFighting)
+        if (animalTarget != null && !isFighting && currentMovementState == MovementState.Chase)
         {
             if (Vector2.Distance(new Vector2(animalTarget.transform.position.x, animalTarget.transform.position.y)
                                     , new Vector2(transform.position.x, transform.position.y)) < 5f)
