@@ -15481,40 +15481,36 @@ MonoBehaviour:
     time: 0
   - enclosure: {fileID: 1277305934}
     maxCapacity: 6
-    time: 15
+    time: 20
   - enclosure: {fileID: 1277305934}
     maxCapacity: 7
-    time: 30
+    time: 45
   - enclosure: {fileID: 108523737}
     maxCapacity: 3
     time: 0
   - enclosure: {fileID: 108523737}
     maxCapacity: 6
-    time: 15
+    time: 20
   - enclosure: {fileID: 108523737}
     maxCapacity: 7
-    time: 30
+    time: 45
   - enclosure: {fileID: 423096377}
     maxCapacity: 3
     time: 0
   - enclosure: {fileID: 423096377}
     maxCapacity: 6
-    time: 15
+    time: 20
   - enclosure: {fileID: 423096377}
     maxCapacity: 7
-    time: 30
+    time: 45
   animalsInEnclosure: []
   enclosureList:
   - {fileID: 1277305934}
   - {fileID: 108523737}
   - {fileID: 423096377}
   enclosureExteriorLimits:
-  - maxCapacity: 8
+  - maxCapacity: 30
     time: 0
-  - maxCapacity: 12
-    time: 15
-  - maxCapacity: 10
-    time: 55
 --- !u!4 &1679205242
 Transform:
   m_ObjectHideFlags: 0

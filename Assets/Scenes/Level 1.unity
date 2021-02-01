@@ -6357,68 +6357,77 @@ MonoBehaviour:
   progressBar: {fileID: 1841698485}
   checkIfCalm: 1
   spawnList:
-  - type: Sheep
-    quantity: 3
-    time: 5
   - type: Dog
     quantity: 1
     time: 1
+  - type: Sheep
+    quantity: 3
+    time: 5
   - type: Wolf
     quantity: 1
-    time: 3
+    time: 8
   - type: Sheep
     quantity: 1
-    time: 16
+    time: 18
   - type: Wolf
     quantity: 1
-    time: 19
+    time: 20
   - type: Cat
     quantity: 1
-    time: 23
+    time: 25
   - type: Mouse
     quantity: 1
-    time: 26
+    time: 28
   - type: Wolf
     quantity: 1
-    time: 36
+    time: 40
   - type: Cat
     quantity: 1
-    time: 39
+    time: 45
   - type: Mouse
     quantity: 2
-    time: 42
+    time: 50
   - type: Cat
     quantity: 1
-    time: 52
+    time: 60
   - type: Mouse
     quantity: 1
-    time: 55
+    time: 61
   enclosureCapacityList:
   - enclosure: {fileID: 1704029293}
     maxCapacity: 3
     time: 0
   - enclosure: {fileID: 1704029293}
-    maxCapacity: 6
-    time: 60
+    maxCapacity: 4
+    time: 38
   - enclosure: {fileID: 1292504828}
     maxCapacity: 3
     time: 0
   - enclosure: {fileID: 1292504828}
-    maxCapacity: 6
-    time: 60
+    maxCapacity: 4
+    time: 38
   - enclosure: {fileID: 585532435}
     maxCapacity: 3
     time: 0
   - enclosure: {fileID: 585532435}
-    maxCapacity: 6
-    time: 60
+    maxCapacity: 4
+    time: 38
+  - enclosure: {fileID: 1704029293}
+    maxCapacity: 5
+    time: 50
+  - enclosure: {fileID: 1292504828}
+    maxCapacity: 5
+    time: 50
+  - enclosure: {fileID: 585532435}
+    maxCapacity: 5
+    time: 50
   animalsInEnclosure: []
   enclosureList:
   - {fileID: 1704029293}
   - {fileID: 1292504828}
   - {fileID: 585532435}
   enclosureExteriorLimits:
-  - maxCapacity: 8
+  - maxCapacity: 30
     time: 0
 --- !u!4 &1446341838
 Transform:
