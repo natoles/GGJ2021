@@ -28,7 +28,7 @@ public class Animal : MonoBehaviour
     public MyGameManager gameManager;
     public int enclosureSlotUsed = 1; // 2 for Pigs
     public MovementState currentMovementState = MovementState.Standard;
-    Animal animalTarget; //Target animal for the chase
+    public Animal animalTarget; //Target animal for the chase
     Animal animalChasing; //Animal currently chasing us
     protected string type;
     public Transform fightPrefab;
@@ -246,6 +246,15 @@ public class Animal : MonoBehaviour
         StartCoroutine(FightRoutine(victim));
     }
 
+    //Changes enclosure
+    public void Flee()
+    {
+        currentEnclosure.RemoveAnimal(this);
+        (gameManager.GetRandomOtherEnclosure(currentEnclosure)).AddAnimal(this);
+        rb.velocity = Vector2.zero;
+        transform.position = currentEnclosure.RandomPoint();
+    }
+
     //Hides killer while fight anim, then kills the victim 
     private IEnumerator FightRoutine(Animal victim)
     {
@@ -398,16 +407,23 @@ public class Animal : MonoBehaviour
                 spriteRenderer.flipX = (Input.GetAxis("Mouse X") > 0);
         }
 
+        if (!IsInEnclosure())
+        {
+            if (!audioSource.isPlaying) audioSource.Play();
+            audioSource.volume = .25f;
+        }
         if (currentMovementState == MovementState.Rage
              || currentMovementState == MovementState.Run
                 || currentMovementState == MovementState.ChaseFight
                     || currentMovementState == MovementState.ChaseFlee)
         {
             if (!audioSource.isPlaying) audioSource.Play();
+            audioSource.volume = 1.5f;
         }
         else if (isDragging)
         {
             if (!audioSource.isPlaying) audioSource.Play();
+            audioSource.volume = .7f;
         }
         else
         {
@@ -416,12 +432,19 @@ public class Animal : MonoBehaviour
 
         //----------------------- Fight -------------------------//
 
-        if (animalTarget != null && !isFighting && currentMovementState == MovementState.ChaseFight)
+        if (animalTarget != null && !isFighting)
         {
             if (Vector2.Distance(new Vector2(animalTarget.transform.position.x, animalTarget.transform.position.y)
                                     , new Vector2(transform.position.x, transform.position.y)) < 5f)
             {
-                Fight(animalTarget);
+                if (currentMovementState == MovementState.ChaseFight)
+                {
+                    Fight(animalTarget);
+                }
+                else if (currentMovementState == MovementState.ChaseFlee)
+                {
+                    Flee();
+                }
             }
         }
         /*

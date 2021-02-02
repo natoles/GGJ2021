@@ -123,6 +123,17 @@ public class MyGameManager : MonoBehaviour
         return null;
     }
 
+    public Enclosure GetRandomOtherEnclosure(Enclosure enclosure)
+    {
+        int r = (int) Random.value * 3;
+        while (enclosureList[r] == enclosure)
+        {
+            r = (int) Random.value * 3;
+        }
+
+        return enclosureList[r];
+    }
+
     public int SpawnAnimal(SpawnInfo spawnInfo)
     {
         Transform prefab;

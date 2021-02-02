@@ -80,7 +80,8 @@ public class Enclosure : MonoBehaviour
         //if (IsFull()) return -1;
         animal.EnterEnclosure(this);
         if (animals.Contains(animal)) return -1;
-        
+
+        animal.animalTarget = null;
         animals.Add(animal);
         currentUsedSpace += animal.enclosureSlotUsed;
 
@@ -92,7 +93,8 @@ public class Enclosure : MonoBehaviour
     {
         if (IsEmpty()) return -1;
         if (!animals.Contains(animal)) return -1;
-        
+
+        animal.animalTarget = null;
         animals.Remove(animal);
         currentUsedSpace -= animal.enclosureSlotUsed;
         animal.LeaveEnclosure();
@@ -112,18 +114,6 @@ public class Enclosure : MonoBehaviour
 
         return 0;
     }
-    /*
-    // Adding dragged animal that has entered the enclosure collider
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag != "Drag") return;
-        Animal animal = collider.gameObject.GetComponent<Animal>();
-        
-        if (AddAnimal(animal) == 0)
-        {
-            // Error code
-        }
-    }*/
 
     // Removing dragged animal that has left the enclosure collider
     void OnTriggerExit2D(Collider2D collider)
