@@ -3970,7 +3970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIezc1jkTYwIAAAgFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMly4jAQ/RVK5yFlQ8AwtxmHkDlkqZCpXHwRVhurkCWXlgBJ8e/Tkm3sMCeaXt973fIX4dLUkFul15qzR8WA/BwRb5Mfoz74AEe6U3LDP6HLeefMlj6JhpxXarlCf+zLjKrAap7/kjvhkyN0OskLpasV20GqjDXoLqgwgCGtrK+W6PoakSP+jJe+5ITWJPHWJ1rLaHRGMwdpQQ9Sp4ubJFoubtuCcRLdRNFiOW/Lmionc0GrGpin0BfH8WXQYtZkSuTXJsWJn6eE4KZFR+ypDuxTWhuH3DCBcYpsAyRPvgS+K61HPix+LgoDtpVC09Md1yha05X8Vo2SFTX7BtsHFc7PmU6S+SLAato+/pcxjkO40Kp66CbHkZ9iS57vX+kpp8YOxB66775Dd/JAxZ5uBbyXIJ/UWisnGQatdr7UGZjc9X8v5NIS8n3vb6BeOV3dq95J3m3WczgH/sdU8GrrQze3jWMjVFA87Ak0LucPAg7nYtoW6PUo/hp4o7vhXbWBe66NxVDLUnp4W+W0TyWroJln42yqtITgbkHXIKmwpxdsY6+XeBUbjL2K3FP/gtrhbax7GFclwd3nR9FV6EUdLssypTo8gimfnRVcQg/aB55Qp1RJ2dzYUJOubON0QfNB2c5x9v20yHY+v51NpxSSbU5j2I5ncQKziM5zmifziEUk3B6XyJOKlwZoKw9uTfbNJd5Z92EZrTWtw70zTQ9r/lmpgeRcFmqTawD53HS4AAeNQ/BhshXjKNAGrOUy7Jt8ZUSofA8suzTKAtPV0Wqa9V0yUvMPZb0nI2n4kmTkTM7/AFBLAwQUAAAICAAACCHs3jxBsW0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0UpKZmYmpsXFiqnlScqJhapKuqaF5qqlBollyYrK5mUGKgVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHs3NY5E2MCAAAIBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHs3jxBsW0AAAB4AAAACQAkAAAAAAAAAAAAAACwAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGgDAAAAAA==
+    dataString: UEsDBBQAAAgIAAAIIexydTVLZAIAAAkFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z4jAM/SuMz0sngUJgb7sppXvox5Tu9JKLiRXiwbEz/ijQDv99ZSchKXtCSHrSe5KcL8KlqSG3Sq81Z4+KAfk5It4mP0Z98AGOdKfkhn9Cl/POmS19Eg05r9Ryhf7Yw4yqwGqe/5I74ZMjdDrJC6WrFdtBqow16C6oMIAhraxHS3R9jcgRf8ZLDzmhNUm89YnWMhqd0cxBWtCD1OniJomWi9sWME6imyhaLOctrEE5mQta1cC8hB4cx5dGi1mTKVFfmxQnvp8SgpuWHbGnOqhPaW0casMEximqDZS8+BL4rrSe+RD8XBQGbDsKTU93XOPQmqrkt2omWVGzb7h9UOF8n+kkmS8Crabs438Z4ziEC62qh65zHPkutuT5/pWecmrsYNhD99136k4eqNjTrYD3EuSTWmvlJMOg1c5DnYHJXf/3Ii4tId/3/obqldPV/dS7kXeb9RrOQf8xFbza+tDNbePYCBUmHvYEGpfzBwmHczFtCfR6Fn8NvNHd8K7awD3XxmKoVSk9va1y2qeSVZiZV+NsqrSE4G5J1yCpsKcXLGOvl3gVG7S9itxT/4La5m2sexhXkODu86PoKvSiDpdlmVIdHsGUz84KLqEn7QNPOKdUSdnc2HAmHWzjdEHzAWznOPt+WmQ7n9/OplMKyTanMWzHsziBWUTnOc2TecQiEm6PS9RJxUtDtB0Pbk32xSXeWfdhGa01rcO9M00Pa/5ZqSFBLgu1yTWAfG5KXJiDxi74MtmKcZzQBqzlMiycfGVEqHwPLLv0zILU1dFqmvVVMlLzD2W9JyNp+JRk5EzO/wBQSwMEFAAACAgAAAgh7N48QbFtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tFKSmZmJqbFxYqp5UnKiYWqSrqmheaqpQaJZcmKyuZlBioFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7HJ1NUtkAgAACQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7N48QbFtAAAAeAAAAAkAJAAAAAAAAAAAAAAAsQIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABpAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -4300,56 +4300,6 @@ CompositeCollider2D:
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 617349323}
-    m_ColliderPaths:
-    - - X: 5022745819
-        Y: -2333552640
-      - X: 5022745819
-        Y: 2698269952
-      - X: 2424420864
-        Y: 2698269659
-      - X: 2424421157
-        Y: -2333552640
-  - m_Collider: {fileID: 617349322}
-    m_ColliderPaths:
-    - - X: -1177046821
-        Y: -2328339456
-      - X: -1177046821
-        Y: -48081728
-      - X: -4872207872
-        Y: -48082021
-      - X: -4872207579
-        Y: -2328339456
-  - m_Collider: {fileID: 617349321}
-    m_ColliderPaths:
-    - - X: 2429548763
-        Y: -2328339968
-      - X: 2429548763
-        Y: -178939632
-      - X: 1166882048
-        Y: -178939925
-      - X: 1166882341
-        Y: -2328339968
-  - m_Collider: {fileID: 617349320}
-    m_ColliderPaths:
-    - - X: 4984043739
-        Y: -2334733824
-      - X: 4984043739
-        Y: -1988632064
-      - X: -4862039552
-        Y: -1988632357
-      - X: -4862039259
-        Y: -2334733824
-  - m_Collider: {fileID: 617349319}
-    m_ColliderPaths:
-    - - X: -2387336741
-        Y: -2328028928
-      - X: -2387336741
-        Y: 2698269952
-      - X: -4940315136
-        Y: 2698269659
-      - X: -4940314843
-        Y: -2328028928
   - m_Collider: {fileID: 617349318}
     m_ColliderPaths:
     - - X: 5006635227
@@ -4360,6 +4310,56 @@ CompositeCollider2D:
         Y: 2754263259
       - X: -4911257819
         Y: 1637707008
+  - m_Collider: {fileID: 617349319}
+    m_ColliderPaths:
+    - - X: -2387336741
+        Y: -2328028928
+      - X: -2387336741
+        Y: 2698269952
+      - X: -4940315136
+        Y: 2698269659
+      - X: -4940314843
+        Y: -2328028928
+  - m_Collider: {fileID: 617349320}
+    m_ColliderPaths:
+    - - X: 4984043739
+        Y: -2334733824
+      - X: 4984043739
+        Y: -1988632064
+      - X: -4862039552
+        Y: -1988632357
+      - X: -4862039259
+        Y: -2334733824
+  - m_Collider: {fileID: 617349321}
+    m_ColliderPaths:
+    - - X: 2429548763
+        Y: -2328339968
+      - X: 2429548763
+        Y: -178939632
+      - X: 1166882048
+        Y: -178939925
+      - X: 1166882341
+        Y: -2328339968
+  - m_Collider: {fileID: 617349322}
+    m_ColliderPaths:
+    - - X: -1177046821
+        Y: -2328339456
+      - X: -1177046821
+        Y: -48081728
+      - X: -4872207872
+        Y: -48082021
+      - X: -4872207579
+        Y: -2328339456
+  - m_Collider: {fileID: 617349323}
+    m_ColliderPaths:
+    - - X: 5022745819
+        Y: -2333552640
+      - X: 5022745819
+        Y: 2698269952
+      - X: 2424420864
+        Y: 2698269659
+      - X: 2424421157
+        Y: -2333552640
   m_CompositePaths:
     m_Paths:
     - - {x: 498.40436, y: -233.47339}
@@ -6219,6 +6219,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+      propertyPath: exteriorEnclosure
+      value: 
+      objectReference: {fileID: 617349326}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
 --- !u!1 &1285281032
@@ -13916,6 +13920,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+      propertyPath: exteriorEnclosure
+      value: 
+      objectReference: {fileID: 617349326}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
 --- !u!114 &1841698485 stripped
@@ -14011,6 +14019,10 @@ PrefabInstance:
       propertyPath: totalSpace
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+      propertyPath: exteriorEnclosure
+      value: 
+      objectReference: {fileID: 617349326}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
 --- !u!1 &1909285375

@@ -345,6 +345,7 @@ public class Animal : MonoBehaviour
         transform.gameObject.tag = "Drag";
         path = null;
         Cursor.visible = false;
+        StopCoroutine(MovemmentsHandling());
     }
 
     //Stop drag
@@ -358,6 +359,7 @@ public class Animal : MonoBehaviour
         reachedEndOfPath = true;
         transform.gameObject.tag = "Animal";
         Cursor.visible = true;
+        StartCoroutine(MovemmentsHandling());
     }
 
     #endregion

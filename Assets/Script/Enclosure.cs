@@ -10,6 +10,8 @@ public class Enclosure : MonoBehaviour
     public int currentUsedSpace = 0;
     public bool isExterior = false; // true if this "enclosure" is actually the exterior
 
+    Enclosure exteriorEnclosure;
+
     public List<Rule> rules;
 
     // PRIVATE
@@ -76,11 +78,11 @@ public class Enclosure : MonoBehaviour
     public int AddAnimal(Animal animal)
     {
         //if (IsFull()) return -1;
+        animal.EnterEnclosure(this);
         if (animals.Contains(animal)) return -1;
         
         animals.Add(animal);
         currentUsedSpace += animal.enclosureSlotUsed;
-        animal.EnterEnclosure(this);
 
         return 0;
     }
@@ -110,7 +112,7 @@ public class Enclosure : MonoBehaviour
 
         return 0;
     }
-
+    /*
     // Adding dragged animal that has entered the enclosure collider
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -121,7 +123,7 @@ public class Enclosure : MonoBehaviour
         {
             // Error code
         }
-    }
+    }*/
 
     // Removing dragged animal that has left the enclosure collider
     void OnTriggerExit2D(Collider2D collider)
@@ -132,6 +134,26 @@ public class Enclosure : MonoBehaviour
         if (RemoveAnimal(animal) == 0)
         {
             // Error code
+        }
+        
+        if (!isExterior)
+        {
+            animal.currentEnclosure = exteriorEnclosure;
+        }
+
+    }
+
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag != "Drag") return;
+        if (!isExterior)
+        {
+            Animal animal = collider.gameObject.GetComponent<Animal>();
+
+            if (AddAnimal(animal) == 0)
+            {
+                // Error code
+            }
         }
     }
 
@@ -145,6 +167,7 @@ public class Enclosure : MonoBehaviour
     void Start()
     {
         Empty();
+        exteriorEnclosure = GameObject.Find("ExteriorEnclosure").GetComponent<Enclosure>();
     }
 
     // Update is called once per frame
