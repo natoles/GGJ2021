@@ -247,12 +247,14 @@ public class Animal : MonoBehaviour
     }
 
     //Changes enclosure
-    public void Flee()
+    public void Flee(Animal victim)
     {
-        currentEnclosure.RemoveAnimal(this);
-        (gameManager.GetRandomOtherEnclosure(currentEnclosure)).AddAnimal(this);
-        rb.velocity = Vector2.zero;
-        transform.position = currentEnclosure.RandomPoint();
+        victim.currentEnclosure.RemoveAnimal(victim);
+        (gameManager.GetRandomOtherEnclosure(victim.currentEnclosure)).AddAnimal(victim);
+        victim.rb.velocity = Vector2.zero;
+        victim.transform.position = victim.currentEnclosure.RandomPoint();
+        victim.reachedEndOfPath = true;
+        victim.path = null;
     }
 
     //Hides killer while fight anim, then kills the victim 
@@ -443,7 +445,7 @@ public class Animal : MonoBehaviour
                 }
                 else if (currentMovementState == MovementState.ChaseFlee)
                 {
-                    Flee();
+                    Flee(animalTarget);
                 }
             }
         }

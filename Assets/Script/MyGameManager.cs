@@ -125,10 +125,10 @@ public class MyGameManager : MonoBehaviour
 
     public Enclosure GetRandomOtherEnclosure(Enclosure enclosure)
     {
-        int r = (int) Random.value * 3;
+        int r = Mathf.FloorToInt(Random.value * 3);
         while (enclosureList[r] == enclosure)
         {
-            r = (int) Random.value * 3;
+            r = Mathf.FloorToInt(Random.value * 3);
         }
 
         return enclosureList[r];
