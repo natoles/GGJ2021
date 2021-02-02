@@ -6638,7 +6638,7 @@ MonoBehaviour:
     time: 25
   - type: Mouse
     quantity: 1
-    time: 28
+    time: 3
   - type: Wolf
     quantity: 1
     time: 40

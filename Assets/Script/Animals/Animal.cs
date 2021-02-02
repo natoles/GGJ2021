@@ -348,29 +348,35 @@ public class Animal : MonoBehaviour
     //Start drag
     public void OnMouseDown()
     {
-        lastPosOnClicDown = transform.position;
-        isDragging = true;
-        animator.SetBool("IsDrag", true);
-        transform.localScale = baseScale * 1.3f;
-        audioSource.Play();
-        transform.gameObject.tag = "Drag";
-        path = null;
-        Cursor.visible = false;
-        StopCoroutine(MovemmentsHandling());
+        if (!(type == "Mouse" && IsInEnclosure()))
+        {
+            lastPosOnClicDown = transform.position;
+            isDragging = true;
+            animator.SetBool("IsDrag", true);
+            transform.localScale = baseScale * 1.3f;
+            audioSource.Play();
+            transform.gameObject.tag = "Drag";
+            path = null;
+            Cursor.visible = false;
+            StopCoroutine(MovemmentsHandling());
+        }
     }
 
     //Stop drag
     public void OnMouseUp()
     {
-        isDragging = false;
-        animator.SetBool("IsDrag", false);
-        transform.localScale = baseScale;
-        spriteRenderer.flipX = false;
-        audioSource.Stop();
-        reachedEndOfPath = true;
-        transform.gameObject.tag = "Animal";
-        Cursor.visible = true;
-        StartCoroutine(MovemmentsHandling());
+        //if (!(type == "Mouse" && IsInEnclosure()))
+        {
+            isDragging = false;
+            animator.SetBool("IsDrag", false);
+            transform.localScale = baseScale;
+            spriteRenderer.flipX = false;
+            audioSource.Stop();
+            reachedEndOfPath = true;
+            transform.gameObject.tag = "Animal";
+            Cursor.visible = true;
+            StartCoroutine(MovemmentsHandling());
+        }
     }
 
     #endregion
