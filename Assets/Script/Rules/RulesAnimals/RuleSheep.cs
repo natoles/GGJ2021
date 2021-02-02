@@ -15,11 +15,20 @@ public class RuleSheep : RuleAnimal
     {
         base.Update();
         if (animal.IsInEnclosure()){
-            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Dog"))) {
+            if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Dog")))
+            {
                 animal.Follow(FindNeighborTypeOf(StringToClass.TypeFromString("Dog")));
-            } else if (GetNeighborAnimals().Count <= 0){
+            }
+            else if (GetNeighborAnimals().Count <= 0 && animal.IsInEnclosure())
+            {
                 animal.Run();
-            } else {
+            }
+            else if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Wolf")))
+            {
+                animal.Run();
+            }
+            else
+            {
                 animal.Calm();
             }
         }
