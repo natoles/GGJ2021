@@ -42,6 +42,10 @@ public class Animal : MonoBehaviour
     protected MovementProperties followMovement;
     protected Vector3 lastPosOnClicDown;
 
+    public float startRunTimer = 0;
+    public float runDurationBeforeFleeLeft = 0; // timer
+    public const float runDurationBeforeFlee = 7.5f; // seconds
+
 
     //Pahtfinding variables
     Path path;
@@ -94,6 +98,13 @@ public class Animal : MonoBehaviour
         chaseMovement.maxMoveInterval = 0.5f;
         chaseMovement.linearDrag = 5f;
 
+        followMovement = new MovementProperties();
+        followMovement.moveSpeed = 7000f;
+        followMovement.topSpeed = 8f;
+        followMovement.minMoveInterval = 4f;
+        followMovement.maxMoveInterval = 7f;
+        followMovement.linearDrag = 4f;
+
         runMovement = new MovementProperties();
         runMovement.moveSpeed = 40000f;
         runMovement.topSpeed = 40f;
@@ -141,6 +152,12 @@ public class Animal : MonoBehaviour
         GetComponentInChildren<SpriteRenderer>().enabled = visibility;
     }
 
+    public void resetFleeTimer()
+    {
+        startRunTimer = -1f;
+        runDurationBeforeFleeLeft = runDurationBeforeFlee;
+    }
+
     #region Behavior functions
 
     //Start the RageState coroutine
@@ -163,6 +180,7 @@ public class Animal : MonoBehaviour
         currentMovementState = MovementState.Standard;
     }
 
+    // Animal who run have to flee after some time: I added a timer
     public void Run()
     {
         if (currentEnclosure == null) return;
@@ -171,6 +189,19 @@ public class Animal : MonoBehaviour
             reachedEndOfPath = true; //End current path
 
         currentMovementState = MovementState.Run;
+
+        // Managing timer before animal flees
+        if (startRunTimer < 1e-5){
+            startRunTimer = Time.time;
+            runDurationBeforeFleeLeft = runDurationBeforeFlee;
+        } else {
+            runDurationBeforeFleeLeft -= Time.deltaTime;
+            if (runDurationBeforeFleeLeft < 0){
+                resetFleeTimer();
+                Flee();
+                Calm();
+            }
+        }
     }
 
     public void ChaseFight(Animal animal)
@@ -183,6 +214,7 @@ public class Animal : MonoBehaviour
         animalTarget = animal;
         animalTarget.isChasedBy(gameObject.GetComponent<Animal>());
         currentMovementState = MovementState.ChaseFight;
+
     }
 
     public bool IsTargetReachable()
@@ -247,14 +279,15 @@ public class Animal : MonoBehaviour
     }
 
     //Changes enclosure
-    public void Flee(Animal victim)
+    public void Flee()
     {
-        victim.currentEnclosure.RemoveAnimal(victim);
-        (gameManager.GetRandomOtherEnclosure(victim.currentEnclosure)).AddAnimal(victim);
-        victim.rb.velocity = Vector2.zero;
-        victim.transform.position = victim.currentEnclosure.RandomPoint();
-        victim.reachedEndOfPath = true;
-        victim.path = null;
+        Animal currentAnimal = gameObject.GetComponent<Animal>();
+        currentEnclosure.RemoveAnimal(currentAnimal);
+        (gameManager.GetRandomOtherEnclosure(currentEnclosure)).AddAnimal(currentAnimal);
+        rb.velocity = Vector2.zero;
+        transform.position = currentEnclosure.RandomPoint();
+        reachedEndOfPath = true;
+        path = null;
     }
 
     //Hides killer while fight anim, then kills the victim 
@@ -451,7 +484,7 @@ public class Animal : MonoBehaviour
                 }
                 else if (currentMovementState == MovementState.ChaseFlee)
                 {
-                    Flee(animalTarget);
+                    animalTarget.Flee();
                 }
             }
         }
