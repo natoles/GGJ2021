@@ -191,6 +191,8 @@ public class Animal : MonoBehaviour
         if (currentMovementState != MovementState.Run)
             reachedEndOfPath = true; //End current path
 
+        animator.SetBool("IsRage", true);
+
         currentMovementState = MovementState.Run;
 
         // Managing timer before animal flees
@@ -210,6 +212,8 @@ public class Animal : MonoBehaviour
     public void ChaseFight(Animal animal)
     {
         if (currentEnclosure == null) return;
+
+        animator.SetBool("IsRage", true);
 
         if (currentMovementState != MovementState.ChaseFlee)
             reachedEndOfPath = true; //End current path
@@ -408,6 +412,7 @@ public class Animal : MonoBehaviour
             transform.localScale = baseScale;
             spriteRenderer.flipX = false;
             audioSource.Stop();
+            Debug.Log("canard Audio source stop");
             reachedEndOfPath = true;
             transform.gameObject.tag = "Animal";
             Cursor.visible = true;
@@ -454,9 +459,9 @@ public class Animal : MonoBehaviour
         if (!IsInEnclosure())
         {
             if (!audioSource.isPlaying) audioSource.Play();
-            audioSource.volume = .25f;
+            audioSource.volume = .2f;
         }
-        if (currentMovementState == MovementState.Rage
+        else if (currentMovementState == MovementState.Rage
              || currentMovementState == MovementState.Run
                 || currentMovementState == MovementState.ChaseFight
                     || currentMovementState == MovementState.ChaseFlee)
