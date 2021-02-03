@@ -491,10 +491,9 @@ public class Animal : MonoBehaviour
                 }
             }
         }
-        /*
-        transform.position = new Vector3 (transform.position.x, transform.position.y, Mathf.Abs(transform.position.y));
-        rb.position = new Vector3(rb.position.x, rb.position.y, 0);
-        */
+        
+        //sprite layer order
+        spriteRenderer.sortingOrder = Mathf.FloorToInt(Mathf.Abs(transform.position.y + 500) * -100);
     }
 
     private void FixedUpdate()

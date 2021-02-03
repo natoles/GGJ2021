@@ -6635,7 +6635,7 @@ MonoBehaviour:
     time: 20
   - type: Cat
     quantity: 1
-    time: 25
+    time: 3
   - type: Mouse
     quantity: 1
     time: 3
