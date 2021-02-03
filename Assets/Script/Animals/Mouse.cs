@@ -10,18 +10,6 @@ public class Mouse : Animal
     private float startEnterEnclosureTimer = -1;
     private float enterEnclosureTimeLeft = 0; // timer
 
-
-    public void getExteriorEnclosure()
-    {
-        if (exteriorEnclosure == null)
-        {
-            if (currentEnclosure.isExterior == true)
-            {
-                exteriorEnclosure = currentEnclosure;
-            }
-        }
-    }
-
     public override void Flee()
     {
         if (exteriorEnclosure != null)
@@ -90,6 +78,5 @@ public class Mouse : Animal
     {
         base.Update();
         updateEnterEnclosure();
-        getExteriorEnclosure();
     }
 }

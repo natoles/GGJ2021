@@ -35,6 +35,8 @@ public class Animal : MonoBehaviour
 
     protected MovementProperties currentMovementProperties;
 
+    protected Enclosure exteriorEnclosure;
+
     protected MovementProperties standardMovement;
     protected MovementProperties rageMovement;
     protected MovementProperties chaseMovement;
@@ -74,7 +76,8 @@ public class Animal : MonoBehaviour
         movementsHandlingCoroutine = StartCoroutine(MovemmentsHandling());
         baseScale = transform.localScale;
 
-        currentEnclosure = GameObject.Find("Enclosures/ExteriorEnclosure").GetComponent<Enclosure>();
+        exteriorEnclosure = GameObject.Find("Enclosures/ExteriorEnclosure").GetComponent<Enclosure>();
+        currentEnclosure = exteriorEnclosure;
         gameManager = GameObject.Find("MyGameManagerDesu").GetComponent<MyGameManager>();
 
         standardMovement = new MovementProperties();
@@ -381,7 +384,7 @@ public class Animal : MonoBehaviour
     //Start drag
     public void OnMouseDown()
     {
-        if (!(type == "Mouse" && IsInEnclosure()))
+        if (!(type == "Mouse"))
         {
             lastPosOnClicDown = transform.position;
             isDragging = true;
@@ -398,7 +401,7 @@ public class Animal : MonoBehaviour
     //Stop drag
     public void OnMouseUp()
     {
-        //if (!(type == "Mouse" && IsInEnclosure()))
+        if (!(type == "Mouse"))
         {
             isDragging = false;
             animator.SetBool("IsDrag", false);
