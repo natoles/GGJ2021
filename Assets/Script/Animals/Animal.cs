@@ -48,7 +48,7 @@ public class Animal : MonoBehaviour
 
 
     //Pahtfinding variables
-    Path path;
+    protected Path path;
     float nextWaypointDistance = 5f;
     int currentWaypoint = 0;
     public bool reachedEndOfPath = true; //True if has finished pathfinding
@@ -279,7 +279,7 @@ public class Animal : MonoBehaviour
     }
 
     //Changes enclosure
-    public void Flee()
+    public virtual void Flee()
     {
         Animal currentAnimal = gameObject.GetComponent<Animal>();
         currentEnclosure.RemoveAnimal(currentAnimal);
