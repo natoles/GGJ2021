@@ -457,7 +457,7 @@ public class Animal : MonoBehaviour
 
         if (!IsInEnclosure())
         {
-            audioSource.volume = .15f;
+            audioSource.volume = .23f;
             if (!audioSource.isPlaying) audioSource.Play();   
         }
         else if (currentMovementState == MovementState.Rage
@@ -465,7 +465,7 @@ public class Animal : MonoBehaviour
                 || currentMovementState == MovementState.ChaseFight
                     || currentMovementState == MovementState.ChaseFlee)
         {
-            audioSource.volume = 1.5f;
+            audioSource.volume = 1.3f;
             if (!audioSource.isPlaying) audioSource.Play();
         }
         else if (isDragging)
