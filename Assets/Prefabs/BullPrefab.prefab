@@ -125,12 +125,12 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e72acd710c0e211498ae79c3e617423c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.847
-  m_Pitch: 1
+  m_Pitch: -1.29
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 11
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -226,7 +226,10 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   enclosureSlotUsed: 1
   currentMovementState: 0
+  animalTarget: {fileID: 0}
   fightPrefab: {fileID: 2798565287811166088, guid: de5a57e9a23815a4882233e5e185f6d1, type: 3}
+  startRunTimer: 0
+  runDurationBeforeFleeLeft: 0
   reachedEndOfPath: 1
 --- !u!114 &7263422573374251462
 MonoBehaviour:

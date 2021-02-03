@@ -78,7 +78,7 @@ public class MyGameManager : MonoBehaviour
         objectiveAnimalInEnclosure = 0;
         foreach (SpawnInfo spawnInfo in spawnList)
         {
-            if (SelectAnimalPrefab(spawnInfo.type) == null){
+            if (SelectAnimalPrefab(spawnInfo.type) == null) {
                 Debug.Log(spawnInfo.type + " is not a valid animal! Use Bull, Cat, Cow, Mouse");
                 spawnList.Remove(spawnInfo);
             } else {
@@ -101,7 +101,7 @@ public class MyGameManager : MonoBehaviour
 
     public Transform SelectAnimalPrefab(string animal)
     {
-        switch(animal)
+        switch (animal)
         {
             case "Bull":
                 return bullPrefab;
@@ -120,7 +120,7 @@ public class MyGameManager : MonoBehaviour
             case "Wolf":
                 return wolfPrefab;
         }
-        
+
         return null;
     }
 
@@ -159,7 +159,7 @@ public class MyGameManager : MonoBehaviour
         {
             // Selecting prefab
             prefab = SelectAnimalPrefab(spawnInfo.type);
-            if (prefab == null){
+            if (prefab == null) {
                 Debug.Log(spawnInfo.type + " is not a valid animal! Use Bull, Cat, Cow, Mouse");
                 return -1;
             }
@@ -168,10 +168,10 @@ public class MyGameManager : MonoBehaviour
             float r = Random.value;
             float x, y;
             if (r < 0.25)
-            {  
+            {
                 x = Random.Range(p1.transform.position.x, p2.transform.position.x);
                 y = p1.transform.position.y;
-            } 
+            }
             else if (r < 0.5)
             {
                 x = Random.Range(p3.transform.position.x, p4.transform.position.x);
@@ -189,7 +189,7 @@ public class MyGameManager : MonoBehaviour
             }
 
             // Spawning Animal
-            Instantiate(prefab, new Vector2(x, y), Quaternion.identity); 
+            Instantiate(prefab, new Vector2(x, y), Quaternion.identity);
             exteriorEnclusure.currentUsedSpace += 1;
         }
 
@@ -236,13 +236,13 @@ public class MyGameManager : MonoBehaviour
     public float ComputeProgressionPercent()
     {
         int animalsInEnclosure = 0;
-        foreach(Enclosure enclosure in enclosureList)
+        foreach (Enclosure enclosure in enclosureList)
         {
             // Check how many animals are calm
             List<Animal> enclosureAnimals = enclosure.GetAnimals();
             foreach (Animal a in enclosureAnimals)
             {
-                if (checkIfCalm){
+                if (checkIfCalm) {
                     if (a.IsCalm() || a.IsFollow()) animalsInEnclosure += 1;
                 } else {
                     animalsInEnclosure += 1;
@@ -252,9 +252,9 @@ public class MyGameManager : MonoBehaviour
 
         // Error division by 0
         if (objectiveAnimalInEnclosure == 0)
-            return 0;        
-        
-        return ((float) animalsInEnclosure) / ((float) objectiveAnimalInEnclosure);
+            return 0;
+
+        return ((float)animalsInEnclosure) / ((float)objectiveAnimalInEnclosure);
     }
 
     public void UpdateProgressBar()
@@ -263,7 +263,7 @@ public class MyGameManager : MonoBehaviour
         progressBar.CurrentValue = progression;
     }
 
-     private bool IsVictoryConditionsFulfilled()
+    private bool IsVictoryConditionsFulfilled()
     {
         if ((1f - progression) >= 1e-4 || !oneVictory) return false;
 
@@ -278,6 +278,7 @@ public class MyGameManager : MonoBehaviour
     public void Victory()
     {
         UpdateAnimalsReference();
+        StartCoroutine(VictoryCoroutine());
         tilemapObstacles.GetComponent<Collider2D>().enabled = false;
         Debug.Log(AstarPath.active);
         AstarPath.active.Scan();
@@ -304,6 +305,13 @@ public class MyGameManager : MonoBehaviour
             animal.StopAllCoroutines();
         }
     }
+
+    public IEnumerator VictoryCoroutine()
+    {
+        yield return new WaitForSeconds(8f);
+        SceneManager.LoadScene(LevelToLoad);
+    }
+
 
     
     // ==================== DEFEAT

@@ -1905,6 +1905,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1784129617587551674, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2894898027707389211, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
       propertyPath: m_Name
       value: EnclosureColliderBottom
@@ -2153,6 +2157,133 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1132613366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1132613368}
+  - component: {fileID: 1132613367}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1132613367
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132613366}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0a2b67dbc5df8604a84ce9cb6be253b8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.25
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1132613368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132613366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -79.05909, y: 11.832893, z: -2862.3354}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1135627857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,6 +2327,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1876944889}
     m_Modifications:
+    - target: {fileID: 1784129617587551674, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2894898027707389211, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
       propertyPath: m_Name
       value: EnclosureColliderUpperLeft
@@ -3236,6 +3371,10 @@ PrefabInstance:
     - target: {fileID: 5519931847484240874, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402641036790982587, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+      propertyPath: isExterior
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1784129617587551674, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
@@ -10827,6 +10966,7 @@ MonoBehaviour:
   tilemapObstacles: {fileID: 1827257281}
   bus: {fileID: 1553992584}
   LevelToLoad: MainMenu
+  victorySound: {fileID: 0}
   p1: {fileID: 2115543859}
   p2: {fileID: 906313097}
   p3: {fileID: 1413201262}
@@ -10838,11 +10978,8 @@ MonoBehaviour:
   exteriorLimit: {fileID: 0}
   objectiveAnimalInEnclosure: 0
   currentAnimalInEnclosure: 0
-  nbRulesInGame: 0
-  nbRulesFailed: 0
   progression: 0
   progressBar: {fileID: 0}
-  checkIfCalm: 1
   spawnList:
   - type: Cat
     quantity: 2
@@ -10855,16 +10992,25 @@ MonoBehaviour:
     time: 5
   - type: Bull
     quantity: 2
-    time: 7
+    time: 30
   - type: Cow
     quantity: 1
-    time: 9
+    time: 30
   - type: Dog
     quantity: 3
     time: 13
   - type: Cat
     quantity: 50
-    time: 60
+    time: 40
+  - type: Pig
+    quantity: 2
+    time: 20
+  - type: Bull
+    quantity: 30
+    time: 100
+  - type: Dog
+    quantity: 60
+    time: 80
   enclosureCapacityList: []
   animalsInEnclosure: []
   enclosureList: []
@@ -13804,6 +13950,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1876944889}
     m_Modifications:
+    - target: {fileID: 1784129617587551674, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2894898027707389211, guid: 6af8e22fa8ba71d46a012663cd2c277a, type: 3}
       propertyPath: m_Name
       value: EnclosureColliderUpperRight
