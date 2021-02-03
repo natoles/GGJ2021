@@ -265,9 +265,7 @@ public class MyGameManager : MonoBehaviour
 
     private bool IsVictoryConditionsFulfilled()
     {
-        if ((1f - progression) >= 1e-4 || !oneVictory) {
-            return false;
-        }
+        if ((1f - progression) >= 1e-4 || !oneVictory) return false;
 
         foreach (Enclosure enclosure in enclosureList)
         {
