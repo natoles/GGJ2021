@@ -299,6 +299,7 @@ public class MyGameManager : MonoBehaviour
     {
         levelTimeStart = Time.time;
         OnStartComputeObjective();
+        exteriorLimit.text = ""; // Remove me and uncomment in "Update" to enable exteriorLimit text
     }
 
     // Update is called once per frame
@@ -310,9 +311,9 @@ public class MyGameManager : MonoBehaviour
         progression = ComputeProgressionPercent();
         UpdateProgressBar();
 
-        if (IsDefeatConditionsFulfilled()){
-            Defeat();
-        }
+        //if (IsDefeatConditionsFulfilled()){
+        //    Defeat();
+        //}
         if ((1f - progression) < 1e-4 && oneVictory){
             oneVictory = false;
             Victory();
@@ -367,6 +368,6 @@ public class MyGameManager : MonoBehaviour
 
         current = exteriorEnclusure.currentUsedSpace;
         max = exteriorEnclusure.totalSpace;
-        exteriorLimit.text = "!! " + current.ToString() + "/" + max.ToString() + " !!";
+        //exteriorLimit.text = "!! " + current.ToString() + "/" + max.ToString() + " !!";
     }
 }
