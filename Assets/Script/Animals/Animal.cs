@@ -412,7 +412,6 @@ public class Animal : MonoBehaviour
             transform.localScale = baseScale;
             spriteRenderer.flipX = false;
             audioSource.Stop();
-            Debug.Log("canard Audio source stop");
             reachedEndOfPath = true;
             transform.gameObject.tag = "Animal";
             Cursor.visible = true;
@@ -458,21 +457,21 @@ public class Animal : MonoBehaviour
 
         if (!IsInEnclosure())
         {
-            if (!audioSource.isPlaying) audioSource.Play();
-            audioSource.volume = .2f;
+            audioSource.volume = .15f;
+            if (!audioSource.isPlaying) audioSource.Play();   
         }
         else if (currentMovementState == MovementState.Rage
              || currentMovementState == MovementState.Run
                 || currentMovementState == MovementState.ChaseFight
                     || currentMovementState == MovementState.ChaseFlee)
         {
-            if (!audioSource.isPlaying) audioSource.Play();
             audioSource.volume = 1.5f;
+            if (!audioSource.isPlaying) audioSource.Play();
         }
         else if (isDragging)
         {
+            audioSource.volume = 1f;
             if (!audioSource.isPlaying) audioSource.Play();
-            audioSource.volume = .7f;
         }
         else
         {
