@@ -259,8 +259,9 @@ public class MyGameManager : MonoBehaviour
 
     public void UpdateProgressBar()
     {
-        if (progressBar == null) return;
-        progressBar.CurrentValue = progression;
+        if (!oneVictory) progressBar.CurrentValue = 1f;
+        else if (progressBar == null) return;
+        else progressBar.CurrentValue = progression;
     }
 
     private bool IsVictoryConditionsFulfilled()

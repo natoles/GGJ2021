@@ -422,7 +422,10 @@ public class Animal : MonoBehaviour
             transform.gameObject.tag = "Animal";
             Cursor.visible = true;
             if (isVictory)
+            {
                 MoveTo(GameObject.Find("BusStopPos").transform.position);
+                Calm();
+            }
             else
                 StartCoroutine(MovemmentsHandling());
         }
