@@ -42,6 +42,11 @@ public class Enclosure : MonoBehaviour
        return currentUsedSpace >= totalSpace;
     }
 
+    public bool IsOverFull()
+    {
+       return currentUsedSpace > totalSpace;
+    }
+
     public bool IsEmpty()
     {
        return currentUsedSpace <= 0;

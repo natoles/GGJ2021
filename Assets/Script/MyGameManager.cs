@@ -55,13 +55,12 @@ public class MyGameManager : MonoBehaviour
 
     public int objectiveAnimalInEnclosure = 0;
     public int currentAnimalInEnclosure = 0;
-    public int nbRulesInGame, nbRulesFailed;
     public float progression;
 
     public ProgressBar progressBar;
 
     bool oneVictory = true;
-    public bool checkIfCalm = true;
+    public const bool checkIfCalm = true;
 
     // PRIVATE
     private float levelTimeStart;
@@ -132,6 +131,23 @@ public class MyGameManager : MonoBehaviour
         }
 
         return enclosureList[r];
+    }
+
+    public Enclosure GetLessPopulatedOtherEnclosure(Enclosure enclosure)
+    {
+        Enclosure enclosureMin = enclosureList[0] == enclosure ? enclosureList[1] : enclosureList[0];
+        Enclosure enclosureTmp;
+        int i;
+        for (i = 1; i < enclosureList.Count; i++)
+        {
+            enclosureTmp = enclosureList[i];
+            if (enclosureTmp.CountAnimals() < enclosureMin.CountAnimals())
+            {
+                enclosureMin = enclosureTmp;
+            }
+        }
+
+        return enclosureMin;
     }
 
     public int SpawnAnimal(SpawnInfo spawnInfo)
@@ -213,32 +229,30 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+
+    // ==================== VICTORY
     public float ComputeProgressionPercent()
     {
-        
         int animalsInEnclosure = 0;
-        int calmAnimals = 0;
         foreach(Enclosure enclosure in enclosureList)
         {
-            animalsInEnclosure += enclosure.CountAnimals();
-
             // Check how many animals are calm
             List<Animal> enclosureAnimals = enclosure.GetAnimals();
             foreach (Animal a in enclosureAnimals)
             {
-                if (a.IsCalm()) calmAnimals += 1;
+                if (checkIfCalm){
+                    if (a.IsCalm()) animalsInEnclosure += 1;
+                } else {
+                    animalsInEnclosure += 1;
+                }
             }
         }
 
         // Error division by 0
-        if ((objectiveAnimalInEnclosure + nbRulesInGame) == 0)
+        if (objectiveAnimalInEnclosure == 0)
             return 0;        
         
-        if (checkIfCalm)
-            return ((float) (2*animalsInEnclosure - calmAnimals + nbRulesInGame - nbRulesFailed))
-                / ((float) (objectiveAnimalInEnclosure + nbRulesInGame));
-        return ((float) (animalsInEnclosure + nbRulesInGame - nbRulesFailed))
-                / ((float) (objectiveAnimalInEnclosure + nbRulesInGame));
+        return ((float) animalsInEnclosure) / ((float) objectiveAnimalInEnclosure);
     }
 
     public void UpdateProgressBar()
@@ -247,8 +261,20 @@ public class MyGameManager : MonoBehaviour
         progressBar.CurrentValue = progression;
     }
 
+     private bool IsVictoryConditionsFulfilled()
+    {
+        if ((1f - progression) >= 1e-4 || !oneVictory){
+            return false;    
+        }
 
-    // ==================== VICTORY
+        foreach (Enclosure enclosure in enclosureList)
+        {
+            if (enclosure.IsOverFull()) return false;
+        }
+
+        return true;
+    }
+
     public void Victory()
     {
         UpdateAnimalsReference();
@@ -275,6 +301,8 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+    
+    // ==================== DEFEAT
 
     // Return true if deafeat, false else
     public bool IsDefeatConditionsFulfilled()
@@ -314,7 +342,7 @@ public class MyGameManager : MonoBehaviour
         //if (IsDefeatConditionsFulfilled()){
         //    Defeat();
         //}
-        if ((1f - progression) < 1e-4 && oneVictory){
+        if (IsVictoryConditionsFulfilled()){
             oneVictory = false;
             Victory();
         }

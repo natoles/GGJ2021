@@ -37,13 +37,12 @@ public class Mouse : Animal
     {
         Animal currentAnimal = gameObject.GetComponent<Animal>();
         currentEnclosure.RemoveAnimal(currentAnimal);
-        (gameManager.GetRandomOtherEnclosure(currentEnclosure)).AddAnimal(currentAnimal);
+        (gameManager.GetLessPopulatedOtherEnclosure(currentEnclosure)).AddAnimal(currentAnimal);
         rb.velocity = Vector2.zero;
         transform.position = currentEnclosure.RandomPoint();
         reachedEndOfPath = true;
         path = null;
     }
-
 
     public void updateEnterEnclosure()
     {
