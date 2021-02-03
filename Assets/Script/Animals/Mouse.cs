@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mouse : Animal
 {
-    public const float timeBeforeEnteringEnclosure = 5f; // seconds
+    public const float timeBeforeEnteringEnclosure = 1f; // seconds
 
     private float startEnterEnclosureTimer = -1;
     private float enterEnclosureTimeLeft = 0; // timer
