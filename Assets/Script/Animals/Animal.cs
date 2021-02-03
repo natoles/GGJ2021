@@ -18,6 +18,7 @@ public class Animal : MonoBehaviour
     public Animator animator;
     bool isDragging;
     bool isFighting;
+    public bool isVictory = false;
     Vector3 baseScale;
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
@@ -420,7 +421,10 @@ public class Animal : MonoBehaviour
             reachedEndOfPath = true;
             transform.gameObject.tag = "Animal";
             Cursor.visible = true;
-            StartCoroutine(MovemmentsHandling());
+            if (isVictory)
+                MoveTo(GameObject.Find("BusStopPos").transform.position);
+            else
+                StartCoroutine(MovemmentsHandling());
         }
     }
 

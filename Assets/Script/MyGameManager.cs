@@ -297,6 +297,7 @@ public class MyGameManager : MonoBehaviour
             bus.GetComponent<BusScript>().firstPhase = true;
             bus.GetComponent<BusScript>().leave = true;
 
+            animal.isVictory = true;
             animal.ComputeMovement(GameObject.Find("BusStopPos").transform.position, mProperties);
             animal.MoveTo(GameObject.Find("BusStopPos").transform.position);
             animal.Calm();
@@ -400,14 +401,5 @@ public class MyGameManager : MonoBehaviour
         current = exteriorEnclusure.currentUsedSpace;
         max = exteriorEnclusure.totalSpace;
         //exteriorLimit.text = "!! " + current.ToString() + "/" + max.ToString() + " !!";
-
-        if (oneVictory)
-        {
-            foreach (Animal animal in animalsInEnclosure)
-            {
-                animal.MoveTo(GameObject.Find("BusStopPos").transform.position);
-                animal.StopAllCoroutines();
-            }
-        }
     }
 }
