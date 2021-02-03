@@ -45,6 +45,8 @@ public class MyGameManager : MonoBehaviour
 
     public string LevelToLoad;
 
+    public AudioSource victorySound;
+
     public Transform p1;
     public Transform p2;
     public Transform p3;
@@ -281,6 +283,7 @@ public class MyGameManager : MonoBehaviour
         tilemapObstacles.GetComponent<Collider2D>().enabled = false;
         Debug.Log(AstarPath.active);
         AstarPath.active.Scan();
+        victorySound.Play();
         foreach (Animal animal in animalsInEnclosure)
         {
             animal.StopCoroutine(animal.movementsHandlingCoroutine);
@@ -298,6 +301,8 @@ public class MyGameManager : MonoBehaviour
 
             animal.ComputeMovement(GameObject.Find("BusStopPos").transform.position, mProperties);
             animal.MoveTo(GameObject.Find("BusStopPos").transform.position);
+            animal.Calm();
+            animal.StopAllCoroutines();
         }
     }
 
@@ -328,8 +333,8 @@ public class MyGameManager : MonoBehaviour
         levelTimeStart = Time.time;
         OnStartComputeObjective();
         exteriorLimit.text = ""; // Remove me and uncomment in "Update" to enable exteriorLimit text
+        victorySound = GetComponent<AudioSource>();
     }
-
     // Update is called once per frame
     void Update()
     {
