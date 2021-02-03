@@ -241,7 +241,7 @@ public class MyGameManager : MonoBehaviour
             foreach (Animal a in enclosureAnimals)
             {
                 if (checkIfCalm){
-                    if (a.IsCalm()) animalsInEnclosure += 1;
+                    if (a.IsCalm() || a.IsFollow()) animalsInEnclosure += 1;
                 } else {
                     animalsInEnclosure += 1;
                 }

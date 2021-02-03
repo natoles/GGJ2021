@@ -273,6 +273,11 @@ public class Animal : MonoBehaviour
         return (currentMovementState == MovementState.Standard);
     }
 
+    public bool IsFollow()
+    {
+        return (currentMovementState == MovementState.Follow);
+    }
+
     #region Action functions
 
     //Fight = fight animation + kill
