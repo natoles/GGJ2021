@@ -15456,7 +15456,7 @@ MonoBehaviour:
     quantity: 1
     time: 25
   - type: Mouse
-    quantity: 3
+    quantity: 2
     time: 26
   - type: Bull
     quantity: 1
@@ -15488,7 +15488,7 @@ MonoBehaviour:
     time: 20
   - enclosure: {fileID: 1277305934}
     maxCapacity: 7
-    time: 45
+    time: 35
   - enclosure: {fileID: 108523737}
     maxCapacity: 3
     time: 0
@@ -15497,7 +15497,7 @@ MonoBehaviour:
     time: 20
   - enclosure: {fileID: 108523737}
     maxCapacity: 7
-    time: 45
+    time: 35
   - enclosure: {fileID: 423096377}
     maxCapacity: 3
     time: 0
@@ -15506,6 +15506,15 @@ MonoBehaviour:
     time: 20
   - enclosure: {fileID: 423096377}
     maxCapacity: 7
+    time: 35
+  - enclosure: {fileID: 1277305934}
+    maxCapacity: 9
+    time: 45
+  - enclosure: {fileID: 108523737}
+    maxCapacity: 9
+    time: 45
+  - enclosure: {fileID: 423096377}
+    maxCapacity: 9
     time: 45
   animalsInEnclosure: []
   enclosureList:

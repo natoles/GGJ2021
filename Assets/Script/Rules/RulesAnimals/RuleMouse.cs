@@ -17,8 +17,8 @@ public class RuleMouse : RuleAnimal
         if (animal.IsInEnclosure()){
             if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Cat"))){
                 animal.Run();
-            } else if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse"))){
-                animal.Enrage();
+            //} else if (IsAnyNeighborTypeOf(StringToClass.TypeFromString("Mouse"))){
+              //  animal.Enrage();
             } else {
                 animal.Calm();
             }

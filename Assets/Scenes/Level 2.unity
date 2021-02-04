@@ -715,10 +715,10 @@ MonoBehaviour:
     time: 65
   enclosureCapacityList:
   - enclosure: {fileID: 1952355707}
-    maxCapacity: 3
+    maxCapacity: 4
     time: 0
   - enclosure: {fileID: 1952355707}
-    maxCapacity: 6
+    maxCapacity: 7
     time: 38
   - enclosure: {fileID: 314120666}
     maxCapacity: 3

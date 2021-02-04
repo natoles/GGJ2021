@@ -6781,60 +6781,60 @@ MonoBehaviour:
     quantity: 1
     time: 8
   - type: Sheep
-    quantity: 0
+    quantity: 1
     time: 18
   - type: Wolf
-    quantity: 0
+    quantity: 1
     time: 20
   - type: Cat
-    quantity: 0
-    time: 3
+    quantity: 1
+    time: 25
   - type: Mouse
-    quantity: 0
-    time: 3
+    quantity: 1
+    time: 30
   - type: Wolf
-    quantity: 0
+    quantity: 1
+    time: 35
+  - type: Cat
+    quantity: 1
     time: 40
-  - type: Cat
-    quantity: 0
-    time: 45
   - type: Mouse
-    quantity: 0
+    quantity: 2
+    time: 48
+  - type: Cat
+    quantity: 1
     time: 50
-  - type: Cat
-    quantity: 0
-    time: 60
   - type: Mouse
-    quantity: 0
-    time: 61
+    quantity: 1
+    time: 55
   enclosureCapacityList:
   - enclosure: {fileID: 1704029293}
-    maxCapacity: 3
+    maxCapacity: 4
     time: 0
   - enclosure: {fileID: 1704029293}
-    maxCapacity: 4
-    time: 38
+    maxCapacity: 5
+    time: 30
   - enclosure: {fileID: 1292504828}
     maxCapacity: 3
     time: 0
   - enclosure: {fileID: 1292504828}
     maxCapacity: 4
-    time: 38
+    time: 30
   - enclosure: {fileID: 585532435}
     maxCapacity: 3
     time: 0
   - enclosure: {fileID: 585532435}
     maxCapacity: 4
-    time: 38
+    time: 30
   - enclosure: {fileID: 1704029293}
     maxCapacity: 5
-    time: 50
+    time: 40
   - enclosure: {fileID: 1292504828}
     maxCapacity: 5
-    time: 50
+    time: 40
   - enclosure: {fileID: 585532435}
     maxCapacity: 5
-    time: 50
+    time: 40
   animalsInEnclosure: []
   enclosureList:
   - {fileID: 1704029293}
